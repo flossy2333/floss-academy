@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floss Academy — Institutional Crypto Intelligence &amp; Alpha Terminal</title>
+
+  <!-- Google Fonts: Inter, Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#06080A',
+            terminal: '#0B0F14',
+            terminalhover: '#111720',
+            borderdark: '#1C2330',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* =====================================================================
+       DYNAMIC INSTITUTIONAL THEME TOKENS
+       All glows, borders, buttons, badges, sliders, and canvas curves
+       bind directly to these CSS custom properties.
+    ===================================================================== */
+    :root {
+      --accent: #10B981;
+      --accent-rgb: 16, 185, 129;
+      --accent-secondary: #D4AF37;
+      --accent-secondary-rgb: 212, 175, 55;
+      --accent-glow: rgba(16, 185, 129, 0.35);
+      --accent-soft: rgba(16, 185, 129, 0.14);
+      --accent-sec-soft: rgba(212, 175, 55, 0.14);
+      --accent-sec-glow: rgba(212, 175, 55, 0.32);
+    }
+
+    body {
+      background-color: #06080A;
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Institutional Terminal Grid */
+    .bg-terminal-grid {
+      background-image:
+        linear-gradient(to right, rgba(28, 35, 48, 0.42) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 35, 48, 0.42) 1px, transparent 1px);
+      background-size: 46px 46px;
+    }
+
+    /* Dynamic Accent Utility Classes */
+    .text-accent { color: var(--accent); }
+    .text-accent-sec { color: var(--accent-secondary); }
+    .bg-accent { background-color: var(--accent); }
+    .bg-accent-sec { background-color: var(--accent-secondary); }
+    .bg-accent-soft { background-color: var(--accent-soft); }
+    .bg-accent-sec-soft { background-color: var(--accent-sec-soft); }
+    .border-accent { border-color: var(--accent); }
+    .border-accent-soft { border-color: rgba(var(--accent-rgb), 0.35); }
+    .border-accent-sec-soft { border-color: rgba(var(--accent-secondary-rgb), 0.38); }
+
+    .shadow-accent-glow {
+      box-shadow: 0 0 36px -8px var(--accent-glow);
+    }
+    .shadow-accent-sec-glow {
+      box-shadow: 0 0 36px -8px var(--accent-sec-glow);
+    }
+
+    .text-accent-gradient {
+      background: linear-gradient(110deg, #FFFFFF 0%, var(--accent) 52%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-accent-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+      color: #06080A;
+      box-shadow: 0 0 32px -6px var(--accent-glow);
+      transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.2s ease;
+    }
+    .btn-accent-primary:hover {
+      filter: brightness(1.08);
+      box-shadow: 0 0 42px -4px var(--accent-glow);
+    }
+    .btn-accent-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-accent-solid {
+      background-color: var(--accent);
+      color: #06080A;
+      box-shadow: 0 0 28px -6px var(--accent-glow);
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+    .btn-accent-solid:hover {
+      filter: brightness(1.1);
+    }
+
+    .hover-border-accent:hover {
+      border-color: rgba(var(--accent-rgb), 0.5);
+    }
+
+    .focus-accent:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.22);
+    }
+
+    /* Ambient Glow Blobs */
+    .ambient-primary {
+      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16) 0%, rgba(var(--accent-rgb), 0) 70%);
+    }
+    .ambient-secondary {
+      background: radial-gradient(circle, rgba(var(--accent-secondary-rgb), 0.14) 0%, rgba(var(--accent-secondary-rgb), 0) 70%);
+    }
+
+    /* Custom Range Sliders bound to --accent */
+    input[type="range"].accent-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: #1C2330;
+      outline: none;
+    }
+    input[type="range"].accent-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      background: var(--accent);
+      border: 2px solid #06080A;
+      box-shadow: 0 0 14px var(--accent-glow);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type="range"].accent-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type="range"].accent-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      background: var(--accent);
+      border: 2px solid #06080A;
+      box-shadow: 0 0 14px var(--accent-glow);
+      cursor: pointer;
+    }
+
+    /* Infinite Smooth Ticker */
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: tickerScroll 40s linear infinite;
+    }
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Subtle Panel Entrance */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-panel {
+      animation: fadeSlideUp 0.25s ease-out forwards;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #06080A; }
+    ::-webkit-scrollbar-thumb { background: #1C2330; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2D384B; }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- ===================================================================== -->
+  <!-- 1. LIVE MARKET & NARRATIVE TICKER                                     -->
+  <!-- ===================================================================== -->
+  <div class="w-full bg-[#040608] border-b border-borderdark text-xs font-mono overflow-hidden relative z-50">
+    <div class="flex items-center">
+      <!-- Fixed Left Status Pill -->
+      <div class="hidden sm:flex items-center gap-2 px-4 py-2 bg-[#090D12] border-r border-borderdark shrink-0 z-10">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+        </span>
+        <span id="ticker-feed-status" class="text-[11px] uppercase tracking-wider text-slate-300 font-semibold">LIVE DESK • SYNCING...</span>
+      </div>
+
+      <!-- Scrolling Market Data Track -->
+      <div class="overflow-hidden flex-1 py-2">
+        <div class="ticker-track flex items-center gap-8 text-slate-300">
+          <!-- Set 1 -->
+          <div class="flex items-center gap-8 px-4">
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">BTC</span>
+              <span data-cg-price="bitcoin" class="text-white font-semibold">$58,520</span>
+              <span data-cg-change="bitcoin" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-2.1%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">ETH</span>
+              <span data-cg-price="ethereum" class="text-white font-semibold">$1,710</span>
+              <span data-cg-change="ethereum" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-1.8%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">SOL</span>
+              <span data-cg-price="solana" class="text-white font-semibold">$142.80</span>
+              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.4%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-accent-sec font-semibold">AI x DePIN:</span>
+              <span class="text-slate-400">RENDER</span>
+              <span data-cg-price="render-token" class="text-white font-semibold">$7.42</span>
+              <span data-cg-change="render-token" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+6.2%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">RWA:</span>
+              <span class="text-slate-400">ONDO</span>
+              <span data-cg-price="ondo-finance" class="text-white font-semibold">$0.91</span>
+              <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.1%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">FEAR &amp; GREED:</span>
+              <span class="text-amber-400 font-semibold">18 (EXTREME FEAR)</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">PERP DEX VOL:</span>
+              <span class="text-accent font-semibold">Hyperliquid ATH</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">RWA TVL:</span>
+              <span class="text-white font-semibold">$18.4B</span>
+            </span>
+          </div>
+
+          <!-- Set 2 (Seamless Loop Duplicate) -->
+          <div class="flex items-center gap-8 px-4" aria-hidden="true">
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">BTC</span>
+              <span data-cg-price="bitcoin" class="text-white font-semibold">$58,520</span>
+              <span data-cg-change="bitcoin" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-2.1%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">ETH</span>
+              <span data-cg-price="ethereum" class="text-white font-semibold">$1,710</span>
+              <span data-cg-change="ethereum" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-1.8%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">SOL</span>
+              <span data-cg-price="solana" class="text-white font-semibold">$142.80</span>
+              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.4%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-accent-sec font-semibold">AI x DePIN:</span>
+              <span class="text-slate-400">RENDER</span>
+              <span data-cg-price="render-token" class="text-white font-semibold">$7.42</span>
+              <span data-cg-change="render-token" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+6.2%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">RWA:</span>
+              <span class="text-slate-400">ONDO</span>
+              <span data-cg-price="ondo-finance" class="text-white font-semibold">$0.91</span>
+              <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.1%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">FEAR &amp; GREED:</span>
+              <span class="text-amber-400 font-semibold">18 (EXTREME FEAR)</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">PERP DEX VOL:</span>
+              <span class="text-accent font-semibold">Hyperliquid ATH</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">RWA TVL:</span>
+              <span class="text-white font-semibold">$18.4B</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. STICKY NAVIGATION + LIVE COLOR ACCENT CUSTOMIZER POPOVER           -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-obsidian/80 backdrop-blur-xl border-b border-borderdark/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+
+        <!-- Custom Geometric Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group shrink-0">
+          <div class="w-9 h-9 rounded-lg bg-terminal border border-accent-soft flex items-center justify-center shadow-accent-glow group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2L20.5 7V17L12 22L3.5 17V7L12 2Z" stroke-linejoin="round" />
+              <path d="M12 22V12" stroke-linecap="round" />
+              <path d="M20.5 7L12 12L3.5 7" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="2.2" fill="var(--accent-secondary)" stroke="none" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold tracking-[0.14em] text-sm sm:text-base text-white leading-none">FLOSS ACADEMY</span>
+            <span class="text-[10px] font-mono tracking-widest text-accent uppercase mt-1">Alpha Terminal</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+          <a href="#preview" class="hover:text-white transition-colors">Preview</a>
+          <a href="#narratives-anchor" onclick="switchPreviewTab('narratives')" class="hover:text-white transition-colors">Narratives</a>
+          <a href="#roi-simulator" class="hover:text-white transition-colors flex items-center gap-1.5">
+            <span>ROI Simulator</span>
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-accent-soft text-accent border border-accent-soft">LIVE</span>
+          </a>
+          <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+          <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Right Action Cluster: Theme Popover + Join Academy + Mobile Trigger -->
+        <div class="flex items-center gap-2.5 sm:gap-3 relative">
+
+          <!-- LIVE COLOR ACCENT CUSTOMIZER POPOVER TRIGGER -->
+          <div class="relative" id="theme-popover-wrapper">
+            <button
+              id="theme-popover-btn"
+              type="button"
+              onclick="toggleThemePopover()"
+              class="flex items-center gap-2 px-3 py-2 rounded-lg bg-terminal/90 hover:bg-terminalhover border border-borderdark hover-border-accent text-xs font-mono text-slate-200 transition-all"
+              aria-expanded="false"
+              aria-label="Customize Color Accent"
+            >
+              <span class="w-2.5 h-2.5 rounded-full bg-accent shadow-accent-glow inline-block"></span>
+              <span class="hidden sm:inline">Accent</span>
+              <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+
+            <!-- Glassmorphic Theme / Accent Popover Panel -->
+            <div
+              id="theme-popover"
+              class="hidden absolute right-0 mt-3 w-72 sm:w-80 rounded-2xl bg-terminal/95 backdrop-blur-2xl border border-borderdark shadow-2xl p-4 z-50 animate-panel"
+            >
+              <div class="flex items-center justify-between pb-3 border-b border-borderdark">
+                <div>
+                  <div class="text-xs font-mono uppercase tracking-wider text-white font-semibold">Terminal Accent</div>
+                  <div class="text-[11px] text-slate-400">Live theme &amp; chart palette</div>
+                </div>
+                <button
+                  type="button"
+                  onclick="resetThemeDefault()"
+                  class="text-[11px] font-mono text-slate-400 hover:text-white underline underline-offset-2"
+                >
+                  Reset Default
+                </button>
+              </div>
+
+              <!-- 5 Curated Institutional Presets -->
+              <div class="mt-3 space-y-1.5" id="preset-theme-list">
+                <button type="button" data-preset="emerald" onclick="applyThemePreset('emerald')" class="theme-preset-btn w-full flex items-center justify-between px-3 py-2 rounded-xl border border-accent-soft bg-accent-soft text-left transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center -space-x-1">
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#10B981;"></span>
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#D4AF37;"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-white">Emerald &amp; Gold</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-slate-400">DEFAULT</span>
+                </button>
+
+                <button type="button" data-preset="cyan" onclick="applyThemePreset('cyan')" class="theme-preset-btn w-full flex items-center justify-between px-3 py-2 rounded-xl border border-transparent hover:bg-obsidian/70 text-left transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center -space-x-1">
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#06B6D4;"></span>
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#38BDF8;"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-slate-200">Quant Cyan</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-slate-500">#06B6D4</span>
+                </button>
+
+                <button type="button" data-preset="violet" onclick="applyThemePreset('violet')" class="theme-preset-btn w-full flex items-center justify-between px-3 py-2 rounded-xl border border-transparent hover:bg-obsidian/70 text-left transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center -space-x-1">
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#8B5CF6;"></span>
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#E879F9;"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-slate-200">Royal Violet</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-slate-500">#8B5CF6</span>
+                </button>
+
+                <button type="button" data-preset="amber" onclick="applyThemePreset('amber')" class="theme-preset-btn w-full flex items-center justify-between px-3 py-2 rounded-xl border border-transparent hover:bg-obsidian/70 text-left transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center -space-x-1">
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#F59E0B;"></span>
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#FBBF24;"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-slate-200">Obsidian Amber</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-slate-500">#F59E0B</span>
+                </button>
+
+                <button type="button" data-preset="crimson" onclick="applyThemePreset('crimson')" class="theme-preset-btn w-full flex items-center justify-between px-3 py-2 rounded-xl border border-transparent hover:bg-obsidian/70 text-left transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="flex items-center -space-x-1">
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#F43F5E;"></span>
+                      <span class="w-3.5 h-3.5 rounded-full border border-obsidian" style="background:#FB7185;"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-slate-200">Crimson Desk</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-slate-500">#F43F5E</span>
+                </button>
+              </div>
+
+              <!-- Custom Native Hex Picker -->
+              <div class="mt-3 pt-3 border-t border-borderdark flex items-center justify-between gap-3">
+                <label for="custom-hex-picker" class="text-xs text-slate-300 font-medium">Custom Primary Hex</label>
+                <div class="flex items-center gap-2 bg-obsidian border border-borderdark rounded-lg px-2 py-1">
+                  <input
+                    type="color"
+                    id="custom-hex-picker"
+                    value="#10B981"
+                    oninput="applyCustomHex(this.value)"
+                    class="w-6 h-6 bg-transparent border-0 cursor-pointer rounded"
+                  />
+                  <span id="custom-hex-readout" class="text-xs font-mono text-slate-200 uppercase">#10B981</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Join Academy CTA -->
+          <button
+            onclick="openCheckoutModal('Floss Alpha', currentBilling)"
+            class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-lg text-sm font-semibold btn-accent-primary"
+          >
+            Join Academy
+          </button>
+
+          <!-- Mobile Drawer Toggle -->
+          <button
+            id="mobile-menu-btn"
+            onclick="toggleMobileMenu()"
+            class="lg:hidden p-2 rounded-lg border border-borderdark text-slate-300 hover:text-white hover:bg-terminal"
+            aria-label="Toggle Mobile Navigation"
+          >
+            <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsive Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-terminal border-b border-borderdark px-4 pt-2 pb-5 space-y-2">
+      <a href="#preview" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-terminalhover">Preview</a>
+      <a href="#narratives-anchor" onclick="switchPreviewTab('narratives'); toggleMobileMenu();" class="block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-terminalhover">Narratives</a>
+      <a href="#roi-simulator" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-terminalhover">ROI Simulator</a>
+      <a href="#pricing" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-terminalhover">Pricing</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-terminalhover">FAQ</a>
+      <div class="pt-3 border-t border-borderdark">
+        <button onclick="toggleMobileMenu(); openCheckoutModal('Floss Alpha', currentBilling)" class="w-full py-3 rounded-xl text-sm font-semibold btn-accent-primary">
+          Join Academy
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 3. PERSUASIVE HERO / LEAD SECTION                                     -->
+  <!-- ===================================================================== -->
+  <section class="relative overflow-hidden bg-terminal-grid pt-14 pb-20 sm:pt-20 sm:pb-28 border-b border-borderdark">
+    <!-- Dynamic Ambient Glows -->
+    <div class="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-[820px] h-[440px] ambient-primary blur-[90px] rounded-full"></div>
+    <div class="pointer-events-none absolute top-44 right-0 w-[440px] h-[360px] ambient-secondary blur-[100px] rounded-full"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Institutional Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-terminal/90 border border-accent-soft text-[11px] sm:text-xs font-mono tracking-wider text-accent mb-7 shadow-accent-glow">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          INSTITUTIONAL CRYPTO RESEARCH • 6:00 AM EST DAILY DISPATCH
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+          Front-Run Crypto's Next Rotation <span class="text-accent-gradient">Before Retail Wakes Up.</span>
+        </h1>
+
+        <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Daily institutional briefings, early-stage narrative radar, and exact invalidation levels across <strong class="text-white font-semibold">AI x DePIN, RWA, Perp DEXs, and ZK Privacy</strong>—delivered in a 5-minute morning dispatch.
+        </p>
+
+        <!-- Primary Action Buttons -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <button onclick="openCheckoutModal('Floss Alpha', currentBilling)" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base btn-accent-primary">
+            Unlock Floss Alpha →
+          </button>
+          <a href="#preview" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-terminal hover:bg-terminalhover text-white border border-borderdark hover-border-accent transition-all">
+            Inspect Today's Free Preview
+          </a>
+        </div>
+
+        <!-- Lead Capture Form Container (Wired to Web3Forms) -->
+        <div class="mt-10 max-w-xl mx-auto p-4 sm:p-5 rounded-2xl bg-terminal/85 backdrop-blur-xl border border-borderdark shadow-2xl">
+          <form id="hero-lead-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleLeadCapture(event)" class="flex flex-col sm:flex-row gap-3">
+            <!-- Web3Forms Honeypot Anti-Spam Field -->
+            <input type="checkbox" name="botcheck" id="hero-botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
+
+            <input
+              type="email"
+              name="email"
+              id="hero-email-input"
+              required
+              placeholder="Enter your email for the 6:00 AM briefing..."
+              class="flex-1 bg-obsidian border border-borderdark focus-accent rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-all"
+            />
+            <button
+              type="submit"
+              id="hero-lead-submit"
+              class="px-6 py-3 rounded-xl font-semibold text-sm btn-accent-solid shrink-0 inline-flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              <svg id="hero-lead-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+              </svg>
+              <span id="hero-lead-btn-text">Get Today's Free Briefing</span>
+            </button>
+          </form>
+
+          <!-- Verified Live Web3Forms Confirmation State -->
+          <div id="hero-lead-success" class="hidden mt-3.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 text-left flex items-start gap-3 animate-panel">
+            <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <p class="text-sm font-semibold text-white">You're in — today's Floss Briefing is on its way.</p>
+              <p class="text-xs text-slate-300 mt-0.5">Want full mid-cap tickers and invalidation levels right now? <button type="button" onclick="openCheckoutModal('Floss Alpha', currentBilling)" class="text-accent underline hover:brightness-125">Unlock Floss Alpha</button>.</p>
+            </div>
+          </div>
+
+          <!-- Smart Demo Fallback State (Shown while placeholder Web3Forms key is active) -->
+          <div id="hero-lead-preview" class="hidden mt-3.5 p-3.5 rounded-xl bg-amber-500/15 border border-amber-400/40 text-left flex items-start gap-3 animate-panel">
+            <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <p class="text-sm font-semibold text-amber-200">Preview Mode: Email captured locally.</p>
+              <p class="text-xs text-amber-100/80 mt-0.5">Add your Web3Forms key in <code class="font-mono text-amber-300 bg-obsidian/70 px-1.5 py-0.5 rounded">FLOSS_CONFIG</code> to route leads directly to your inbox.</p>
+            </div>
+          </div>
+
+          <!-- Network / API Error State -->
+          <div id="hero-lead-error" class="hidden mt-3.5 p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/35 text-left flex items-start gap-3 animate-panel">
+            <svg class="w-5 h-5 text-rose-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <p class="text-sm font-semibold text-rose-200">Unable to reach dispatch server.</p>
+              <p id="hero-lead-error-text" class="text-xs text-rose-100/80 mt-0.5">Please check your connection and try again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Strip -->
+      <div class="mt-14 pt-10 border-t border-borderdark/80 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto text-center">
+        <div class="p-5 rounded-2xl bg-terminal/65 border border-borderdark/80">
+          <div class="text-2xl sm:text-3xl font-bold font-mono text-white">14,200+</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Active Traders</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-terminal/65 border border-borderdark/80">
+          <div class="text-2xl sm:text-3xl font-bold font-mono text-accent">5-Min Brief</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Daily 6:00 AM EST</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-terminal/65 border border-borderdark/80">
+          <div class="text-2xl sm:text-3xl font-bold font-mono text-accent-sec">38+</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Narratives Tracked</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-terminal/65 border border-borderdark/80">
+          <div class="text-2xl sm:text-3xl font-bold font-mono text-white">Live Flow</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Institutional Desk Data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. INTERACTIVE "FREE PREVIEW" TERMINAL                                -->
+  <!-- ===================================================================== -->
+  <section id="preview" class="py-16 sm:py-24 border-b border-borderdark bg-[#070A0E]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-2">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            Live Intelligence Sample
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Inside the Floss Terminal</h2>
+          <p class="text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
+            Inspect today's morning dispatch, filter emerging altcoin narratives, and track upcoming high-impact token unlocks.
+          </p>
+        </div>
+
+        <!-- Interactive Terminal Tab Bar -->
+        <div id="narratives-anchor" class="inline-flex items-center gap-1.5 p-1.5 rounded-xl bg-terminal border border-borderdark overflow-x-auto max-w-full">
+          <button id="tab-btn-briefing" onclick="switchPreviewTab('briefing')" class="preview-tab-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all bg-accent-soft text-accent border border-accent-soft">
+            Nov 22 Briefing
+          </button>
+          <button id="tab-btn-narratives" onclick="switchPreviewTab('narratives')" class="preview-tab-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white border border-transparent">
+            Hot Narratives Radar
+          </button>
+          <button id="tab-btn-calendar" onclick="switchPreviewTab('calendar')" class="preview-tab-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white border border-transparent">
+            Catalyst &amp; Unlocks
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: DAILY BRIEFING -->
+      <div id="tab-panel-briefing" class="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-panel">
+        <!-- Main Unlocked Dispatch -->
+        <div class="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-terminal border border-borderdark space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-borderdark">
+            <div class="flex items-center gap-2.5">
+              <span class="px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #418</span>
+              <span class="text-xs font-mono text-slate-400">NOV 22, 2026 • 06:00 EST</span>
+            </div>
+            <span class="text-xs font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">SENTIMENT: EXTREME FEAR (18)</span>
+          </div>
+
+          <div>
+            <h3 class="font-display text-xl sm:text-2xl font-bold text-white">
+              BTC Flushes Below $59K While AI x DePIN &amp; Perp DEX Flows Diverge
+            </h3>
+            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+              Overnight liquidations cleared $310M in late longs as Bitcoin tested the $58,200 demand shelf. Beneath the surface, institutional stablecoin inflows onto on-chain perpetual venues hit a fresh monthly high, while decentralized compute tokens (<span class="text-white font-mono">ICNT +53%</span>) showed zero beta to the drawdown.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-obsidian border border-borderdark">
+              <div class="text-xs font-mono text-accent uppercase mb-1.5">Desk Takeaway #1</div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Funding rates across major alts reset to negative territory for the first time in 6 weeks—historically a high-R/R accumulation window for revenue-generating protocols.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian border border-borderdark">
+              <div class="text-xs font-mono text-accent-sec uppercase mb-1.5">Desk Takeaway #2</div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                RWA Treasury TVL crossed <span class="text-white font-mono">$18.4B</span> this morning, reinforcing real-yield protocols as the primary institutional hedge during chop.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Locked Trade Levels Card (Conversion Hook) -->
+        <div class="p-6 sm:p-7 rounded-2xl bg-terminal border border-accent-soft relative overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold text-accent-sec uppercase tracking-wider">ALPHA TRADE LEVELS</span>
+              <span class="px-2 py-0.5 rounded bg-obsidian border border-borderdark text-[11px] font-mono text-slate-300">LOCKED</span>
+            </div>
+            <h4 class="font-display text-lg font-bold text-white">3 High-Conviction Rotations</h4>
+            <p class="text-xs text-slate-400 mt-1">Exact entry zones, invalidation stops, and wallet flow triggers.</p>
+
+            <!-- Blurred Preview Rows -->
+            <div class="mt-5 space-y-3 select-none blur-[4px] opacity-70 pointer-events-none" aria-hidden="true">
+              <div class="p-3 rounded-xl bg-obsidian border border-borderdark flex justify-between font-mono text-xs">
+                <span class="text-white">$ICNT / USDT</span>
+                <span class="text-accent">ENTRY: $1.42 • STOP: $1.21</span>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian border border-borderdark flex justify-between font-mono text-xs">
+                <span class="text-white">$HYPE / USDC</span>
+                <span class="text-accent">ENTRY: $24.8 • TARGET: $36.0</span>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian border border-borderdark flex justify-between font-mono text-xs">
+                <span class="text-white">$ONDO / USDT</span>
+                <span class="text-accent">ENTRY: $0.91 • STOP: $0.79</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-borderdark">
+            <button onclick="openCheckoutModal('Floss Alpha', currentBilling)" class="w-full py-3 rounded-xl text-sm font-semibold btn-accent-primary">
+              Unlock Full Alpha Desk →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: HOT NARRATIVES & ALTCOIN RADAR -->
+      <div id="tab-panel-narratives" class="hidden space-y-6 animate-panel">
+        <!-- Sector Filters -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="filterNarratives('all', this)" class="narrative-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-accent text-obsidian transition-all">ALL SECTORS</button>
+          <button onclick="filterNarratives('ai-depin', this)" class="narrative-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-obsidian text-slate-300 border border-borderdark hover:border-slate-500 transition-all">AI x DePIN</button>
+          <button onclick="filterNarratives('perp-dex', this)" class="narrative-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-obsidian text-slate-300 border border-borderdark hover:border-slate-500 transition-all">PERP DEXs</button>
+          <button onclick="filterNarratives('rwa', this)" class="narrative-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-obsidian text-slate-300 border border-borderdark hover:border-slate-500 transition-all">RWA</button>
+          <button onclick="filterNarratives('zk-privacy', this)" class="narrative-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-obsidian text-slate-300 border border-borderdark hover:border-slate-500 transition-all">ZK PRIVACY</button>
+        </div>
+
+        <!-- Narrative Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="ai-depin">
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">AI x DePIN</span>
+              <span class="text-accent font-bold">CONVICTION: 9.4/10</span>
+            </div>
+            <h4 class="font-display text-lg font-bold text-white">Decentralized GPU &amp; Cloud</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Enterprise inference demand is migrating to permissionless compute networks. Leader <span class="text-white font-mono">ICNT</span> up +53% WoW.</p>
+            <div class="mt-4 pt-3 border-t border-borderdark flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400">LEADERS</span>
+              <span class="text-white">ICNT, RENDER, AKT</span>
+            </div>
+          </div>
+
+          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="perp-dex">
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2 py-0.5 rounded bg-accent-sec-soft text-accent-sec font-semibold">PERP DEXs</span>
+              <span class="text-accent font-bold">CONVICTION: 9.1/10</span>
+            </div>
+            <h4 class="font-display text-lg font-bold text-white">On-Chain Orderbook Perps</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Hyperliquid &amp; next-gen CLOB venues capturing record CEX market share with programmatic buyback flywheels.</p>
+            <div class="mt-4 pt-3 border-t border-borderdark flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400">LEADERS</span>
+              <span class="text-white">HYPE, DYDX, GMX</span>
+            </div>
+          </div>
+
+          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="rwa">
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">RWA</span>
+              <span class="text-accent-sec font-bold">CONVICTION: 8.7/10</span>
+            </div>
+            <h4 class="font-display text-lg font-bold text-white">Tokenized Treasuries &amp; Credit</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Institutional stablecoin treasuries pushing on-chain RWA TVL past $18.4B with sticky protocol fee capture.</p>
+            <div class="mt-4 pt-3 border-t border-borderdark flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400">LEADERS</span>
+              <span class="text-white">ONDO, SYRUP, CFG</span>
+            </div>
+          </div>
+
+          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="zk-privacy">
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2 py-0.5 rounded bg-accent-sec-soft text-accent-sec font-semibold">ZK PRIVACY</span>
+              <span class="text-accent font-bold">CONVICTION: 8.5/10</span>
+            </div>
+            <h4 class="font-display text-lg font-bold text-white">Compliant ZK Settlement</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Selective-disclosure ZK rails gaining quiet smart-money accumulation (+14.2% sector move during BTC chop).</p>
+            <div class="mt-4 pt-3 border-t border-borderdark flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400">LEADERS</span>
+              <span class="text-white">ZEC, AZTEC, RAIL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: CATALYST & TOKEN UNLOCK CALENDAR -->
+      <div id="tab-panel-calendar" class="hidden animate-panel">
+        <div class="rounded-2xl bg-terminal border border-borderdark overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr class="border-b border-borderdark text-[11px] font-mono uppercase text-slate-400 bg-obsidian/60">
+                <th class="py-3.5 px-5">Date</th>
+                <th class="py-3.5 px-5">Asset / Protocol</th>
+                <th class="py-3.5 px-5">Catalyst / Unlock</th>
+                <th class="py-3.5 px-5">Impact</th>
+                <th class="py-3.5 px-5 text-right">Desk Bias</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-borderdark text-sm">
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 25</td>
+                <td class="py-4 px-5 font-semibold text-white">Hyperliquid (HYPE)</td>
+                <td class="py-4 px-5 text-slate-300">Fee-switch governance milestone &amp; spot listing expansion</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-accent-soft text-accent">HIGH</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-accent">BULLISH</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 28</td>
+                <td class="py-4 px-5 font-semibold text-white">Mid-Cap L2 Unlock</td>
+                <td class="py-4 px-5 text-slate-300">$64.2M Cliff Unlock (3.8% of circulating supply)</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-rose-500/15 text-rose-400">SUPPLY SHOCK</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-rose-400">HEDGE / FADE</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">DEC 03</td>
+                <td class="py-4 px-5 font-semibold text-white">AI Compute Summit</td>
+                <td class="py-4 px-5 text-slate-300">Enterprise GPU partnership announcements across DePIN</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-accent-sec-soft text-accent-sec">CATALYST</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-accent">ACCUMULATE</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. LIVE INTERACTIVE PORTFOLIO & ALPHA ROI SIMULATOR                   -->
+  <!-- ===================================================================== -->
+  <section id="roi-simulator" class="py-16 sm:py-24 border-b border-borderdark bg-obsidian relative overflow-hidden">
+    <div class="pointer-events-none absolute -right-32 top-24 w-[480px] h-[480px] ambient-primary blur-[110px] rounded-full"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-10">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-2">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          Interactive Capital Modeler
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Portfolio &amp; Alpha ROI Simulator</h2>
+        <p class="text-slate-400 mt-2 text-sm sm:text-base">
+          Model how systematic narrative rotation and risk-managed entries compound against an unstructured retail benchmark—and see how quickly Floss Alpha pays for itself.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Left Controls Panel (5 cols) -->
+        <div class="lg:col-span-5 p-6 rounded-2xl bg-terminal border border-borderdark space-y-6">
+          <!-- Starting Capital -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="sim-capital-input" class="text-xs font-mono uppercase tracking-wider text-slate-300">Starting Capital (USD)</label>
+              <div class="flex items-center bg-obsidian border border-borderdark rounded-lg px-2.5 py-1">
+                <span class="text-xs font-mono text-slate-400 mr-1">$</span>
+                <input
+                  id="sim-capital-input"
+                  type="number"
+                  min="1000"
+                  max="250000"
+                  step="500"
+                  value="25000"
+                  oninput="handleCapitalInput(this.value)"
+                  class="w-24 bg-transparent text-right font-mono text-sm font-bold text-white outline-none"
+                />
+              </div>
+            </div>
+            <input
+              id="sim-capital-slider"
+              type="range"
+              min="1000"
+              max="250000"
+              step="500"
+              value="25000"
+              oninput="handleCapitalSlider(this.value)"
+              class="accent-slider"
+            />
+            <div class="grid grid-cols-4 gap-2 mt-3">
+              <button type="button" onclick="setCapitalPreset(5000)" class="cap-preset-btn py-1.5 rounded-lg text-xs font-mono bg-obsidian border border-borderdark text-slate-300 hover-border-accent transition-all">$5K</button>
+              <button type="button" onclick="setCapitalPreset(25000)" class="cap-preset-btn py-1.5 rounded-lg text-xs font-mono bg-accent-soft border border-accent-soft text-accent font-semibold transition-all">$25K</button>
+              <button type="button" onclick="setCapitalPreset(50000)" class="cap-preset-btn py-1.5 rounded-lg text-xs font-mono bg-obsidian border border-borderdark text-slate-300 hover-border-accent transition-all">$50K</button>
+              <button type="button" onclick="setCapitalPreset(100000)" class="cap-preset-btn py-1.5 rounded-lg text-xs font-mono bg-obsidian border border-borderdark text-slate-300 hover-border-accent transition-all">$100K</button>
+            </div>
+          </div>
+
+          <!-- Execution Style -->
+          <div>
+            <div class="text-xs font-mono uppercase tracking-wider text-slate-300 mb-2.5">Execution Style</div>
+            <div class="space-y-2">
+              <button type="button" data-strategy="spot" onclick="setStrategy('spot')" class="strategy-card w-full text-left p-3.5 rounded-xl bg-obsidian border border-borderdark hover-border-accent transition-all flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold text-white">Spot Accumulation</div>
+                  <div class="text-xs text-slate-400">Conservative majors + leading RWA / DePIN spot</div>
+                </div>
+                <span class="text-xs font-mono text-slate-400 shrink-0">~5.0%/mo</span>
+              </button>
+
+              <button type="button" data-strategy="swing" onclick="setStrategy('swing')" class="strategy-card w-full text-left p-3.5 rounded-xl bg-accent-soft border border-accent-soft transition-all flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold text-white">2x Systematic Swing</div>
+                  <div class="text-xs text-slate-400">Invalidation-protected narrative swing setups</div>
+                </div>
+                <span class="text-xs font-mono text-accent font-bold shrink-0">~9.0%/mo</span>
+              </button>
+
+              <button type="button" data-strategy="rotation" onclick="setStrategy('rotation')" class="strategy-card w-full text-left p-3.5 rounded-xl bg-obsidian border border-borderdark hover-border-accent transition-all flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold text-white">Narrative Rotation</div>
+                  <div class="text-xs text-slate-400">Active high-beta sector rotation &amp; catalyst plays</div>
+                </div>
+                <span class="text-xs font-mono text-slate-400 shrink-0">~14.0%/mo</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Time Horizon -->
+          <div>
+            <div class="text-xs font-mono uppercase tracking-wider text-slate-300 mb-2.5">Time Horizon</div>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" data-months="3" onclick="setHorizon(3)" class="horizon-btn py-2.5 rounded-xl text-xs font-mono font-semibold bg-obsidian border border-borderdark text-slate-300 hover-border-accent transition-all">3 Months</button>
+              <button type="button" data-months="6" onclick="setHorizon(6)" class="horizon-btn py-2.5 rounded-xl text-xs font-mono font-semibold bg-obsidian border border-borderdark text-slate-300 hover-border-accent transition-all">6 Months</button>
+              <button type="button" data-months="12" onclick="setHorizon(12)" class="horizon-btn py-2.5 rounded-xl text-xs font-mono font-semibold bg-accent text-obsidian transition-all">12 Months</button>
+            </div>
+          </div>
+
+          <!-- Simulated Monthly Edge Slider -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="sim-edge-slider" class="text-xs font-mono uppercase tracking-wider text-slate-300">Simulated Monthly Edge</label>
+              <span id="sim-edge-readout" class="text-xs font-mono font-bold text-accent">9.0% / mo</span>
+            </div>
+            <input
+              id="sim-edge-slider"
+              type="range"
+              min="2"
+              max="20"
+              step="0.5"
+              value="9"
+              oninput="handleEdgeSlider(this.value)"
+              class="accent-slider"
+            />
+            <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+              <span>2.0% Conservative</span>
+              <span>20.0% Aggressive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Outputs & Interactive Canvas Chart (7 cols) -->
+        <div class="lg:col-span-7 space-y-5">
+          <!-- KPI Strip -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl bg-terminal border border-borderdark">
+              <div class="text-[11px] font-mono uppercase text-slate-400">Projected Value</div>
+              <div id="out-projected-value" class="text-2xl font-bold font-mono text-white mt-1">$70,317</div>
+              <div id="out-horizon-label" class="text-xs text-slate-400 mt-0.5">After 12 Months</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-terminal border border-accent-soft">
+              <div class="text-[11px] font-mono uppercase text-slate-400">Net Projected Gain</div>
+              <div id="out-net-gain" class="text-2xl font-bold font-mono text-accent mt-1">+$45,317</div>
+              <div id="out-total-roi" class="text-xs font-mono text-accent mt-0.5">+181.3% Total ROI</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-terminal border border-borderdark">
+              <div class="text-[11px] font-mono uppercase text-slate-400">Sub Payback Speed</div>
+              <div id="out-payback-days" class="text-2xl font-bold font-mono text-accent-sec mt-1">~0.6 days</div>
+              <div id="out-sub-pct" class="text-xs text-slate-400 mt-0.5">Floss Alpha = 2.0% of gain</div>
+            </div>
+          </div>
+
+          <!-- Dual-Curve HTML5 Canvas Container -->
+          <div class="p-5 rounded-2xl bg-terminal border border-borderdark">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div class="text-xs font-mono uppercase tracking-wider text-slate-300">Compounded Equity Curve (Hover / Tap to Inspect)</div>
+              <div class="flex items-center gap-4 text-[11px] font-mono">
+                <span class="flex items-center gap-1.5 text-white"><span class="w-2.5 h-2.5 rounded-full bg-accent"></span>Floss Model</span>
+                <span class="flex items-center gap-1.5 text-slate-400"><span class="w-2.5 h-0.5 bg-slate-500"></span>Retail Benchmark</span>
+              </div>
+            </div>
+
+            <div id="roi-chart-container" class="relative w-full h-64 sm:h-72">
+              <canvas id="roi-canvas" class="w-full h-full block cursor-crosshair"></canvas>
+              <!-- Floating Tooltip -->
+              <div id="roi-tooltip" class="hidden pointer-events-none absolute top-3 left-4 p-3 rounded-xl bg-obsidian/95 border border-borderdark shadow-2xl text-xs font-mono space-y-1 min-w-[185px] z-20">
+                <div id="tt-month" class="text-slate-400 border-b border-borderdark pb-1">Month 6</div>
+                <div class="flex justify-between gap-4"><span class="text-slate-400">Floss:</span><span id="tt-floss" class="text-accent font-bold">$41,928</span></div>
+                <div class="flex justify-between gap-4"><span class="text-slate-400">Retail:</span><span id="tt-retail" class="text-slate-300">$28,154</span></div>
+                <div class="flex justify-between gap-4 pt-1 border-t border-borderdark"><span class="text-slate-400">Alpha Spread:</span><span id="tt-spread" class="text-accent-sec font-bold">+$13,774</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Tier Recommendation Callout -->
+          <div class="p-5 rounded-2xl bg-terminal border border-accent-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono text-slate-400">RECOMMENDED TIER:</span>
+                <span id="out-rec-badge" class="px-2 py-0.5 rounded bg-accent-soft text-accent font-mono text-xs font-bold">FLOSS ALPHA</span>
+              </div>
+              <p id="out-rec-reason" class="text-xs sm:text-sm text-slate-300 mt-1.5">
+                At $25,000 capital, Floss Alpha ($74/mo annual) is just 2.0% of your simulated 12-month gain.
+              </p>
+            </div>
+            <button id="sim-cta-btn" type="button" onclick="openRecommendedTierCheckout()" class="w-full sm:w-auto px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold btn-accent-primary shrink-0">
+              Unlock This Edge — Start Floss Alpha
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-500 font-mono">
+            * Hypothetical compounding model for educational visualization only. Crypto assets carry substantial risk; past performance does not guarantee future results.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. DYNAMIC PRICING TIERS                                              -->
+  <!-- ===================================================================== -->
+  <section id="pricing" class="py-16 sm:py-24 border-b border-borderdark bg-[#070A0E]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-2">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          Membership Tiers
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Choose Your Intelligence Edge</h2>
+        <p class="text-slate-400 mt-2 text-sm sm:text-base">
+          Cancel anytime. Instant access to the Floss Terminal, daily 6:00 AM dispatches, and private research channels.
+        </p>
+
+        <!-- Monthly / Annual Billing Toggle -->
+        <div class="mt-7 inline-flex items-center p-1.5 rounded-xl bg-terminal border border-borderdark">
+          <button id="bill-monthly-btn" onclick="setBillingCycle('monthly')" class="px-5 py-2 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">
+            Monthly
+          </button>
+          <button id="bill-annual-btn" onclick="setBillingCycle('annual')" class="px-5 py-2 rounded-lg text-sm font-semibold bg-accent text-obsidian transition-all flex items-center gap-2">
+            <span>Annual</span>
+            <span class="px-1.5 py-0.5 rounded bg-obsidian/20 text-[10px] font-mono font-bold">-25%</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3-Tier Cards -->
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        <!-- Tier 1: The Briefing -->
+        <div class="p-7 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono uppercase tracking-wider text-slate-400">Essential Signal</div>
+            <h3 class="font-display text-2xl font-bold text-white mt-1">The Briefing</h3>
+            <div class="mt-5 flex items-baseline gap-1.5">
+              <span id="price-briefing" class="font-display text-4xl font-bold text-white">$22</span>
+              <span class="text-sm text-slate-400 font-mono">/mo</span>
+            </div>
+            <p id="subtext-briefing" class="text-xs font-mono text-slate-400 mt-1">Billed $264 annually (Save $84/yr)</p>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Daily 6:00 AM EST institutional news briefing</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Weekly macro &amp; ETF liquidity wrap</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Token unlock &amp; catalyst calendar</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> High-level narrative heatmaps</li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('The Briefing', currentBilling)" class="mt-8 w-full py-3 rounded-xl font-semibold text-sm bg-obsidian hover:bg-terminalhover text-white border border-borderdark hover-border-accent transition-all">
+            Start The Briefing
+          </button>
+        </div>
+
+        <!-- Tier 2: Floss Alpha (Most Popular) -->
+        <div class="p-7 rounded-2xl bg-terminal border-2 border-accent shadow-accent-glow flex flex-col justify-between relative">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-accent text-obsidian font-mono text-[11px] font-bold tracking-wider">
+            MOST POPULAR
+          </div>
+          <div>
+            <div class="text-xs font-mono uppercase tracking-wider text-accent">Active Traders &amp; Rotators</div>
+            <h3 class="font-display text-2xl font-bold text-white mt-1">Floss Alpha</h3>
+            <div class="mt-5 flex items-baseline gap-1.5">
+              <span id="price-alpha" class="font-display text-4xl font-bold text-white">$74</span>
+              <span class="text-sm text-slate-400 font-mono">/mo</span>
+            </div>
+            <p id="subtext-alpha" class="text-xs font-mono text-accent mt-1">Billed $888 annually (Save $300/yr)</p>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-200">
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Everything in The Briefing</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Full Hot Narratives &amp; Mid-Cap Altcoin Radar</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Exact entry zones, targets &amp; invalidation stops</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Smart-money wallet flow &amp; Perp DEX alerts</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Private Floss Alpha Discord &amp; Telegram desk</li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('Floss Alpha', currentBilling)" class="mt-8 w-full py-3.5 rounded-xl font-semibold text-sm btn-accent-primary">
+            Unlock Floss Alpha →
+          </button>
+        </div>
+
+        <!-- Tier 3: Floss Desk -->
+        <div class="p-7 rounded-2xl bg-terminal border border-accent-sec-soft flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono uppercase tracking-wider text-accent-sec">High-Capital &amp; Funds</div>
+            <h3 class="font-display text-2xl font-bold text-white mt-1">Floss Desk</h3>
+            <div class="mt-5 flex items-baseline gap-1.5">
+              <span id="price-desk" class="font-display text-4xl font-bold text-white">$224</span>
+              <span class="text-sm text-slate-400 font-mono">/mo</span>
+            </div>
+            <p id="subtext-desk" class="text-xs font-mono text-slate-400 mt-1">Billed $2,688 annually (Save $900/yr)</p>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-2.5"><span class="text-accent-sec font-bold">✓</span> Everything in Floss Alpha</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent-sec font-bold">✓</span> Weekly live institutional desk strategy calls</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent-sec font-bold">✓</span> Direct analyst Q&amp;A &amp; custom token audits</li>
+              <li class="flex items-start gap-2.5"><span class="text-accent-sec font-bold">✓</span> Early pre-TGE &amp; airdrop farming playbooks</li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('Floss Desk', currentBilling)" class="mt-8 w-full py-3 rounded-xl font-semibold text-sm bg-obsidian hover:bg-terminalhover text-white border border-accent-sec-soft transition-all">
+            Apply for Floss Desk
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. FAQ ACCORDION                                                      -->
+  <!-- ===================================================================== -->
+  <section id="faq" class="py-16 sm:py-24 border-b border-borderdark bg-obsidian">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+        <p class="text-slate-400 mt-2 text-sm sm:text-base">Clear answers before you join the desk.</p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="rounded-2xl bg-terminal border border-borderdark overflow-hidden">
+          <button type="button" onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-semibold text-white">
+            <span>How is Floss Academy different from free Crypto Twitter feeds?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed">
+            Crypto Twitter is loud, reactive, and flooded with paid promotions. Floss Academy is 100% subscriber-funded, synthesizing on-chain flows, perp funding, and catalyst calendars into one structured 6:00 AM EST briefing with clear invalidation levels.
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-terminal border border-borderdark overflow-hidden">
+          <button type="button" onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-semibold text-white">
+            <span>Can I pay with Crypto (USDC) or Credit Card?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed">
+            Yes. Every subscription tier supports both instant Card checkout (via Whop / Stripe) and on-chain USDC settlement.
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-terminal border border-borderdark overflow-hidden">
+          <button type="button" onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-semibold text-white">
+            <span>Can I cancel or switch tiers anytime?</span>
+            <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed">
+            Absolutely. You can upgrade, downgrade, or cancel with one click from your membership portal—no lock-ins or hidden fees.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 8. FOOTER & RESEARCH DISCLAIMER                                       -->
+  <!-- ===================================================================== -->
+  <footer class="py-12 bg-[#040608] text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-borderdark">
+        <div class="flex items-center gap-2.5">
+          <span class="font-display font-bold tracking-[0.14em] text-sm text-white">FLOSS ACADEMY</span>
+          <span class="text-borderdark">|</span>
+          <span class="font-mono text-accent">ALPHA TERMINAL</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-5 font-mono">
+          <a href="#preview" class="hover:text-white transition-colors">Preview</a>
+          <a href="#roi-simulator" class="hover:text-white transition-colors">ROI Simulator</a>
+          <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+          <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        </div>
+      </div>
+      <p class="leading-relaxed text-slate-500">
+        <strong>Research Disclaimer:</strong> Floss Academy provides independent digital asset research, market data aggregation, and educational commentary. Nothing published on this site or in our dispatches constitutes financial, investment, legal, or tax advice. Cryptocurrency trading involves high risk and the potential loss of principal. Always conduct your own due diligence.
+      </p>
+      <div class="text-slate-600 font-mono">© 2026 Floss Academy Research. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE CHECKOUT MODAL (LIVE PAYMENT LINKS: CARD + CRYPTO USDC)   -->
+  <!-- ===================================================================== -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="bg-terminal border border-borderdark rounded-2xl max-w-md w-full overflow-hidden shadow-2xl animate-panel relative max-h-[92vh] overflow-y-auto">
+      <!-- Close Button -->
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-obsidian transition-colors z-10" aria-label="Close Checkout Modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Checkout Configuration & Redirect View -->
+      <div id="checkout-form-view" class="p-6 sm:p-8">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-[11px] font-bold mb-3">
+          SECURE CHECKOUT DISPATCH
+        </div>
+        <h3 id="modal-plan-title" class="font-display text-2xl font-bold text-white">Floss Alpha</h3>
+        <p id="modal-plan-price-line" class="text-sm font-mono text-accent mt-1">$74/mo • Billed Annually ($888/yr)</p>
+
+        <!-- Billing Cycle Switcher -->
+        <div class="mt-4 p-2.5 rounded-xl bg-obsidian border border-borderdark flex items-center justify-between text-xs">
+          <span class="text-slate-400 pl-1">Billing Cycle:</span>
+          <div class="flex gap-1.5">
+            <button type="button" id="modal-bill-monthly" onclick="updateModalBilling('monthly')" class="px-2.5 py-1 rounded-lg font-semibold text-slate-400 hover:text-white transition-all">Monthly</button>
+            <button type="button" id="modal-bill-annual" onclick="updateModalBilling('annual')" class="px-2.5 py-1 rounded-lg font-semibold bg-accent text-obsidian transition-all">Annual (-25%)</button>
+          </div>
+        </div>
+
+        <!-- Payment Method Toggle (Card vs Crypto USDC) -->
+        <div class="mt-3 grid grid-cols-2 gap-2 p-1 rounded-xl bg-obsidian border border-borderdark text-xs font-semibold">
+          <button type="button" id="pay-method-card" onclick="setPaymentMethod('card')" class="py-2.5 rounded-lg bg-terminal text-white border border-accent-soft transition-all">
+            Card (Whop / Stripe)
+          </button>
+          <button type="button" id="pay-method-crypto" onclick="setPaymentMethod('crypto')" class="py-2.5 rounded-lg text-slate-400 hover:text-white border border-transparent transition-all">
+            Crypto (USDC)
+          </button>
+        </div>
+
+        <form onsubmit="handleCheckoutSubmit(event)" class="mt-4 space-y-4">
+          <!-- Optional Email Pre-fill -->
+          <div>
+            <label for="checkout-email" class="flex items-center justify-between text-xs font-medium text-slate-300 mb-1.5">
+              <span>Email Address</span>
+              <span class="text-[11px] font-mono text-slate-500">Optional • Pre-fills checkout</span>
+            </label>
+            <input
+              type="email"
+              id="checkout-email"
+              placeholder="alex@fund.capital"
+              class="w-full bg-obsidian border border-borderdark focus-accent rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition-all"
+            />
+          </div>
+
+          <!-- Dynamic Order Summary Card -->
+          <div class="p-4 rounded-xl bg-obsidian border border-borderdark space-y-2 text-xs font-mono">
+            <div class="flex items-center justify-between text-slate-400">
+              <span>SELECTED PLAN</span>
+              <span id="summary-plan" class="text-white font-semibold">Floss Alpha</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-400">
+              <span>BILLING FREQUENCY</span>
+              <span id="summary-billing" class="text-accent font-semibold">Annual (Save 25%)</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-400">
+              <span>PAYMENT RAIL</span>
+              <span id="summary-rail" class="text-accent-sec font-semibold">Card (Whop / Stripe)</span>
+            </div>
+            <div class="pt-2 mt-2 border-t border-borderdark flex items-center justify-between text-sm">
+              <span class="text-slate-300 font-sans font-semibold">Total Due Today</span>
+              <span id="summary-total" class="text-white font-bold">$888 / yr</span>
+            </div>
+          </div>
+
+          <!-- Inline Setup Card (Displayed if payment URL in FLOSS_CONFIG is still a placeholder) -->
+          <div id="checkout-placeholder-card" class="hidden p-4 rounded-xl bg-amber-500/10 border border-amber-400/40 text-left space-y-2 animate-panel">
+            <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-300">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <span>SETUP REQUIRED: PLACEHOLDER PAYMENT LINK</span>
+            </div>
+            <p class="text-xs text-amber-100/85 leading-relaxed">
+              Replace this key in <code class="font-mono text-amber-300">FLOSS_CONFIG</code> with your live checkout URL before deploying:
+            </p>
+            <div class="p-2.5 rounded-lg bg-obsidian border border-borderdark font-mono text-[11px] space-y-1">
+              <div class="text-slate-400">Config Path:</div>
+              <div id="placeholder-config-path" class="text-accent break-all font-semibold">FLOSS_CONFIG.paymentLinks.alpha.annual.card</div>
+              <div class="text-slate-400 pt-1">Current Placeholder:</div>
+              <div id="placeholder-url-preview" class="text-amber-300/90 break-all">https://whop.com/checkout/YOUR_ALPHA_ANNUAL_CARD_LINK</div>
+            </div>
+          </div>
+
+          <button type="submit" id="checkout-submit-btn" class="w-full py-3.5 rounded-xl font-semibold text-sm btn-accent-primary">
+            Continue to Secure Checkout →
+          </button>
+        </form>
+      </div>
+
+      <!-- Live Redirect Confirmation State -->
+      <div id="checkout-success-view" class="hidden p-8 text-center">
+        <div class="w-14 h-14 mx-auto rounded-full bg-accent-soft border border-accent-soft flex items-center justify-center mb-4 shadow-accent-glow">
+          <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-bold text-white">Secure Checkout Opened</h3>
+        <p id="checkout-success-msg" class="text-sm text-slate-300 mt-2 leading-relaxed"></p>
+        <div class="mt-6 p-4 rounded-xl bg-obsidian border border-borderdark text-left text-xs font-mono space-y-1.5 text-slate-300">
+          <div class="flex justify-between"><span class="text-slate-500">TIER:</span><span id="receipt-tier" class="text-accent font-semibold"></span></div>
+          <div class="flex justify-between"><span class="text-slate-500">BILLING:</span><span id="receipt-billing" class="text-white"></span></div>
+          <div class="flex justify-between"><span class="text-slate-500">PAYMENT RAIL:</span><span id="receipt-method" class="text-accent-sec"></span></div>
+          <div class="flex justify-between"><span class="text-slate-500">STATUS:</span><span class="text-accent">REDIRECTED TO CHECKOUT</span></div>
+        </div>
+        <div class="mt-6 space-y-2.5">
+          <a id="checkout-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-xl font-semibold text-sm btn-accent-primary">
+            Open Checkout Tab Again →
+          </a>
+          <button type="button" onclick="closeCheckoutModal()" class="w-full py-2.5 rounded-xl font-semibold text-xs text-slate-400 hover:text-white transition-colors">
+            Return to Floss Terminal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT APPLICATION LOGIC                                          -->
+  <!-- ===================================================================== -->
+  <script>
+    /* =======================================================================
+       CORE CONFIGURATION BLOCK — EDIT THESE VALUES TO GO LIVE IN 2 MINUTES
+    ======================================================================= */
+    const FLOSS_CONFIG = {
+      // 1. Get your free Access Key at https://web3forms.com/ (250 free submissions/mo)
+      web3formsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+      web3formsSubject: "New Floss Academy Lead Capture",
+
+      // 2. Live CoinGecko Public API Settings (no API key required)
+      coingeckoRefreshMs: 60000, // Refresh every 60s to respect free public rate limits
+
+      // 3. Replace these placeholders with your live Whop, Stripe, or Crypto (Coinbase Commerce / NOWPayments) checkout URLs
+// ... existing code ... -->
+    /* =======================================================================
+       6. LIVE COINGECKO PUBLIC PRICE FEED
+    ======================================================================= */
+    const COINGECKO_ASSETS = ['bitcoin', 'ethereum', 'solana', 'render-token', 'ondo-finance'];
+
+    function formatLivePrice(usd) {
+      if (usd >= 1000) {
+        return '$' + Math.round(usd).toLocaleString('en-US');
+      }
+      if (usd >= 1) {
+        return '$' + usd.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      return '$' + usd.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+    }
+
+    async function fetchLiveCoinGeckoPrices() {
+      const statusEl = document.getElementById('ticker-feed-status');
+      const idsParam = COINGECKO_ASSETS.join(',');
+      const endpoint = `https://api.coingecko.com/api/v3/simple/price?ids=${idsParam}&vs_currencies=usd&include_24hr_change=true`;
+
+      try {
+        const response = await fetch(endpoint, { headers: { 'Accept': 'application/json' } });
+        if (!response.ok) {
+          throw new Error(`CoinGecko HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        COINGECKO_ASSETS.forEach((coinId) => {
+          const entry = data[coinId];
+          if (!entry || typeof entry.usd !== 'number') return;
+
+          const formattedPrice = formatLivePrice(entry.usd);
+          const change = typeof entry.usd_24h_change === 'number' ? entry.usd_24h_change : 0;
+          const isPositive = change >= 0;
+          const formattedChange = `${isPositive ? '+' : ''}${change.toFixed(1)}%`;
+
+          // Update both ticker loop duplicates simultaneously
+          document.querySelectorAll(`[data-cg-price="${coinId}"]`).forEach((el) => {
+            el.textContent = formattedPrice;
+          });
+
+          document.querySelectorAll(`[data-cg-change="${coinId}"]`).forEach((el) => {
+            el.textContent = formattedChange;
+            el.className = isPositive
+              ? 'text-accent bg-accent-soft px-1.5 py-0.5 rounded'
+              : 'text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded';
+          });
+        });
+
+        if (statusEl) {
+          const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          statusEl.textContent = `LIVE COINGECKO • ${now}`;
+        }
+      } catch (err) {
+        // Gracefully retain fallback prices if offline or rate-limited
+        if (statusEl) {
+          statusEl.textContent = 'LIVE DESK • CACHED';
+        }
+      }
+    }
+
+    /* =======================================================================
+       7. INITIALIZATION & RESPONSIVE CHART EVENTS
+    ======================================================================= */
+    window.addEventListener('load', () => {
+      recalculateSimulator();
+      fetchLiveCoinGeckoPrices();
+      setInterval(fetchLiveCoinGeckoPrices, FLOSS_CONFIG.coingeckoRefreshMs || 60000);
+
+      const canvas = document.getElementById('roi-canvas');
+// ... existing code ... -->
