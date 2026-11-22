@@ -592,7 +592,7 @@
             </div>
           </div>
 
-          <!-- Preview Mode Notice (Shown when YOUR_WEB3FORMS_ACCESS_KEY is still active) -->
+          <!-- Preview Mode Notice -->
           <div id="hero-lead-preview" class="hidden mt-3.5 p-3.5 rounded-xl bg-amber-500/15 border border-amber-400/40 text-left flex items-start gap-3 animate-panel">
             <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <div>
@@ -1087,7 +1087,7 @@
             <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Early narrative rotation radar before mainstream coverage</li>
             <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> 100% subscriber-funded research—zero paid token promos</li>
             <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Exact entry zones, invalidation stops &amp; unlock calendars</li>
-            <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Live Supabase-powered terminal + private member desk</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent font-bold">✓</span> Live Supabase-powered terminal + Card or On-Chain USDC billing</li>
           </ul>
         </div>
       </div>
@@ -1100,7 +1100,7 @@
         </div>
         <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Choose Your Intelligence Edge</h2>
         <p class="text-slate-400 mt-2 text-sm sm:text-base">
-          Cancel anytime. Instant access to the Floss Terminal, daily 6:00 AM dispatches, and private research channels.
+          Pay with Card (Whop) or Crypto (USDC). Instant access to the Floss Terminal and daily 6:00 AM dispatches.
         </p>
 
         <div class="mt-7 inline-flex items-center p-1.5 rounded-xl bg-terminal border border-borderdark">
@@ -1272,7 +1272,7 @@
               <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed">
-              Yes. Every subscription tier supports instant Card checkout (via Whop / Stripe) as well as on-chain USDC settlement.
+              Yes. Every subscription tier supports instant Card checkout (via Whop) as well as Crypto (USDC) via hosted checkout or direct Base, Solana, Arbitrum, and Ethereum USDC transfer.
             </div>
           </div>
 
@@ -1398,7 +1398,7 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- INTERACTIVE CHECKOUT MODAL (CARD WHOP/STRIPE + CRYPTO USDC)           -->
+  <!-- INTERACTIVE CHECKOUT MODAL (CARD WHOP + CRYPTO USDC)                  -->
   <!-- ===================================================================== -->
   <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
     <div class="bg-terminal border border-borderdark rounded-2xl max-w-md w-full overflow-hidden shadow-2xl animate-panel relative max-h-[92vh] overflow-y-auto">
@@ -1426,7 +1426,7 @@
         <!-- Payment Method Switcher -->
         <div class="mt-3 grid grid-cols-2 gap-2 p-1 rounded-xl bg-obsidian border border-borderdark text-xs font-semibold">
           <button type="button" id="pay-method-card" onclick="setPaymentMethod('card')" class="py-2.5 rounded-lg bg-terminal text-white border border-accent-soft transition-all">
-            Card (Whop / Stripe)
+            Card (Whop)
           </button>
           <button type="button" id="pay-method-crypto" onclick="setPaymentMethod('crypto')" class="py-2.5 rounded-lg text-slate-400 hover:text-white border border-transparent transition-all">
             Crypto (USDC)
@@ -1436,8 +1436,8 @@
         <form onsubmit="handleCheckoutSubmit(event)" class="mt-4 space-y-4">
           <div>
             <label for="checkout-email" class="flex items-center justify-between text-xs font-medium text-slate-300 mb-1.5">
-              <span>Email Address</span>
-              <span class="text-[11px] font-mono text-slate-500">Optional • Pre-fills checkout</span>
+              <span>Member Email Address</span>
+              <span class="text-[11px] font-mono text-slate-500">Syncs Supabase tier</span>
             </label>
             <input
               type="email"
@@ -1445,6 +1445,64 @@
               placeholder="alex@fund.capital"
               class="w-full bg-obsidian border border-borderdark focus-accent rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition-all"
             />
+          </div>
+
+          <!-- DIRECT ON-CHAIN USDC PANEL (Shown when Crypto (USDC) is selected) -->
+          <div id="crypto-usdc-panel" class="hidden p-4 rounded-xl bg-obsidian border border-gold-soft space-y-3 animate-panel">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-mono font-bold text-gold uppercase tracking-wider">USDC Payment Options</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-accent-soft text-accent">0% CARD FEES</span>
+            </div>
+
+            <!-- Hosted vs Direct Wallet Mode Selector -->
+            <div class="grid grid-cols-2 gap-1.5 p-1 rounded-lg bg-terminal border border-borderdark text-[11px] font-mono">
+              <button type="button" id="usdc-mode-direct" onclick="setUsdcMode('direct')" class="py-1.5 rounded bg-obsidian text-white border border-accent-soft">Direct Wallet</button>
+              <button type="button" id="usdc-mode-hosted" onclick="setUsdcMode('hosted')" class="py-1.5 rounded text-slate-400 hover:text-white border border-transparent">Hosted Link</button>
+            </div>
+
+            <!-- Hosted USDC Checkout Info -->
+            <div id="usdc-hosted-info" class="hidden text-xs text-slate-300 leading-relaxed">
+              Pay instantly via <strong class="text-white">Coinbase Commerce / NOWPayments</strong> using USDC on Base, Solana, Polygon, or Ethereum.
+            </div>
+
+            <!-- Direct On-Chain USDC Wallet Info -->
+            <div id="usdc-direct-info" class="space-y-3">
+              <div>
+                <div class="text-[11px] font-mono text-slate-400 mb-1.5">SELECT USDC NETWORK:</div>
+                <div class="grid grid-cols-4 gap-1.5 text-[11px] font-mono">
+                  <button type="button" data-net="base" onclick="selectUsdcNetwork('base')" class="usdc-net-btn py-1.5 rounded-lg bg-accent text-obsidian font-bold">Base</button>
+                  <button type="button" data-net="arbitrum" onclick="selectUsdcNetwork('arbitrum')" class="usdc-net-btn py-1.5 rounded-lg bg-terminal border border-borderdark text-slate-300">Arbitrum</button>
+                  <button type="button" data-net="ethereum" onclick="selectUsdcNetwork('ethereum')" class="usdc-net-btn py-1.5 rounded-lg bg-terminal border border-borderdark text-slate-300">Ethereum</button>
+                  <button type="button" data-net="solana" onclick="selectUsdcNetwork('solana')" class="usdc-net-btn py-1.5 rounded-lg bg-terminal border border-borderdark text-slate-300">Solana</button>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1">
+                  <span id="usdc-network-label">SEND EXACT USDC (BASE):</span>
+                  <span id="usdc-exact-amount" class="text-accent font-bold">888 USDC</span>
+                </div>
+                <div class="flex items-center gap-2 p-2.5 rounded-lg bg-terminal border border-borderdark">
+                  <code id="usdc-wallet-address" class="text-[11px] font-mono text-white truncate flex-1 select-all">0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D</code>
+                  <button type="button" id="usdc-copy-btn" onclick="copyUsdcAddress()" class="px-2.5 py-1 rounded bg-accent-soft text-accent font-mono text-[11px] font-bold hover:brightness-110 shrink-0">
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label for="usdc-tx-hash" class="block text-[11px] font-mono text-slate-400 mb-1">TRANSACTION HASH / TXID (AFTER SENDING)</label>
+                <input
+                  type="text"
+                  id="usdc-tx-hash"
+                  placeholder="0x... or Solana signature"
+                  class="w-full bg-terminal border border-borderdark focus-accent rounded-lg px-3 py-2 text-xs font-mono text-white placeholder-slate-500 outline-none"
+                />
+                <p id="usdc-tx-error" class="hidden text-[11px] font-mono text-rose-400 mt-1.5">
+                  Please paste your on-chain USDC Transaction Hash / TXID after sending.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div class="p-4 rounded-xl bg-obsidian border border-borderdark space-y-2 text-xs font-mono">
@@ -1458,7 +1516,7 @@
             </div>
             <div class="flex items-center justify-between text-slate-400">
               <span>PAYMENT RAIL</span>
-              <span id="summary-rail" class="text-gold font-semibold">Card (Whop / Stripe)</span>
+              <span id="summary-rail" class="text-gold font-semibold">Card (Whop)</span>
             </div>
             <div class="pt-2 mt-2 border-t border-borderdark flex items-center justify-between text-sm">
               <span class="text-slate-300 font-sans font-semibold">Total Due Today</span>
@@ -1470,31 +1528,31 @@
           <div id="checkout-placeholder-card" class="hidden p-4 rounded-xl bg-amber-500/10 border border-amber-400/40 text-left space-y-2 animate-panel">
             <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-300">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              <span>SETUP NOTICE: PLACEHOLDER PAYMENT LINK</span>
+              <span>SETUP NOTICE: PLACEHOLDER PAYMENT CONFIG</span>
             </div>
             <p class="text-xs text-amber-100/85 leading-relaxed">
-              Replace this key in <code class="font-mono text-amber-300">FLOSS_CONFIG</code> with your live checkout URL:
+              Replace this key in <code class="font-mono text-amber-300">FLOSS_CONFIG</code> with your live checkout URL or wallet address:
             </p>
             <div class="p-2.5 rounded-lg bg-obsidian border border-borderdark font-mono text-[11px] space-y-1">
               <div class="text-slate-400">Config Key:</div>
-              <div id="placeholder-config-path" class="text-accent break-all font-semibold">FLOSS_CONFIG.paymentLinks.alpha.annual.card</div>
+              <div id="placeholder-config-path" class="text-accent break-all font-semibold">FLOSS_CONFIG.paymentLinks.alpha.annual.crypto</div>
               <div class="text-slate-400 pt-1">Current Value:</div>
               <div id="placeholder-url-preview" class="text-amber-300/90 break-all"></div>
             </div>
           </div>
 
-          <button type="submit" class="w-full py-3.5 rounded-xl font-semibold text-sm btn-accent-primary">
+          <button type="submit" id="checkout-submit-btn" class="w-full py-3.5 rounded-xl font-semibold text-sm btn-accent-primary">
             Continue to Secure Checkout →
           </button>
         </form>
       </div>
 
-      <!-- Checkout Redirect Confirmation View -->
+      <!-- Checkout Redirect / USDC Receipt Confirmation View -->
       <div id="checkout-success-view" class="hidden p-8 text-center">
         <div class="w-14 h-14 mx-auto rounded-full bg-accent-soft border border-accent-soft flex items-center justify-center mb-4 shadow-accent-glow">
           <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
         </div>
-        <h3 class="font-display text-2xl font-bold text-white">Secure Checkout Opened</h3>
+        <h3 id="checkout-success-title" class="font-display text-2xl font-bold text-white">Secure Checkout Opened</h3>
         <p id="checkout-success-msg" class="text-sm text-slate-300 mt-2 leading-relaxed"></p>
         <div class="mt-6 p-4 rounded-xl bg-obsidian border border-borderdark text-left text-xs font-mono space-y-1.5 text-slate-300">
           <div class="flex justify-between"><span class="text-slate-500">TIER:</span><span id="receipt-tier" class="text-accent font-semibold"></span></div>
@@ -1518,50 +1576,58 @@
   <!-- ===================================================================== -->
   <script>
     /* =======================================================================
-       CORE CONFIGURATION BLOCK — LIVE SUPABASE CREDENTIALS PRE-CONFIGURED
+       CORE CONFIGURATION BLOCK — LIVE SUPABASE, WEB3FORMS, WHOP & USDC
     ======================================================================= */
     const FLOSS_CONFIG = {
       // 1. Live Supabase Project URL & Public Anon Key
       supabaseUrl: 'https://qvrzilfslipnsmtrhxvf.supabase.co',
       supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF2cnppbGZzbGlwbnNtdHJoeHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjcyOTAsImV4cCI6MjExMDk0MzI5MH0.7zYmk_hqM9zvuX_f0WCAFMtp8ubpXGIV3QxN2x1EQvI',
 
-      // 2. Web3Forms Lead Capture (https://web3forms.com/)
-      web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
+      // 2. Live Web3Forms Lead Capture Key
+      web3formsAccessKey: '12d704fd-f833-41ed-baa5-75daffff593d',
       web3formsSubject: 'New Floss Academy Briefing Signup',
 
       // 3. CoinGecko Public API Refresh Interval (ms)
       coingeckoRefreshMs: 60000,
 
-      // 4. External Payment Links (Card via Whop/Stripe & Crypto via Coinbase Commerce/NOWPayments)
+      // 4. Direct On-Chain USDC Receiving Wallets (Live EVM Address — 0% Middleman Fees)
+      usdcWallets: {
+        base: '0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D',
+        arbitrum: '0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D',
+        ethereum: '0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D',
+        solana: 'YOUR_SOLANA_USDC_WALLET_ADDRESS'
+      },
+
+      // 5. External Payment Links (Live Whop Card Links + Optional Hosted Crypto USDC)
       paymentLinks: {
         briefing: {
           monthly: {
-            card: 'https://whop.com/checkout/YOUR_BRIEFING_MONTHLY',
-            crypto: 'https://commerce.coinbase.com/checkout/YOUR_BRIEFING_MONTHLY'
+            card: 'https://whop.com/checkout/plan_0uUvr9vijyctD',
+            crypto: 'https://commerce.coinbase.com/checkout/YOUR_BRIEFING_MONTHLY_USDC'
           },
           annual: {
-            card: 'https://whop.com/checkout/YOUR_BRIEFING_ANNUAL',
-            crypto: 'https://commerce.coinbase.com/checkout/YOUR_BRIEFING_ANNUAL'
+            card: 'https://whop.com/checkout/plan_0uUvr9vijyctD',
+            crypto: 'https://commerce.coinbase.com/checkout/YOUR_BRIEFING_ANNUAL_USDC'
           }
         },
         alpha: {
           monthly: {
-            card: 'https://whop.com/checkout/YOUR_ALPHA_MONTHLY',
-            crypto: 'https://commerce.coinbase.com/checkout/YOUR_ALPHA_MONTHLY'
+            card: 'https://whop.com/checkout/plan_AaZMUAtTR1tMB',
+            crypto: 'https://commerce.coinbase.com/checkout/YOUR_ALPHA_MONTHLY_USDC'
           },
           annual: {
-            card: 'https://whop.com/checkout/YOUR_ALPHA_ANNUAL',
-            crypto: 'https://commerce.coinbase.com/checkout/YOUR_ALPHA_ANNUAL'
+            card: 'https://whop.com/checkout/plan_AaZMUAtTR1tMB',
+            crypto: 'https://commerce.coinbase.com/checkout/YOUR_ALPHA_ANNUAL_USDC'
           }
         },
         desk: {
           monthly: {
-            card: 'https://whop.com/checkout/YOUR_DESK_MONTHLY',
-            crypto: 'https://commerce.coinbase.com/checkout/YOUR_DESK_MONTHLY'
+            card: 'https://whop.com/checkout/plan_9ziZGkAwZL5Bh',
+            crypto: 'https://commerce.coinbase.com/checkout/YOUR_DESK_MONTHLY_USDC'
           },
           annual: {
-            card: 'https://whop.com/checkout/YOUR_DESK_ANNUAL',
-            crypto: 'https://commerce.coinbase.com/checkout/YOUR_DESK_ANNUAL'
+            card: 'https://whop.com/checkout/plan_9ziZGkAwZL5Bh',
+            crypto: 'https://commerce.coinbase.com/checkout/YOUR_DESK_ANNUAL_USDC'
           }
         }
       }
@@ -1605,14 +1671,12 @@
             FLOSS_CONFIG.supabaseAnonKey
           );
 
-          // Check existing active session on load
           supabaseClient.auth.getSession().then(({ data }) => {
             if (data && data.session && data.session.user) {
               handleSignedInUser(data.session.user);
             }
           });
 
-          // Subscribe to auth state transitions
           supabaseClient.auth.onAuthStateChange((_event, session) => {
             if (session && session.user) {
               handleSignedInUser(session.user);
@@ -1726,11 +1790,9 @@
       setText('mobile-tier-badge', tier.toUpperCase());
       setText('mobile-user-email', email);
 
-      // Pre-fill checkout email
       const checkoutEmail = document.getElementById('checkout-email');
       if (checkoutEmail && !checkoutEmail.value) checkoutEmail.value = email;
 
-      // Unlock Alpha Trade Levels Card if tier is alpha or desk
       const isAlphaUnlocked = tier === 'alpha' || tier === 'desk';
       const levelsList = document.getElementById('alpha-levels-list');
       const lockOverlay = document.getElementById('alpha-lock-overlay');
@@ -2287,7 +2349,6 @@
       const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#10B981';
       const accentRgb = getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb').trim() || '16, 185, 129';
 
-      // Gridlines & Y Labels
       ctx.strokeStyle = 'rgba(28, 36, 50, 0.9)';
       ctx.lineWidth = 1;
       ctx.fillStyle = '#64748B';
@@ -2305,14 +2366,12 @@
         ctx.fillText(label, pad.left - 8, y + 4);
       }
 
-      // X Labels
       ctx.textAlign = 'center';
       const step = months <= 6 ? 1 : 2;
       for (let m = 0; m <= months; m += step) {
         ctx.fillText(`M${m}`, xFor(m), height - 8);
       }
 
-      // Gradient Fill under Floss Curve
       const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
       grad.addColorStop(0, `rgba(${accentRgb}, 0.28)`);
       grad.addColorStop(1, `rgba(${accentRgb}, 0.0)`);
@@ -2329,7 +2388,6 @@
       ctx.fillStyle = grad;
       ctx.fill();
 
-      // Retail Benchmark Dashed Curve
       ctx.beginPath();
       ctx.setLineDash([5, 5]);
       retailSeries.forEach((v, i) => {
@@ -2342,7 +2400,6 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Floss Systematic Solid Curve
       ctx.beginPath();
       flossSeries.forEach((v, i) => {
         const x = xFor(i), y = yFor(v);
@@ -2353,7 +2410,6 @@
       ctx.lineWidth = 3;
       ctx.stroke();
 
-      // Active Hover Crosshair & Points
       if (hoverIndex >= 0 && hoverIndex <= months) {
         const hx = xFor(hoverIndex);
         const hyFloss = yFor(flossSeries[hoverIndex]);
@@ -2411,11 +2467,13 @@
     }
 
     /* =======================================================================
-       6. PRICING & INTERACTIVE CHECKOUT MODAL
+       6. PRICING & INTERACTIVE CHECKOUT MODAL (CARD WHOP + HOSTED/DIRECT USDC)
     ======================================================================= */
     let currentBilling = 'annual';
     let modalSelectedTier = 'Floss Alpha';
-    let modalPaymentMethod = 'card';
+    let modalPaymentMethod = 'card'; // 'card' | 'crypto'
+    let modalUsdcMode = 'direct';    // 'direct' | 'hosted'
+    let selectedUsdcNetwork = 'base';
 
     const TIER_PRICING = {
       'The Briefing': { key: 'briefing', monthly: 29,  annualMo: 22,  annualTotal: 264,  save: 84 },
@@ -2490,6 +2548,8 @@
       modalPaymentMethod = method;
       const cardBtn = document.getElementById('pay-method-card');
       const cryptoBtn = document.getElementById('pay-method-crypto');
+      const usdcPanel = document.getElementById('crypto-usdc-panel');
+
       if (cardBtn) {
         cardBtn.className = method === 'card'
           ? 'py-2.5 rounded-lg bg-terminal text-white border border-accent-soft transition-all'
@@ -2500,13 +2560,73 @@
           ? 'py-2.5 rounded-lg bg-terminal text-white border border-accent-soft transition-all'
           : 'py-2.5 rounded-lg text-slate-400 hover:text-white border border-transparent transition-all';
       }
+      if (usdcPanel) {
+        usdcPanel.classList.toggle('hidden', method !== 'crypto');
+      }
+
       refreshCheckoutSummary();
+    }
+
+    function setUsdcMode(mode) {
+      modalUsdcMode = mode;
+      const hostedBtn = document.getElementById('usdc-mode-hosted');
+      const directBtn = document.getElementById('usdc-mode-direct');
+      const hostedInfo = document.getElementById('usdc-hosted-info');
+      const directInfo = document.getElementById('usdc-direct-info');
+
+      if (hostedBtn) {
+        hostedBtn.className = mode === 'hosted'
+          ? 'py-1.5 rounded bg-obsidian text-white border border-accent-soft'
+          : 'py-1.5 rounded text-slate-400 hover:text-white border border-transparent';
+      }
+      if (directBtn) {
+        directBtn.className = mode === 'direct'
+          ? 'py-1.5 rounded bg-obsidian text-white border border-accent-soft'
+          : 'py-1.5 rounded text-slate-400 hover:text-white border border-transparent';
+      }
+      if (hostedInfo) hostedInfo.classList.toggle('hidden', mode !== 'hosted');
+      if (directInfo) directInfo.classList.toggle('hidden', mode !== 'direct');
+
+      refreshCheckoutSummary();
+    }
+
+    function selectUsdcNetwork(net) {
+      selectedUsdcNetwork = net;
+      document.querySelectorAll('.usdc-net-btn').forEach((btn) => {
+        btn.className = btn.dataset.net === net
+          ? 'usdc-net-btn py-1.5 rounded-lg bg-accent text-obsidian font-bold'
+          : 'usdc-net-btn py-1.5 rounded-lg bg-terminal border border-borderdark text-slate-300';
+      });
+      refreshCheckoutSummary();
+    }
+
+    function copyUsdcAddress() {
+      const addr = FLOSS_CONFIG.usdcWallets[selectedUsdcNetwork] || '';
+      if (navigator.clipboard && addr) {
+        navigator.clipboard.writeText(addr).then(() => {
+          setText('usdc-copy-btn', 'Copied!');
+          setTimeout(() => setText('usdc-copy-btn', 'Copy'), 1600);
+        });
+      }
     }
 
     function refreshCheckoutSummary() {
       const info = TIER_PRICING[modalSelectedTier];
       const isAnnual = currentBilling === 'annual';
-      const railLabel = modalPaymentMethod === 'card' ? 'Card (Whop / Stripe)' : 'Crypto (USDC)';
+      const dueAmount = isAnnual ? info.annualTotal : info.monthly;
+
+      let railLabel = 'Card (Whop)';
+      let submitLabel = 'Continue to Secure Checkout →';
+
+      if (modalPaymentMethod === 'crypto') {
+        if (modalUsdcMode === 'direct') {
+          railLabel = `Direct USDC (${selectedUsdcNetwork.toUpperCase()})`;
+          submitLabel = 'Submit USDC Payment TXID →';
+        } else {
+          railLabel = 'Hosted Crypto (USDC)';
+          submitLabel = 'Pay with USDC Checkout Link →';
+        }
+      }
 
       setText('modal-plan-title', modalSelectedTier);
       setText(
@@ -2518,7 +2638,13 @@
       setText('summary-plan', modalSelectedTier);
       setText('summary-billing', isAnnual ? 'Annual (Save 25%)' : 'Monthly');
       setText('summary-rail', railLabel);
-      setText('summary-total', isAnnual ? `$${info.annualTotal.toLocaleString()} / yr` : `$${info.monthly} / mo`);
+      setText('summary-total', isAnnual ? `$${dueAmount.toLocaleString()} / yr` : `$${dueAmount} / mo`);
+      setText('checkout-submit-btn', submitLabel);
+
+      // Update Direct USDC fields
+      setText('usdc-network-label', `SEND EXACT USDC (${selectedUsdcNetwork.toUpperCase()}):`);
+      setText('usdc-exact-amount', `${dueAmount.toLocaleString()} USDC`);
+      setText('usdc-wallet-address', FLOSS_CONFIG.usdcWallets[selectedUsdcNetwork] || '');
 
       const mBtn = document.getElementById('modal-bill-monthly');
       const aBtn = document.getElementById('modal-bill-annual');
@@ -2535,22 +2661,77 @@
       if (placeholderCard) placeholderCard.classList.add('hidden');
     }
 
-    function handleCheckoutSubmit(event) {
+    async function handleCheckoutSubmit(event) {
       event.preventDefault();
       const info = TIER_PRICING[modalSelectedTier];
       const tierKey = info.key;
+      const emailEl = document.getElementById('checkout-email');
+      const email = emailEl ? emailEl.value.trim() : '';
+      const placeholderCard = document.getElementById('checkout-placeholder-card');
+
+      // ROUTE 1: DIRECT ON-CHAIN USDC WALLET TRANSFER
+      if (modalPaymentMethod === 'crypto' && modalUsdcMode === 'direct') {
+        const wallet = FLOSS_CONFIG.usdcWallets[selectedUsdcNetwork] || '';
+        const txHash = (document.getElementById('usdc-tx-hash')?.value || '').trim();
+        const txErr = document.getElementById('usdc-tx-error');
+        if (txErr) txErr.classList.add('hidden');
+
+        if (!wallet || wallet.includes('YOUR_')) {
+          setText('placeholder-config-path', `FLOSS_CONFIG.usdcWallets.${selectedUsdcNetwork}`);
+          setText('placeholder-url-preview', wallet || '(empty)');
+          if (placeholderCard) placeholderCard.classList.remove('hidden');
+          return;
+        }
+
+        if (!txHash || txHash.length < 10) {
+          if (txErr) txErr.classList.remove('hidden');
+          document.getElementById('usdc-tx-hash')?.focus();
+          return;
+        }
+
+        // Forward USDC verification receipt to Web3Forms
+        const hasWeb3Forms = FLOSS_CONFIG.web3formsAccessKey && !FLOSS_CONFIG.web3formsAccessKey.includes('YOUR_WEB3FORMS');
+        if (hasWeb3Forms) {
+          try {
+            await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                access_key: FLOSS_CONFIG.web3formsAccessKey,
+                subject: `USDC Payment Receipt — ${modalSelectedTier} (${currentBilling})`,
+                email: email || 'not-provided@flossacademy.io',
+                message: `Plan: ${modalSelectedTier}\nBilling: ${currentBilling}\nNetwork: ${selectedUsdcNetwork.toUpperCase()}\nTXID: ${txHash}`
+              })
+            });
+          } catch (err) {
+            console.warn('USDC receipt dispatch notice:', err);
+          }
+        }
+
+        setText('checkout-success-title', 'USDC Transfer Submitted');
+        setText('checkout-success-msg', `We received TXID ${txHash.slice(0, 14)}... on ${selectedUsdcNetwork.toUpperCase()}. Your Supabase account will be upgraded to ${modalSelectedTier} as soon as on-chain finality confirms.`);
+        setText('receipt-tier', modalSelectedTier);
+        setText('receipt-billing', currentBilling === 'annual' ? 'Annual (-25%)' : 'Monthly');
+        setText('receipt-method', `Direct USDC (${selectedUsdcNetwork.toUpperCase()})`);
+
+        const directLink = document.getElementById('checkout-direct-link');
+        if (directLink) directLink.classList.add('hidden');
+
+        document.getElementById('checkout-form-view')?.classList.add('hidden');
+        document.getElementById('checkout-success-view')?.classList.remove('hidden');
+        return;
+      }
+
+      // ROUTE 2: HOSTED CHECKOUT LINK (CARD WHOP OR HOSTED CRYPTO USDC)
       const url = FLOSS_CONFIG.paymentLinks[tierKey][currentBilling][modalPaymentMethod];
 
       if (!url || url.includes('YOUR_')) {
         setText('placeholder-config-path', `FLOSS_CONFIG.paymentLinks.${tierKey}.${currentBilling}.${modalPaymentMethod}`);
         setText('placeholder-url-preview', url || '(empty)');
-        const placeholderCard = document.getElementById('checkout-placeholder-card');
         if (placeholderCard) placeholderCard.classList.remove('hidden');
         return;
       }
 
-      const emailEl = document.getElementById('checkout-email');
-      const email = emailEl ? emailEl.value.trim() : '';
       let finalUrl = url;
       if (email) {
         finalUrl = `${url}${url.includes('?') ? '&' : '?'}email=${encodeURIComponent(email)}`;
@@ -2558,18 +2739,20 @@
 
       window.open(finalUrl, '_blank', 'noopener,noreferrer');
 
+      setText('checkout-success-title', 'Secure Checkout Opened');
       setText('checkout-success-msg', `Complete your ${modalSelectedTier} checkout in the secure tab that just opened. Once active, sign in via Member Login to unlock your terminal.`);
       setText('receipt-tier', modalSelectedTier);
       setText('receipt-billing', currentBilling === 'annual' ? 'Annual (-25%)' : 'Monthly');
-      setText('receipt-method', modalPaymentMethod === 'card' ? 'Card (Whop / Stripe)' : 'Crypto (USDC)');
+      setText('receipt-method', modalPaymentMethod === 'card' ? 'Card (Whop)' : 'Hosted Crypto (USDC)');
 
       const directLink = document.getElementById('checkout-direct-link');
-      if (directLink) directLink.href = finalUrl;
+      if (directLink) {
+        directLink.classList.remove('hidden');
+        directLink.href = finalUrl;
+      }
 
-      const formView = document.getElementById('checkout-form-view');
-      const successView = document.getElementById('checkout-success-view');
-      if (formView) formView.classList.add('hidden');
-      if (successView) successView.classList.remove('hidden');
+      document.getElementById('checkout-form-view')?.classList.add('hidden');
+      document.getElementById('checkout-success-view')?.classList.remove('hidden');
     }
 
     /* =======================================================================
