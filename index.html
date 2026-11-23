@@ -249,14 +249,14 @@
           <div class="flex items-center gap-7 px-4">
             <span class="flex items-center gap-2">
               <span class="text-slate-400">BTC</span>
-              <span data-cg-price="bitcoin" class="text-white font-semibold">$58,520</span>
-              <span data-cg-change="bitcoin" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-2.1%</span>
+              <span data-cg-price="bitcoin" class="text-white font-semibold">$61,420</span>
+              <span data-cg-change="bitcoin" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.4%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">ETH</span>
-              <span data-cg-price="ethereum" class="text-white font-semibold">$1,710</span>
-              <span data-cg-change="ethereum" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-1.8%</span>
+              <span data-cg-price="ethereum" class="text-white font-semibold">$1,716</span>
+              <span data-cg-change="ethereum" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.1%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
@@ -291,14 +291,14 @@
           <div class="flex items-center gap-7 px-4" aria-hidden="true">
             <span class="flex items-center gap-2">
               <span class="text-slate-400">BTC</span>
-              <span data-cg-price="bitcoin" class="text-white font-semibold">$58,520</span>
-              <span data-cg-change="bitcoin" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-2.1%</span>
+              <span data-cg-price="bitcoin" class="text-white font-semibold">$61,420</span>
+              <span data-cg-change="bitcoin" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.4%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">ETH</span>
-              <span data-cg-price="ethereum" class="text-white font-semibold">$1,710</span>
-              <span data-cg-change="ethereum" class="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">-1.8%</span>
+              <span data-cg-price="ethereum" class="text-white font-semibold">$1,716</span>
+              <span data-cg-change="ethereum" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.1%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
@@ -511,7 +511,7 @@
           <a href="#preview" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-terminal hover:bg-terminalhover text-white border border-borderdark hover-border-accent transition-all">Inspect Today's Live Terminal</a>
         </div>
 
-        <!-- Lead Capture Form Wired to Web3Forms -->
+        <!-- Lead Capture Form Wired to Web3Forms + UTM Attribution -->
         <div class="mt-10 max-w-xl mx-auto p-4 sm:p-5 rounded-2xl bg-terminal/85 backdrop-blur-xl border border-borderdark shadow-2xl">
           <form id="hero-lead-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleLeadCapture(event)" class="flex flex-col sm:flex-row gap-3">
             <input type="checkbox" name="botcheck" id="hero-botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
@@ -655,7 +655,7 @@
             <span>ETH / BTC Ratio</span>
             <span class="text-accent">ALT BETA</span>
           </div>
-          <div id="macro-eth-btc" class="font-mono text-base sm:text-lg font-bold text-white mt-1">0.0292</div>
+          <div id="macro-eth-btc" class="font-mono text-base sm:text-lg font-bold text-white mt-1">0.0279</div>
           <div class="text-[10px] font-mono text-slate-500 mt-0.5">LIVE CROSS-RATE</div>
         </div>
 
@@ -676,22 +676,22 @@
           <div class="p-3.5 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
             <div class="flex items-center justify-between text-[11px] font-mono">
               <span class="text-slate-400 font-semibold">BTC <span class="text-[9px] text-slate-500">7D</span></span>
-              <span data-cg-change="bitcoin" class="text-rose-400">-2.1%</span>
+              <span data-cg-change="bitcoin" class="text-accent">+2.4%</span>
             </div>
-            <div data-cg-price="bitcoin" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$58,520</div>
+            <div data-cg-price="bitcoin" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$61,420</div>
             <svg class="w-full h-7 mt-2 overflow-visible" viewBox="0 0 100 26" preserveAspectRatio="none">
-              <polyline id="sparkline-bitcoin" fill="none" stroke="#F43F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,8 16,11 32,7 48,14 66,18 82,15 100,21" />
+              <polyline id="sparkline-bitcoin" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,8 16,11 32,7 48,14 66,21 82,15 100,11" />
             </svg>
           </div>
 
           <div class="p-3.5 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
             <div class="flex items-center justify-between text-[11px] font-mono">
               <span class="text-slate-400 font-semibold">ETH <span class="text-[9px] text-slate-500">7D</span></span>
-              <span data-cg-change="ethereum" class="text-rose-400">-1.8%</span>
+              <span data-cg-change="ethereum" class="text-accent">+1.1%</span>
             </div>
-            <div data-cg-price="ethereum" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$1,710</div>
+            <div data-cg-price="ethereum" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$1,716</div>
             <svg class="w-full h-7 mt-2 overflow-visible" viewBox="0 0 100 26" preserveAspectRatio="none">
-              <polyline id="sparkline-ethereum" fill="none" stroke="#F43F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,10 18,9 35,14 52,12 70,17 85,16 100,20" />
+              <polyline id="sparkline-ethereum" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,10 18,9 35,14 52,12 70,19 85,16 100,13" />
             </svg>
           </div>
 
@@ -827,8 +827,8 @@
         <div class="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-terminal border border-borderdark space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-borderdark">
             <div class="flex items-center gap-2.5">
-              <span id="briefing-dispatch-num" class="px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #418</span>
-              <span id="briefing-timestamp" class="text-xs font-mono text-slate-400">NOV 22, 2026 • 06:00 EST</span>
+              <span id="briefing-dispatch-num" class="px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #419</span>
+              <span id="briefing-timestamp" class="text-xs font-mono text-slate-400">NOV 23, 2026 • 06:00 EST</span>
             </div>
             <div class="flex items-center gap-2">
               <span id="briefing-fng-badge" class="text-xs font-mono text-amber-400 bg-amber-500/10 border border-amber-500/25 px-2.5 py-1 rounded-md">FEAR &amp; GREED: 18 (EXTREME FEAR)</span>
@@ -841,10 +841,10 @@
 
           <div>
             <h3 id="briefing-headline" class="font-display text-xl sm:text-2xl font-bold text-white">
-              BTC Tests $58.5K Demand Shelf While AI x DePIN &amp; Perp DEX Flows Diverge
+              BTC Reclaims $61K–$62K After $55K Weekend Flush as Wall Street Tests the Rebound
             </h3>
             <p id="briefing-summary" class="mt-3 text-sm text-slate-300 leading-relaxed">
-              Overnight liquidations flushed $310M in crowded leverage as Bitcoin probed $58,520 and ETH drifted to $1,710. Beneath the surface, institutional stablecoin inflows onto on-chain perpetual venues hit a fresh monthly high, while decentralized compute leaders (RENDER, ICNT) showed near-zero beta to the drawdown.
+              Bitcoin is stabilizing above $61,000 after Saturday's liquidation wick toward $55,000 capped a seventh straight weekly decline, while ETH holds near $1,716. Overnight U.S. equity futures bounced ~2% after Treasury Secretary Bessent cautioned that the Fed risks hiking rates too far, setting up a pivotal Monday open following $1.79B in spot Bitcoin ETF outflows last week.
             </p>
           </div>
 
@@ -852,13 +852,13 @@
             <div class="p-4 rounded-xl bg-obsidian border border-borderdark">
               <div class="text-xs font-mono text-accent uppercase mb-1.5">Desk Takeaway #1</div>
               <p id="briefing-takeaway-1" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Altcoin perp funding flipped negative across 70% of major pairs—historically a high-asymmetry accumulation zone for fee-generating protocols.
+                BlackRock's IBIT logged back-to-back record daily outflows ($1.09B across Thu–Fri), pushing November ETF withdrawals to $4.14B. Holding $60,000 on the NY open and reclaiming $62,000 is the key structural test.
               </p>
             </div>
             <div class="p-4 rounded-xl bg-obsidian border border-borderdark">
               <div class="text-xs font-mono text-gold uppercase mb-1.5">Desk Takeaway #2</div>
               <p id="briefing-takeaway-2" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                On-chain RWA Treasury TVL surpassed $18.4B this morning, cementing tokenized yield as the premier institutional shelter.
+                Brace for compressed holiday volatility: U.S. October PCE inflation and Q3 GDP both hit Wednesday (Nov 25, 8:30 AM ET) alongside the $205.9M Monad (MON) cliff unlock and thin Thanksgiving orderbooks.
               </p>
             </div>
           </div>
@@ -958,7 +958,7 @@
               <span class="text-gold font-bold">CONVICTION: 8.9/10</span>
             </div>
             <h4 class="font-display text-lg font-bold text-white">Tokenized Treasuries &amp; Credit</h4>
-            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Institutional stablecoin treasuries pushed on-chain RWA TVL past $18.4B with sticky protocol fee capture.</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Institutional stablecoin treasuries and 24/7 tokenized equities are driving sticky on-chain RWA fee capture.</p>
             <div class="mt-4 pt-3 border-t border-borderdark flex items-center justify-between text-xs font-mono">
               <span class="text-slate-400">LEADERS</span><span class="text-white">ONDO, SYRUP, CFG</span>
             </div>
@@ -992,11 +992,46 @@
             </thead>
             <tbody id="catalysts-tbody" class="divide-y divide-borderdark text-sm">
               <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 23</td>
+                <td class="py-4 px-5 font-semibold text-white">OKXICE Tokenized Equities</td>
+                <td class="py-4 px-5 text-slate-300">24/7 launch of tokenized versions of 70+ U.S. stocks and ETFs</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-accent-soft text-accent">RWA CATALYST</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-accent">BULLISH RWA</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
                 <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 25</td>
-                <td class="py-4 px-5 font-semibold text-white">Hyperliquid (HYPE)</td>
-                <td class="py-4 px-5 text-slate-300">Fee-switch governance milestone &amp; spot listing expansion</td>
-                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-accent-soft text-accent">HIGH</span></td>
-                <td class="py-4 px-5 text-right font-mono text-xs text-accent">BULLISH</td>
+                <td class="py-4 px-5 font-semibold text-white">US PCE &amp; Q3 GDP (8:30 ET)</td>
+                <td class="py-4 px-5 text-slate-300">Oct Core PCE (est. 3.2%–3.3% y/y) + Q3 GDP 2nd est. + Fed Beige Book</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-amber-500/15 text-amber-300">MACRO VOL</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-gold">REDUCE LEVERAGE</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 25</td>
+                <td class="py-4 px-5 font-semibold text-white">Monad (MON) Cliff Unlock</td>
+                <td class="py-4 px-5 text-slate-300">$205.9M Team &amp; Investor cliff unlock (~140.5% of circulating market cap)</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-rose-500/15 text-rose-400">SUPPLY SHOCK</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-rose-400">HEDGE / FADE</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 29</td>
+                <td class="py-4 px-5 font-semibold text-white">Falcon Finance (FF) Unlock</td>
+                <td class="py-4 px-5 text-slate-300">$21.1M token unlock (6.21% of circulating supply) on thin holiday books</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-rose-500/15 text-rose-400">SUPPLY SHOCK</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-rose-400">AVOID / FADE</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">DEC 01</td>
+                <td class="py-4 px-5 font-semibold text-white">Ethena (ENA) &amp; TRUMP</td>
+                <td class="py-4 px-5 text-slate-300">$27.4M ENA (2.0% mcap) &amp; $24.6M TRUMP (9.9% mcap) monthly unlocks</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-gold-soft text-gold">UNLOCK WAVE</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-gold">WAIT FOR RESET</td>
+              </tr>
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">DEC 09</td>
+                <td class="py-4 px-5 font-semibold text-white">FOMC Rate Decision</td>
+                <td class="py-4 px-5 text-slate-300">Final 2026 Fed rate decision (3.75%–4.00% range after 2 hawkish dissents)</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono bg-amber-500/15 text-amber-300">MACRO VOL</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs text-gold">REDUCE LEVERAGE</td>
               </tr>
             </tbody>
           </table>
@@ -1456,8 +1491,8 @@
     <div class="bg-[#0A0E15] border border-borderdark rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-panel relative max-h-[90vh] flex flex-col">
       <div class="px-6 py-4 border-b border-borderdark flex items-center justify-between bg-obsidian/90">
         <div class="flex items-center gap-2.5">
-          <span id="reader-dispatch-num" class="px-2.5 py-0.5 rounded bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #418</span>
-          <span id="reader-timestamp" class="text-xs font-mono text-slate-400">NOV 22, 2026 • 06:00 EST</span>
+          <span id="reader-dispatch-num" class="px-2.5 py-0.5 rounded bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #419</span>
+          <span id="reader-timestamp" class="text-xs font-mono text-slate-400">NOV 23, 2026 • 06:00 EST</span>
         </div>
         <button type="button" onclick="closeFocusReader()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-terminal transition-colors" aria-label="Close Focus Reader">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -1642,6 +1677,8 @@
       supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF2cnppbGZzbGlwbnNtdHJoeHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjcyOTAsImV4cCI6MjExMDk0MzI5MH0.7zYmk_hqM9zvuX_f0WCAFMtp8ubpXGIV3QxN2x1EQvI',
       web3formsAccessKey: '12d704fd-f833-41ed-baa5-75daffff593d',
       web3formsSubject: 'New Floss Academy Briefing Signup',
+      // Paste your Google Analytics 4 Measurement ID here (e.g., 'G-XXXXXXXXXX') to activate GA4 conversion tracking
+      ga4MeasurementId: '',
       coingeckoRefreshMs: 60000,
       usdcWallets: {
         base: '0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D',
@@ -1663,6 +1700,71 @@
         }
       }
     };
+
+    /* =======================================================================
+       MARKETING ATTRIBUTION: UTM CAPTURE + GA4 CONVERSION EVENT TRACKING
+    ======================================================================= */
+    const UTM_STORAGE_KEY = 'floss_utm_attribution_v1';
+    let utmAttribution = {};
+
+    function captureUtmAttribution() {
+      try {
+        const saved = sessionStorage.getItem(UTM_STORAGE_KEY);
+        if (saved) utmAttribution = JSON.parse(saved) || {};
+
+        const params = new URLSearchParams(window.location.search);
+        const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'ref'];
+        let foundNew = false;
+        keys.forEach((k) => {
+          const val = params.get(k);
+          if (val) {
+            utmAttribution[k] = val.trim().slice(0, 120);
+            foundNew = true;
+          }
+        });
+        if (!utmAttribution.referrer && document.referrer) {
+          utmAttribution.referrer = document.referrer.slice(0, 200);
+        }
+        if (foundNew || !saved) {
+          sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utmAttribution));
+        }
+      } catch (_err) {}
+    }
+
+    function getUtmSummaryString() {
+      const parts = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'ref']
+        .filter((k) => utmAttribution[k])
+        .map((k) => `${k}=${utmAttribution[k]}`);
+      return parts.length ? parts.join(' | ') : 'direct / organic';
+    }
+
+    function initAnalytics() {
+      const id = (FLOSS_CONFIG.ga4MeasurementId || '').trim();
+      if (!id || !id.startsWith('G-')) return;
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', id, { anonymize_ip: true });
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+        document.head.appendChild(script);
+      } catch (_err) {}
+    }
+
+    function trackConversion(eventName, params = {}) {
+      try {
+        const payload = {
+          ...params,
+          utm_source: utmAttribution.utm_source || 'direct',
+          utm_campaign: utmAttribution.utm_campaign || 'none'
+        };
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, payload);
+        }
+      } catch (_err) {}
+    }
 
     function setText(id, value) {
       const el = document.getElementById(id);
@@ -1751,7 +1853,7 @@
     }
 
     function openFocusReader() {
-      setText('reader-dispatch-num', document.getElementById('briefing-dispatch-num')?.textContent || 'DISPATCH #418');
+      setText('reader-dispatch-num', document.getElementById('briefing-dispatch-num')?.textContent || 'DISPATCH #419');
       setText('reader-timestamp', document.getElementById('briefing-timestamp')?.textContent || '');
       setText('reader-headline', document.getElementById('briefing-headline')?.textContent || '');
       setText('reader-summary', document.getElementById('briefing-summary')?.textContent || '');
@@ -1759,6 +1861,7 @@
       setText('reader-takeaway-2', document.getElementById('briefing-takeaway-2')?.textContent || '');
       const modal = document.getElementById('focus-reader-modal');
       if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+      trackConversion('briefing_focus_read');
     }
 
     function closeFocusReader() {
@@ -1851,8 +1954,17 @@
     async function loadLiveBriefing() {
       if (!supabaseClient) return;
       try {
-        const { data, error } = await supabaseClient.from('daily_briefings').select('*').order('created_at', { ascending: false }).limit(1);
-        if (!error && Array.isArray(data) && data.length > 0) {
+        const { data, error } = await supabaseClient
+          .from('daily_briefings')
+          .select('*')
+          .order('dispatch_number', { ascending: false })
+          .order('created_at', { ascending: false })
+          .limit(1);
+        if (error) {
+          console.warn('Supabase daily_briefings fetch error:', error.message);
+          return;
+        }
+        if (Array.isArray(data) && data.length > 0) {
           const b = data[0];
           setText('briefing-dispatch-num', `DISPATCH #${b.dispatch_number}`);
           setText('briefing-timestamp', b.published_label);
@@ -1861,7 +1973,9 @@
           setText('briefing-takeaway-1', b.takeaway_1);
           setText('briefing-takeaway-2', b.takeaway_2);
         }
-      } catch (err) {}
+      } catch (err) {
+        console.warn('Supabase daily_briefings error:', err);
+      }
     }
 
     async function loadLiveNarratives() {
@@ -2169,6 +2283,7 @@
       switchAuthTab(tab);
       const modal = document.getElementById('auth-modal');
       if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+      trackConversion('auth_modal_open', { auth_tab: tab });
     }
     function closeAuthModal() {
       const modal = document.getElementById('auth-modal');
@@ -2232,10 +2347,12 @@
           if (error) throw error;
           showAuthFeedback('Authenticated! Syncing your Floss Terminal tier...', 'success');
           showToast('SIGNED IN', `Welcome back, ${email}`);
+          trackConversion('login', { method: 'password' });
           setTimeout(() => closeAuthModal(), 800);
         } else if (activeAuthTab === 'signup') {
           const { data, error } = await supabaseClient.auth.signUp({ email, password });
           if (error) throw error;
+          trackConversion('sign_up', { method: 'password' });
           if (data && data.session) {
             showAuthFeedback('Account created and signed in!', 'success');
             showToast('ACCOUNT CREATED', `Signed in as ${email}`);
@@ -2246,6 +2363,7 @@
         } else {
           const { error } = await supabaseClient.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin + window.location.pathname } });
           if (error) throw error;
+          trackConversion('login', { method: 'magic_link' });
           showAuthFeedback('Magic link sent! Open the email to sign in.', 'success');
           showToast('MAGIC LINK SENT', `Check ${email} to sign in.`);
         }
@@ -2326,7 +2444,7 @@
     });
 
     /* =======================================================================
-       3. WEB3FORMS LEAD CAPTURE
+       3. WEB3FORMS LEAD CAPTURE (WITH UTM ATTRIBUTION)
     ======================================================================= */
     async function handleLeadCapture(event) {
       event.preventDefault();
@@ -2353,6 +2471,8 @@
             access_key: FLOSS_CONFIG.web3formsAccessKey,
             subject: FLOSS_CONFIG.web3formsSubject,
             email,
+            attribution: getUtmSummaryString(),
+            referrer: utmAttribution.referrer || 'none',
             botcheck: botcheck && botcheck.checked ? 'true' : ''
           })
         });
@@ -2361,6 +2481,7 @@
           successBox?.classList.remove('hidden');
           if (emailInput) emailInput.value = '';
           showToast('DISPATCH SUBSCRIBED', 'Check your inbox for the 6:00 AM EST Floss Briefing.');
+          trackConversion('generate_lead', { form_location: 'hero_briefing' });
         } else {
           throw new Error(data.message || 'Submission failed');
         }
@@ -2627,6 +2748,13 @@
       refreshCheckoutSummary();
       const modal = document.getElementById('checkout-modal');
       if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+      const info = TIER_PRICING[modalSelectedTier];
+      trackConversion('begin_checkout', {
+        currency: 'USD',
+        value: currentBilling === 'annual' ? info.annualTotal : info.monthly,
+        tier: modalSelectedTier,
+        billing_cycle: currentBilling
+      });
     }
     function closeCheckoutModal() {
       const modal = document.getElementById('checkout-modal');
@@ -2658,6 +2786,7 @@
         document.body.appendChild(temp); temp.select(); document.execCommand('copy'); document.body.removeChild(temp);
         setText('usdc-copy-btn', 'Copied!');
         showToast('USDC ADDRESS COPIED', `${selectedUsdcNetwork.toUpperCase()} wallet copied to clipboard.`);
+        trackConversion('usdc_address_copy', { network: selectedUsdcNetwork, tier: modalSelectedTier });
         setTimeout(() => setText('usdc-copy-btn', 'Copy'), 1600);
       } catch (err) {}
     }
@@ -2691,6 +2820,7 @@
     async function handleCheckoutSubmit(event) {
       event.preventDefault();
       const info = TIER_PRICING[modalSelectedTier];
+      const dueAmount = currentBilling === 'annual' ? info.annualTotal : info.monthly;
       const email = (document.getElementById('checkout-email')?.value || '').trim();
 
       if (modalPaymentMethod === 'crypto') {
@@ -2710,10 +2840,11 @@
               access_key: FLOSS_CONFIG.web3formsAccessKey,
               subject: `USDC Payment Receipt — ${modalSelectedTier} (${currentBilling})`,
               email: email || 'not-provided@flossacademy.io',
-              message: `Plan: ${modalSelectedTier}\nBilling: ${currentBilling}\nNetwork: ${selectedUsdcNetwork.toUpperCase()}\nTXID: ${txHash}`
+              message: `Plan: ${modalSelectedTier}\nBilling: ${currentBilling}\nNetwork: ${selectedUsdcNetwork.toUpperCase()}\nTXID: ${txHash}\nAttribution: ${getUtmSummaryString()}`
             })
           });
         } catch (err) {}
+        trackConversion('purchase_intent', { currency: 'USD', value: dueAmount, payment_rail: `usdc_${selectedUsdcNetwork}`, tier: modalSelectedTier });
         setText('checkout-success-title', 'USDC Transfer Submitted');
         setText('checkout-success-msg', `We received TXID ${txHash.slice(0, 14)}... on ${selectedUsdcNetwork.toUpperCase()}. Your terminal tier will upgrade once on-chain finality confirms.`);
         setText('receipt-tier', modalSelectedTier);
@@ -2728,6 +2859,7 @@
 
       const url = FLOSS_CONFIG.paymentLinks[info.key][currentBilling].card;
       const finalUrl = email ? `${url}${url.includes('?') ? '&' : '?'}email=${encodeURIComponent(email)}` : url;
+      trackConversion('purchase_intent', { currency: 'USD', value: dueAmount, payment_rail: 'whop_card', tier: modalSelectedTier });
       window.open(finalUrl, '_blank', 'noopener,noreferrer');
       setText('checkout-success-title', 'Secure Checkout Opened');
       setText('checkout-success-msg', `Complete your ${modalSelectedTier} checkout in the secure Whop tab that just opened.`);
@@ -3052,6 +3184,8 @@
        8. INITIALIZATION
     ======================================================================= */
     window.addEventListener('load', () => {
+      captureUtmAttribution();
+      initAnalytics();
       initPolishInteractions();
       initSupabase();
       renderDeskCalls();
