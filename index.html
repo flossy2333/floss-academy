@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
@@ -261,8 +262,8 @@
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">SOL</span>
-              <span data-cg-price="solana" class="text-white font-semibold">$142.00</span>
-              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.4%</span>
+              <span data-cg-price="solana" class="text-white font-semibold">$74.50</span>
+              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.0%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
@@ -303,8 +304,8 @@
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">SOL</span>
-              <span data-cg-price="solana" class="text-white font-semibold">$142.00</span>
-              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.4%</span>
+              <span data-cg-price="solana" class="text-white font-semibold">$74.50</span>
+              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.0%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
@@ -698,9 +699,9 @@
           <div class="p-3.5 rounded-2xl bg-terminal border border-accent-soft flex flex-col justify-between">
             <div class="flex items-center justify-between text-[11px] font-mono">
               <span class="text-slate-400 font-semibold">SOL <span class="text-[9px] text-slate-500">7D</span></span>
-              <span data-cg-change="solana" class="text-accent">+3.4%</span>
+              <span data-cg-change="solana" class="text-accent">+4.0%</span>
             </div>
-            <div data-cg-price="solana" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$142.00</div>
+            <div data-cg-price="solana" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$74.50</div>
             <svg class="w-full h-7 mt-2 overflow-visible" viewBox="0 0 100 26" preserveAspectRatio="none">
               <polyline id="sparkline-solana" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,21 18,18 35,19 52,12 70,10 85,6 100,4" />
             </svg>
@@ -1068,15 +1069,15 @@
       <div class="grid grid-cols-3 gap-3 sm:gap-4 mb-5">
         <div class="p-4 rounded-2xl bg-terminal border border-borderdark">
           <div class="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Active Positions</div>
-          <div id="ledger-stat-active" class="font-mono text-xl sm:text-2xl font-bold text-accent mt-1">2</div>
+          <div id="ledger-stat-active" class="font-mono text-xl sm:text-2xl font-bold text-accent mt-1">3</div>
         </div>
         <div class="p-4 rounded-2xl bg-terminal border border-borderdark">
           <div class="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Closed Win Rate</div>
-          <div id="ledger-stat-winrate" class="font-mono text-xl sm:text-2xl font-bold text-white mt-1">66.7%</div>
+          <div id="ledger-stat-winrate" class="font-mono text-xl sm:text-2xl font-bold text-white mt-1">LIVE TRACKING</div>
         </div>
         <div class="p-4 rounded-2xl bg-terminal border border-borderdark">
-          <div class="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Avg Winner / Stop</div>
-          <div id="ledger-stat-rr" class="font-mono text-xl sm:text-2xl font-bold text-gold mt-1">+37.8% / -6.4%</div>
+          <div id="ledger-stat-rr-label" class="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Ledger Inception</div>
+          <div id="ledger-stat-rr" class="font-mono text-xl sm:text-2xl font-bold text-gold mt-1">NOV 23, 2026</div>
         </div>
       </div>
 
@@ -2579,12 +2580,11 @@
     /* =======================================================================
        4. TRANSPARENT EXECUTION LEDGER (SUPABASE + LIVE COINGECKO PNL)
     ======================================================================= */
+    // Fresh Nov 23, 2026 active-only watchlist (zero fabricated closed history)
     let deskCallsData = [
-      { dispatch_ref: '#394 • OCT 29', pair: '$HYPE / USDC',   narrative: 'PERP DEXs',      narrative_tone: 'gold',   entry_zone: '$16.80 – $17.40', entry_mid: 17.10, coingecko_id: 'hyperliquid',  status: 'closed', status_label: 'CLOSED • TP2 HIT',       realized_return_pct: 48.20 },
-      { dispatch_ref: '#405 • NOV 09', pair: '$RENDER / USDT', narrative: 'AI x DePIN',     narrative_tone: 'accent', entry_zone: '$5.95 – $6.20',   entry_mid: 6.08,  coingecko_id: 'render-token', status: 'active', status_label: 'ACTIVE • TRAILING STOP', realized_return_pct: 31.50 },
-      { dispatch_ref: '#409 • NOV 13', pair: '$ARB / USDT',    narrative: 'L2 INFRA',       narrative_tone: 'slate',  entry_zone: '$0.62 – $0.64',   entry_mid: 0.63,  coingecko_id: 'arbitrum',     status: 'closed', status_label: 'STOPPED OUT',            realized_return_pct: -6.40 },
-      { dispatch_ref: '#414 • NOV 18', pair: '$ONDO / USDT',   narrative: 'RWA TREASURIES', narrative_tone: 'accent', entry_zone: '$0.94 – $0.98',   entry_mid: 0.96,  coingecko_id: 'ondo-finance', status: 'active', status_label: 'ACTIVE • RUNNING',       realized_return_pct: 19.80 },
-      { dispatch_ref: '#401 • NOV 05', pair: '$SUI / USDC',    narrative: 'EXECUTION L1',   narrative_tone: 'gold',   entry_zone: '$2.18 – $2.26',   entry_mid: 2.22,  coingecko_id: 'sui',          status: 'closed', status_label: 'CLOSED • TP1 HIT',       realized_return_pct: 27.40 }
+      { dispatch_ref: '#419 • NOV 23', pair: '$BTC / USDT', narrative: 'BTC MACRO',    narrative_tone: 'gold',   entry_zone: '$61,000 – $62,500', entry_mid: 61750, coingecko_id: 'bitcoin',  status: 'active', status_label: 'ACTIVE • LIVE TRACKING', realized_return_pct: 0 },
+      { dispatch_ref: '#419 • NOV 23', pair: '$ETH / USDT', narrative: 'L1 MAJOR',     narrative_tone: 'accent', entry_zone: '$1,715 – $1,745',   entry_mid: 1730,  coingecko_id: 'ethereum', status: 'active', status_label: 'ACTIVE • LIVE TRACKING', realized_return_pct: 0 },
+      { dispatch_ref: '#419 • NOV 23', pair: '$SOL / USDC', narrative: 'EXECUTION L1', narrative_tone: 'accent', entry_zone: '$72.00 – $76.00',   entry_mid: 74.00, coingecko_id: 'solana',   status: 'active', status_label: 'ACTIVE • LIVE TRACKING', realized_return_pct: 0 }
     ];
     let currentDeskFilter = 'all';
     let liveSpotPrices = {};
@@ -2596,7 +2596,7 @@
           .from('desk_calls')
           .select('*')
           .order('sort_order', { ascending: true });
-        if (!error && data && data.length) {
+        if (!error && Array.isArray(data)) {
           deskCallsData = data;
           renderDeskCalls();
           fetchLiveCoinGeckoPrices();
@@ -2625,15 +2625,35 @@
       const losers = closedCalls.filter((c) => Number(c.realized_return_pct) < 0);
 
       setText('ledger-stat-active', String(activeCalls.length));
-      const winRate = closedCalls.length ? ((winners.length / closedCalls.length) * 100).toFixed(1) + '%' : '--%';
-      setText('ledger-stat-winrate', winRate);
-      const avgWin = winners.length ? (winners.reduce((s, c) => s + Number(c.realized_return_pct), 0) / winners.length).toFixed(1) : '0.0';
-      const avgLoss = losers.length ? (losers.reduce((s, c) => s + Number(c.realized_return_pct), 0) / losers.length).toFixed(1) : '0.0';
-      setText('ledger-stat-rr', `+${avgWin}% / ${avgLoss}%`);
+      if (closedCalls.length > 0) {
+        const winRate = ((winners.length / closedCalls.length) * 100).toFixed(1) + '%';
+        const avgWin = winners.length ? (winners.reduce((s, c) => s + Number(c.realized_return_pct), 0) / winners.length).toFixed(1) : '0.0';
+        const avgLoss = losers.length ? (losers.reduce((s, c) => s + Number(c.realized_return_pct), 0) / losers.length).toFixed(1) : '0.0';
+        setText('ledger-stat-winrate', winRate);
+        setText('ledger-stat-rr-label', 'Avg Winner / Stop');
+        setText('ledger-stat-rr', `+${avgWin}% / ${avgLoss}%`);
+      } else {
+        setText('ledger-stat-winrate', 'LIVE TRACKING');
+        setText('ledger-stat-rr-label', 'Ledger Inception');
+        setText('ledger-stat-rr', 'NOV 23, 2026');
+      }
 
       const visible = currentDeskFilter === 'all'
         ? deskCallsData
         : deskCallsData.filter((c) => c.status === currentDeskFilter);
+
+      if (!visible.length) {
+        const emptyMsg = currentDeskFilter === 'closed'
+          ? 'Fresh ledger launched Nov 23, 2026 — no closed positions yet. Completed winners and stops will be archived here.'
+          : 'No desk calls logged yet. New setups pushed from the Floss Desk appear here in real time.';
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-8 px-5 text-center font-mono text-xs text-slate-400">
+              ${emptyMsg}
+            </td>
+          </tr>`;
+        return;
+      }
 
       const toneMap = {
         accent: 'bg-accent-soft text-accent',
@@ -3623,3 +3643,4 @@
   </script>
 </body>
 </html>
+```
