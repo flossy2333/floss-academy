@@ -4,6 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Floss Academy — Institutional Crypto Intelligence &amp; Alpha Terminal</title>
+  <meta name="description" content="Daily 6:00 AM EST institutional crypto briefings, early narrative rotation radar across AI x DePIN, RWA, Perp DEXs &amp; ZK Privacy, and exact invalidation levels." />
+  <meta name="theme-color" content="#07090D" />
+
+  <!-- Custom Geometric SVG Brand Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307090D'/%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='none' stroke='%2310B981' stroke-opacity='0.45' stroke-width='2'/%3E%3Cpath d='M32 10L51 21V43L32 54L13 43V21L32 10Z' fill='none' stroke='%2310B981' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M32 54V32M51 21L32 32L13 21' fill='none' stroke='%2310B981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23D4AF37'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph / Discord / Telegram / iMessage Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://flossacademy.io/" />
+  <meta property="og:site_name" content="Floss Academy" />
+  <meta property="og:title" content="Floss Academy — Institutional Crypto Intelligence &amp; Alpha Terminal" />
+  <meta property="og:description" content="Front-run crypto's next narrative rotation before retail wakes up. Real-time intelligence terminal, 6:00 AM EST briefings, and exact desk levels." />
+  <meta property="og:image" content="https://flossacademy.io/og-preview.png" />
+
+  <!-- X / Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Floss Academy — Institutional Crypto Intelligence &amp; Alpha Terminal" />
+  <meta name="twitter:description" content="Daily 6:00 AM EST briefings, narrative rotation radar, and live Supabase-powered Alpha Trade Levels." />
 
   <!-- Google Fonts: Inter, Space Grotesk & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,6 +74,18 @@
       background-color: #07090D;
       color: #F8FAFC;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ultra-Faint Institutional Film Grain Texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     /* Subtle Institutional Terminal Grid */
@@ -124,6 +154,39 @@
       box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.22);
     }
 
+    /* Cursor-Tracking Spotlight Cards */
+    .spotlight-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      background: radial-gradient(
+        420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(var(--accent-rgb), 0.11),
+        transparent 55%
+      );
+    }
+    .spotlight-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Scroll-Reveal Motion */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Ambient Glow Blobs */
     .ambient-primary {
       background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16) 0%, rgba(var(--accent-rgb), 0) 70%);
@@ -181,13 +244,21 @@
       animation-play-state: paused;
     }
 
-    /* Subtle Panel Entrance */
+    /* Subtle Panel & Toast Entrance */
     @keyframes fadeSlideUp {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .animate-panel {
       animation: fadeSlideUp 0.24s ease-out forwards;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(24px) scale(0.96); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+    .animate-toast {
+      animation: toastIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     /* Custom Scrollbar */
@@ -250,7 +321,7 @@
               <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.1%</span>
             </span>
             <span class="text-borderdark">|</span>
-            <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 18</span>
+            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 18</span>
             <span class="text-borderdark">|</span>
             <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">RWA TVL: $18.4B</span>
             <span class="text-borderdark">|</span>
@@ -292,7 +363,7 @@
               <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.1%</span>
             </span>
             <span class="text-borderdark">|</span>
-            <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 18</span>
+            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 18</span>
             <span class="text-borderdark">|</span>
             <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">RWA TVL: $18.4B</span>
             <span class="text-borderdark">|</span>
@@ -329,8 +400,9 @@
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-          <a href="#preview" class="hover:text-white transition-colors">Preview Terminal</a>
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="#preview" class="hover:text-white transition-colors">Terminal</a>
+          <a href="#track-record" class="hover:text-white transition-colors">Desk Calls</a>
           <a href="#roi-simulator" class="hover:text-white transition-colors flex items-center gap-1.5">
             <span>ROI Simulator</span>
             <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-accent-soft text-accent border border-accent-soft">LIVE</span>
@@ -493,18 +565,17 @@
 
     <!-- Responsive Mobile Menu Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden bg-terminal border-b border-borderdark px-4 pt-2 pb-5 space-y-2">
-      <a href="#preview" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminalhover">Preview Terminal</a>
+      <a href="#preview" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminalhover">Live Terminal</a>
+      <a href="#track-record" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminalhover">Recent Desk Calls</a>
       <a href="#roi-simulator" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminalhover">ROI Simulator</a>
       <a href="#pricing" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminalhover">Pricing</a>
       <a href="#faq" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminalhover">FAQ</a>
 
       <div class="pt-3 border-t border-borderdark space-y-2">
-        <!-- Mobile Logged Out -->
         <button id="mobile-login-btn" type="button" onclick="toggleMobileMenu(); openAuthModal('signin')" class="w-full py-2.5 rounded-xl text-sm font-semibold bg-obsidian border border-borderdark text-white">
           Member Login / Create Account
         </button>
 
-        <!-- Mobile Logged In -->
         <div id="mobile-account-box" class="hidden p-3 rounded-xl bg-obsidian border border-accent-soft flex items-center justify-between gap-2">
           <div class="min-w-0">
             <div class="flex items-center gap-2">
@@ -528,7 +599,7 @@
   <!-- ===================================================================== -->
   <!-- 3. PERSUASIVE HERO & WEB3FORMS LEAD CAPTURE                           -->
   <!-- ===================================================================== -->
-  <section class="relative overflow-hidden bg-terminal-grid pt-14 pb-20 sm:pt-20 sm:pb-28 border-b border-borderdark">
+  <section class="relative overflow-hidden bg-terminal-grid pt-14 pb-20 sm:pt-20 sm:pb-24 border-b border-borderdark">
     <div class="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-[820px] h-[440px] ambient-primary blur-[90px] rounded-full"></div>
     <div class="pointer-events-none absolute top-44 right-0 w-[440px] h-[360px] ambient-secondary blur-[100px] rounded-full"></div>
 
@@ -552,14 +623,13 @@
             Unlock Floss Alpha →
           </button>
           <a href="#preview" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-terminal hover:bg-terminalhover text-white border border-borderdark hover-border-accent transition-all">
-            Inspect Today's Free Preview
+            Inspect Today's Live Terminal
           </a>
         </div>
 
         <!-- Lead Capture Form Wired to Web3Forms -->
         <div class="mt-10 max-w-xl mx-auto p-4 sm:p-5 rounded-2xl bg-terminal/85 backdrop-blur-xl border border-borderdark shadow-2xl">
           <form id="hero-lead-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleLeadCapture(event)" class="flex flex-col sm:flex-row gap-3">
-            <!-- Hidden Botcheck Honeypot -->
             <input type="checkbox" name="botcheck" id="hero-botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
 
             <input
@@ -597,7 +667,7 @@
             <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <div>
               <p class="text-sm font-semibold text-amber-200">Preview Mode: Email captured locally.</p>
-              <p class="text-xs text-amber-100/80 mt-0.5">Replace <code class="font-mono text-amber-300 bg-obsidian/70 px-1.5 py-0.5 rounded">FLOSS_CONFIG.web3formsAccessKey</code> with your key from web3forms.com to receive signups in your inbox.</p>
+              <p class="text-xs text-amber-100/80 mt-0.5">Replace <code class="font-mono text-amber-300 bg-obsidian/70 px-1.5 py-0.5 rounded">FLOSS_CONFIG.web3formsAccessKey</code> with your key from web3forms.com.</p>
             </div>
           </div>
 
@@ -612,21 +682,21 @@
         </div>
       </div>
 
-      <!-- Institutional Metrics Strip -->
-      <div class="mt-14 pt-10 border-t border-borderdark/80 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto text-center">
-        <div class="p-5 rounded-2xl bg-terminal/70 border border-borderdark">
-          <div class="text-2xl sm:text-3xl font-bold font-mono text-white">14,200+</div>
+      <!-- Institutional Metrics Strip (Animated Counters on Scroll) -->
+      <div class="mt-14 pt-10 border-t border-borderdark/80 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto text-center reveal-on-scroll">
+        <div class="spotlight-card p-5 rounded-2xl bg-terminal/75 border border-borderdark">
+          <div class="text-2xl sm:text-3xl font-bold font-mono text-white" data-count-target="14200" data-count-suffix="+">14,200+</div>
           <div class="text-xs sm:text-sm text-slate-400 mt-1">Active Traders</div>
         </div>
-        <div class="p-5 rounded-2xl bg-terminal/70 border border-borderdark">
+        <div class="spotlight-card p-5 rounded-2xl bg-terminal/75 border border-borderdark">
           <div class="text-2xl sm:text-3xl font-bold font-mono text-accent">6:00 AM</div>
           <div class="text-xs sm:text-sm text-slate-400 mt-1">EST Daily Dispatch</div>
         </div>
-        <div class="p-5 rounded-2xl bg-terminal/70 border border-borderdark">
-          <div class="text-2xl sm:text-3xl font-bold font-mono text-gold">38+</div>
+        <div class="spotlight-card p-5 rounded-2xl bg-terminal/75 border border-borderdark">
+          <div class="text-2xl sm:text-3xl font-bold font-mono text-gold" data-count-target="38" data-count-suffix="+">38+</div>
           <div class="text-xs sm:text-sm text-slate-400 mt-1">Narratives Tracked</div>
         </div>
-        <div class="p-5 rounded-2xl bg-terminal/70 border border-borderdark">
+        <div class="spotlight-card p-5 rounded-2xl bg-terminal/75 border border-borderdark">
           <div class="text-2xl sm:text-3xl font-bold font-mono text-white">0% Paid</div>
           <div class="text-xs sm:text-sm text-slate-400 mt-1">Zero Sponsored Shills</div>
         </div>
@@ -635,19 +705,57 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- 4. INTERACTIVE "FREE PREVIEW" & SUPABASE-UNLOCKABLE TERMINAL          -->
+  <!-- 3B. INSTITUTIONAL RESEARCH STACK & DATA SOURCES TRUST STRIP           -->
+  <!-- ===================================================================== -->
+  <div class="bg-[#05070B] border-b border-borderdark py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+        <span class="text-[11px] font-mono uppercase tracking-[0.18em] text-slate-500 shrink-0">
+          On-Chain &amp; Derivatives Telemetry Stack
+        </span>
+        <div class="flex flex-wrap items-center justify-center lg:justify-end gap-x-7 gap-y-3 text-xs sm:text-sm font-mono font-semibold text-slate-400">
+          <span class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent/80"></span>COINGLASS
+          </span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent/80"></span>DEFILLAMA
+          </span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent/80"></span>DUNE ANALYTICS
+          </span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold/80"></span>ARKHAM INTEL
+          </span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold/80"></span>HYPERLIQUID
+          </span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent/80"></span>COINGECKO
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 4. INTERACTIVE LIVE INTELLIGENCE TERMINAL + MARKET PULSE BAR          -->
   <!-- ===================================================================== -->
   <section id="preview" class="py-16 sm:py-24 border-b border-borderdark bg-[#080B10]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 reveal-on-scroll">
         <div>
-          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-2">
-            <span class="w-2 h-2 rounded-full bg-accent"></span>
-            Live Intelligence Terminal
+          <div class="inline-flex flex-wrap items-center gap-2.5 text-xs font-mono uppercase tracking-widest text-accent mb-2">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              Live Intelligence Terminal
+            </span>
+            <span id="terminal-realtime-badge" class="px-2 py-0.5 rounded bg-obsidian border border-borderdark text-[10px] text-slate-400 tracking-wider">
+              SYNCING REALTIME...
+            </span>
           </div>
           <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Inside the Floss Terminal</h2>
           <p class="text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
-            Inspect today's morning dispatch, filter hot altcoin narratives, and sign in with your Supabase member account to unblur live Alpha Trade Levels.
+            Monitor live sector momentum, inspect today's morning dispatch, and sign in with your Supabase member account to unblur live Alpha Trade Levels.
           </p>
         </div>
 
@@ -665,38 +773,150 @@
         </div>
       </div>
 
+      <!-- LIVE MARKET PULSE & SECTOR MOMENTUM BAR -->
+      <div class="mb-7 grid grid-cols-1 lg:grid-cols-12 gap-4 reveal-on-scroll">
+        <!-- Live BTC / ETH / SOL Mini Sparkline Strip -->
+        <div class="lg:col-span-5 grid grid-cols-3 gap-3">
+          <!-- BTC Sparkline -->
+          <div class="p-3.5 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+            <div class="flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-400 font-semibold">BTC</span>
+              <span data-cg-change="bitcoin" class="text-rose-400">-2.1%</span>
+            </div>
+            <div data-cg-price="bitcoin" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$58,520</div>
+            <svg class="w-full h-7 mt-2 overflow-visible" viewBox="0 0 100 26" preserveAspectRatio="none">
+              <polyline fill="none" stroke="#F43F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,8 16,11 32,7 48,14 66,18 82,15 100,21" />
+            </svg>
+          </div>
+
+          <!-- ETH Sparkline -->
+          <div class="p-3.5 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+            <div class="flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-400 font-semibold">ETH</span>
+              <span data-cg-change="ethereum" class="text-rose-400">-1.8%</span>
+            </div>
+            <div data-cg-price="ethereum" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$1,710</div>
+            <svg class="w-full h-7 mt-2 overflow-visible" viewBox="0 0 100 26" preserveAspectRatio="none">
+              <polyline fill="none" stroke="#F43F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,10 18,9 35,14 52,12 70,17 85,16 100,20" />
+            </svg>
+          </div>
+
+          <!-- SOL Sparkline -->
+          <div class="p-3.5 rounded-2xl bg-terminal border border-accent-soft flex flex-col justify-between">
+            <div class="flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-400 font-semibold">SOL</span>
+              <span data-cg-change="solana" class="text-accent">+3.4%</span>
+            </div>
+            <div data-cg-price="solana" class="text-sm sm:text-base font-mono font-bold text-white mt-1">$142.00</div>
+            <svg class="w-full h-7 mt-2 overflow-visible" viewBox="0 0 100 26" preserveAspectRatio="none">
+              <polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,21 18,18 35,19 52,12 70,10 85,6 100,4" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- 24h Sector Momentum Heatmap Bars -->
+        <div class="lg:col-span-5 p-4 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-center">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2.5">
+            <span class="uppercase tracking-wider">24h Sector Rotation Momentum</span>
+            <span class="text-accent">FLOW STRENGTH</span>
+          </div>
+          <div class="space-y-2 text-[11px] font-mono">
+            <div class="flex items-center gap-2.5">
+              <span class="w-20 text-slate-300 shrink-0">AI x DePIN</span>
+              <div class="flex-1 h-2 rounded-full bg-obsidian overflow-hidden">
+                <div class="h-full rounded-full bg-accent" style="width: 92%;"></div>
+              </div>
+              <span class="w-12 text-right text-accent font-semibold">+8.4%</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-20 text-slate-300 shrink-0">PERP DEXs</span>
+              <div class="flex-1 h-2 rounded-full bg-obsidian overflow-hidden">
+                <div class="h-full rounded-full bg-gold" style="width: 84%;"></div>
+              </div>
+              <span class="w-12 text-right text-gold font-semibold">+6.9%</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-20 text-slate-300 shrink-0">ZK PRIVACY</span>
+              <div class="flex-1 h-2 rounded-full bg-obsidian overflow-hidden">
+                <div class="h-full rounded-full bg-accent" style="width: 76%;"></div>
+              </div>
+              <span class="w-12 text-right text-accent font-semibold">+5.1%</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-20 text-slate-300 shrink-0">RWA YIELD</span>
+              <div class="flex-1 h-2 rounded-full bg-obsidian overflow-hidden">
+                <div class="h-full rounded-full bg-accent/80" style="width: 68%;"></div>
+              </div>
+              <span class="w-12 text-right text-accent font-semibold">+3.8%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Fear & Greed Sentiment Gauge -->
+        <div class="lg:col-span-2 p-4 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>SENTIMENT</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          </div>
+          <div class="my-1.5">
+            <div id="pulse-fng-score" class="font-mono text-2xl font-bold text-amber-400">18</div>
+            <div id="pulse-fng-label" class="text-[11px] font-mono text-slate-300 uppercase">Extreme Fear</div>
+          </div>
+          <div>
+            <div class="w-full h-2 rounded-full bg-gradient-to-r from-rose-500 via-amber-400 to-emerald-400 relative">
+              <div id="pulse-fng-marker" class="w-2.5 h-3.5 rounded-sm bg-white border border-obsidian shadow absolute -top-[3px] transition-all duration-500" style="left: 18%;"></div>
+            </div>
+            <div class="flex justify-between text-[9px] font-mono text-slate-500 mt-1">
+              <span>FEAR</span>
+              <span>GREED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- TAB 1: DAILY NEWS BRIEFING + SUPABASE-GATED ALPHA TRADE LEVELS -->
       <div id="tab-panel-briefing" class="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-panel">
         <!-- Main Unlocked Dispatch -->
         <div class="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-terminal border border-borderdark space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-borderdark">
             <div class="flex items-center gap-2.5">
-              <span class="px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #418</span>
-              <span class="text-xs font-mono text-slate-400">NOV 22, 2026 • 06:00 EST</span>
+              <span id="briefing-dispatch-num" class="px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #418</span>
+              <span id="briefing-timestamp" class="text-xs font-mono text-slate-400">NOV 22, 2026 • 06:00 EST</span>
             </div>
-            <span class="text-xs font-mono text-amber-400 bg-amber-500/10 border border-amber-500/25 px-2.5 py-1 rounded-md">FEAR &amp; GREED: 18 (EXTREME FEAR)</span>
+            <div class="flex items-center gap-2">
+              <span id="briefing-fng-badge" class="text-xs font-mono text-amber-400 bg-amber-500/10 border border-amber-500/25 px-2.5 py-1 rounded-md">FEAR &amp; GREED: 18 (EXTREME FEAR)</span>
+              <button
+                type="button"
+                onclick="openFocusReader()"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-obsidian hover:bg-terminalhover border border-borderdark hover-border-accent text-xs font-mono text-slate-200 transition-all"
+                title="Open Distraction-Free Focus Reader"
+              >
+                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                <span class="hidden sm:inline">Focus Read</span>
+              </button>
+            </div>
           </div>
 
           <div>
-            <h3 class="font-display text-xl sm:text-2xl font-bold text-white">
+            <h3 id="briefing-headline" class="font-display text-xl sm:text-2xl font-bold text-white">
               BTC Tests $58.5K Demand Shelf While AI x DePIN &amp; Perp DEX Flows Diverge
             </h3>
-            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-              Overnight liquidations flushed $310M in crowded leverage as Bitcoin probed $58,520 and ETH drifted to $1,710. Beneath the surface, institutional stablecoin inflows onto on-chain perpetual venues hit a fresh monthly high, while decentralized compute leaders (<span class="text-white font-mono">RENDER, ICNT</span>) showed near-zero beta to the drawdown.
+            <p id="briefing-summary" class="mt-3 text-sm text-slate-300 leading-relaxed">
+              Overnight liquidations flushed $310M in crowded leverage as Bitcoin probed $58,520 and ETH drifted to $1,710. Beneath the surface, institutional stablecoin inflows onto on-chain perpetual venues hit a fresh monthly high, while decentralized compute leaders (RENDER, ICNT) showed near-zero beta to the drawdown.
             </p>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="p-4 rounded-xl bg-obsidian border border-borderdark">
               <div class="text-xs font-mono text-accent uppercase mb-1.5">Desk Takeaway #1</div>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p id="briefing-takeaway-1" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Altcoin perp funding flipped negative across 70% of major pairs—historically a high-asymmetry accumulation zone for fee-generating protocols.
               </p>
             </div>
             <div class="p-4 rounded-xl bg-obsidian border border-borderdark">
               <div class="text-xs font-mono text-gold uppercase mb-1.5">Desk Takeaway #2</div>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                On-chain RWA Treasury TVL surpassed <span class="text-white font-mono">$18.4B</span> this morning, cementing tokenized yield as the premier institutional shelter.
+              <p id="briefing-takeaway-2" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                On-chain RWA Treasury TVL surpassed $18.4B this morning, cementing tokenized yield as the premier institutional shelter.
               </p>
             </div>
           </div>
@@ -747,7 +967,7 @@
                 </div>
               </div>
 
-              <!-- Frosted Lock Overlay (Hidden automatically when Alpha/Desk unlocked) -->
+              <!-- Frosted Lock Overlay -->
               <div id="alpha-lock-overlay" class="absolute inset-0 flex flex-col items-center justify-center p-4 rounded-xl bg-obsidian/65 backdrop-blur-sm border border-borderdark/80 text-center">
                 <div class="w-10 h-10 rounded-full bg-terminal border border-accent-soft flex items-center justify-center mb-2.5 shadow-accent-glow">
                   <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -788,8 +1008,8 @@
           <button type="button" onclick="filterNarratives('l1-infra', this)" class="narrative-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-obsidian text-slate-300 border border-borderdark hover:border-slate-500 transition-all">L1 / INFRA</button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="ai-depin">
+        <div id="narratives-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="spotlight-card narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="ai-depin">
             <div class="flex items-center justify-between text-xs font-mono mb-3">
               <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">AI x DePIN</span>
               <span class="text-accent font-bold">CONVICTION: 9.4/10</span>
@@ -802,7 +1022,7 @@
             </div>
           </div>
 
-          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="rwa">
+          <div class="spotlight-card narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="rwa">
             <div class="flex items-center justify-between text-xs font-mono mb-3">
               <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">RWA</span>
               <span class="text-gold font-bold">CONVICTION: 8.9/10</span>
@@ -815,7 +1035,7 @@
             </div>
           </div>
 
-          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="perp-dex">
+          <div class="spotlight-card narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="perp-dex">
             <div class="flex items-center justify-between text-xs font-mono mb-3">
               <span class="px-2 py-0.5 rounded bg-gold-soft text-gold font-semibold">PERP DEXs</span>
               <span class="text-accent font-bold">CONVICTION: 9.2/10</span>
@@ -828,7 +1048,7 @@
             </div>
           </div>
 
-          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="zk-privacy">
+          <div class="spotlight-card narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="zk-privacy">
             <div class="flex items-center justify-between text-xs font-mono mb-3">
               <span class="px-2 py-0.5 rounded bg-gold-soft text-gold font-semibold">ZK PRIVACY</span>
               <span class="text-accent font-bold">CONVICTION: 8.5/10</span>
@@ -841,7 +1061,7 @@
             </div>
           </div>
 
-          <div class="narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="l1-infra">
+          <div class="spotlight-card narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all" data-sector="l1-infra">
             <div class="flex items-center justify-between text-xs font-mono mb-3">
               <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">L1 / INFRA</span>
               <span class="text-accent font-bold">CONVICTION: 8.8/10</span>
@@ -869,7 +1089,7 @@
                 <th class="py-3.5 px-5 text-right">Desk Bias</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-borderdark text-sm">
+            <tbody id="catalysts-tbody" class="divide-y divide-borderdark text-sm">
               <tr class="hover:bg-terminalhover/60 transition-colors">
                 <td class="py-4 px-5 font-mono text-xs text-slate-300">NOV 25</td>
                 <td class="py-4 px-5 font-semibold text-white">Hyperliquid (HYPE)</td>
@@ -906,12 +1126,112 @@
   </section>
 
   <!-- ===================================================================== -->
+  <!-- 4B. TRANSPARENT "RECENT DESK CALLS" TRACK RECORD LEDGER               -->
+  <!-- ===================================================================== -->
+  <section id="track-record" class="py-16 sm:py-24 border-b border-borderdark bg-[#06080C]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-9">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold mb-2">
+            <span class="w-2 h-2 rounded-full bg-gold"></span>
+            Transparent Execution Ledger
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Recent Desk Calls &amp; Risk Discipline</h2>
+          <p class="text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
+            Every rotation carries a predefined invalidation stop. We publish both winners and controlled stop-outs—because asymmetric risk management is the real edge.
+          </p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="inline-flex items-center gap-1.5 p-1.5 rounded-xl bg-terminal border border-borderdark self-start">
+          <button type="button" onclick="filterDeskCalls('all', this)" class="desk-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-accent text-obsidian transition-all">ALL CALLS</button>
+          <button type="button" onclick="filterDeskCalls('active', this)" class="desk-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all">ACTIVE</button>
+          <button type="button" onclick="filterDeskCalls('closed', this)" class="desk-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all">CLOSED</button>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-terminal border border-borderdark overflow-x-auto shadow-2xl">
+        <table class="w-full text-left border-collapse min-w-[680px]">
+          <thead>
+            <tr class="border-b border-borderdark text-[11px] font-mono uppercase text-slate-400 bg-obsidian/70">
+              <th class="py-3.5 px-5">Dispatch</th>
+              <th class="py-3.5 px-5">Asset &amp; Narrative</th>
+              <th class="py-3.5 px-5">Entry Zone</th>
+              <th class="py-3.5 px-5">Status</th>
+              <th class="py-3.5 px-5 text-right">Peak / Realized Return</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-borderdark text-sm">
+            <tr class="desk-call-row hover:bg-terminalhover/60 transition-colors" data-status="closed">
+              <td class="py-4 px-5 font-mono text-xs text-slate-400">#394 • OCT 29</td>
+              <td class="py-4 px-5">
+                <div class="font-semibold text-white">$HYPE / USDC</div>
+                <div class="text-xs font-mono text-gold">PERP DEXs</div>
+              </td>
+              <td class="py-4 px-5 font-mono text-xs text-slate-300">$16.80 – $17.40</td>
+              <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">CLOSED • TP2 HIT</span></td>
+              <td class="py-4 px-5 text-right font-mono text-sm font-bold text-accent">+48.2%</td>
+            </tr>
+
+            <tr class="desk-call-row hover:bg-terminalhover/60 transition-colors" data-status="active">
+              <td class="py-4 px-5 font-mono text-xs text-slate-400">#405 • NOV 09</td>
+              <td class="py-4 px-5">
+                <div class="font-semibold text-white">$RENDER / USDT</div>
+                <div class="text-xs font-mono text-accent">AI x DePIN</div>
+              </td>
+              <td class="py-4 px-5 font-mono text-xs text-slate-300">$5.95 – $6.20</td>
+              <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-[11px] font-mono bg-accent-soft text-accent border border-accent-soft">ACTIVE • TRAILING STOP</span></td>
+              <td class="py-4 px-5 text-right font-mono text-sm font-bold text-accent">+31.5%</td>
+            </tr>
+
+            <tr class="desk-call-row hover:bg-terminalhover/60 transition-colors" data-status="closed">
+              <td class="py-4 px-5 font-mono text-xs text-slate-400">#409 • NOV 13</td>
+              <td class="py-4 px-5">
+                <div class="font-semibold text-white">$ARB / USDT</div>
+                <div class="text-xs font-mono text-slate-400">L2 INFRA</div>
+              </td>
+              <td class="py-4 px-5 font-mono text-xs text-slate-300">$0.62 – $0.64</td>
+              <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-[11px] font-mono bg-rose-500/15 text-rose-400">STOPPED OUT</span></td>
+              <td class="py-4 px-5 text-right font-mono text-sm font-bold text-rose-400">-6.4%</td>
+            </tr>
+
+            <tr class="desk-call-row hover:bg-terminalhover/60 transition-colors" data-status="active">
+              <td class="py-4 px-5 font-mono text-xs text-slate-400">#414 • NOV 18</td>
+              <td class="py-4 px-5">
+                <div class="font-semibold text-white">$ONDO / USDT</div>
+                <div class="text-xs font-mono text-accent">RWA TREASURIES</div>
+              </td>
+              <td class="py-4 px-5 font-mono text-xs text-slate-300">$0.94 – $0.98</td>
+              <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-[11px] font-mono bg-accent-soft text-accent border border-accent-soft">ACTIVE • RUNNING</span></td>
+              <td class="py-4 px-5 text-right font-mono text-sm font-bold text-accent">+19.8%</td>
+            </tr>
+
+            <tr class="desk-call-row hover:bg-terminalhover/60 transition-colors" data-status="closed">
+              <td class="py-4 px-5 font-mono text-xs text-slate-400">#401 • NOV 05</td>
+              <td class="py-4 px-5">
+                <div class="font-semibold text-white">$SUI / USDC</div>
+                <div class="text-xs font-mono text-gold">EXECUTION L1</div>
+              </td>
+              <td class="py-4 px-5 font-mono text-xs text-slate-300">$2.18 – $2.26</td>
+              <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">CLOSED • TP1 HIT</span></td>
+              <td class="py-4 px-5 text-right font-mono text-sm font-bold text-accent">+27.4%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-[11px] font-mono text-slate-500">
+        * Historical desk setups logged at time of 6:00 AM EST dispatch. Past results do not guarantee future performance.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
   <!-- 5. LIVE INTERACTIVE PORTFOLIO & ALPHA ROI SIMULATOR                   -->
   <!-- ===================================================================== -->
   <section id="roi-simulator" class="py-16 sm:py-24 border-b border-borderdark bg-obsidian relative overflow-hidden">
     <div class="pointer-events-none absolute -right-32 top-24 w-[480px] h-[480px] ambient-primary blur-[110px] rounded-full"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal-on-scroll">
       <div class="max-w-3xl mb-10">
         <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-2">
           <span class="w-2 h-2 rounded-full bg-accent"></span>
@@ -926,7 +1246,6 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <!-- Left Controls Panel -->
         <div class="lg:col-span-5 p-6 rounded-2xl bg-terminal border border-borderdark space-y-6">
-          <!-- Starting Capital -->
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="sim-capital-input" class="text-xs font-mono uppercase tracking-wider text-slate-300">Starting Capital (USD)</label>
@@ -944,7 +1263,6 @@
             </div>
           </div>
 
-          <!-- Execution Style -->
           <div>
             <div class="text-xs font-mono uppercase tracking-wider text-slate-300 mb-2.5">Execution Style</div>
             <div class="space-y-2">
@@ -974,7 +1292,6 @@
             </div>
           </div>
 
-          <!-- Time Horizon -->
           <div>
             <div class="text-xs font-mono uppercase tracking-wider text-slate-300 mb-2.5">Time Horizon</div>
             <div class="grid grid-cols-3 gap-2">
@@ -984,7 +1301,6 @@
             </div>
           </div>
 
-          <!-- Simulated Monthly Edge Slider -->
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="sim-edge-slider" class="text-xs font-mono uppercase tracking-wider text-slate-300">Simulated Monthly Edge</label>
@@ -1038,7 +1354,6 @@
             </div>
           </div>
 
-          <!-- Dynamic Recommended-Tier CTA -->
           <div class="p-5 rounded-2xl bg-terminal border border-accent-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <div class="flex items-center gap-2">
@@ -1068,7 +1383,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Side-by-Side Edge Comparison -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 reveal-on-scroll">
         <div class="p-6 sm:p-8 rounded-2xl bg-obsidian/80 border border-borderdark">
           <div class="text-xs font-mono uppercase tracking-wider text-rose-400 mb-2">THE RETAIL TRAP</div>
           <h3 class="font-display text-2xl font-bold text-white">Scrolling Crypto Twitter &amp; Free Groups</h3>
@@ -1080,7 +1395,7 @@
           </ul>
         </div>
 
-        <div class="p-6 sm:p-8 rounded-2xl bg-terminal border border-accent-soft shadow-accent-glow">
+        <div class="spotlight-card p-6 sm:p-8 rounded-2xl bg-terminal border border-accent-soft shadow-accent-glow">
           <div class="text-xs font-mono uppercase tracking-wider text-accent mb-2">THE FLOSS ACADEMY EDGE</div>
           <h3 class="font-display text-2xl font-bold text-white">Institutional Desk Workflow in 5 Minutes</h3>
           <ul class="mt-5 space-y-3 text-sm text-slate-200">
@@ -1093,7 +1408,7 @@
       </div>
 
       <!-- Pricing Header & Toggle -->
-      <div class="text-center max-w-2xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto reveal-on-scroll">
         <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-2">
           <span class="w-2 h-2 rounded-full bg-accent"></span>
           Membership Tiers
@@ -1115,9 +1430,9 @@
       </div>
 
       <!-- 3 Pricing Tiers -->
-      <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch reveal-on-scroll">
         <!-- Tier 1: The Briefing -->
-        <div class="p-7 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+        <div class="spotlight-card p-7 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
           <div>
             <div class="text-xs font-mono uppercase tracking-wider text-slate-400">Essential Signal</div>
             <h3 class="font-display text-2xl font-bold text-white mt-1">The Briefing</h3>
@@ -1140,7 +1455,7 @@
         </div>
 
         <!-- Tier 2: Floss Alpha (Most Popular) -->
-        <div class="p-7 rounded-2xl bg-terminal border-2 border-accent shadow-accent-glow flex flex-col justify-between relative">
+        <div class="spotlight-card p-7 rounded-2xl bg-terminal border-2 border-accent shadow-accent-glow flex flex-col justify-between relative">
           <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-accent text-obsidian font-mono text-[11px] font-bold tracking-wider">
             MOST POPULAR
           </div>
@@ -1167,7 +1482,7 @@
         </div>
 
         <!-- Tier 3: Floss Desk -->
-        <div class="p-7 rounded-2xl bg-terminal border border-gold-soft flex flex-col justify-between">
+        <div class="spotlight-card p-7 rounded-2xl bg-terminal border border-gold-soft flex flex-col justify-between">
           <div>
             <div class="text-xs font-mono uppercase tracking-wider text-gold">High-Capital &amp; Funds</div>
             <h3 class="font-display text-2xl font-bold text-white mt-1">Floss Desk</h3>
@@ -1196,8 +1511,7 @@
   <!-- 7. TESTIMONIALS & EXPANDABLE FAQ ACCORDION                            -->
   <!-- ===================================================================== -->
   <section class="py-16 sm:py-24 border-b border-borderdark bg-obsidian">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Testimonials -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold mb-2">
           <span class="w-2 h-2 rounded-full bg-gold"></span>
@@ -1207,7 +1521,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-        <div class="p-6 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+        <div class="spotlight-card p-6 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
           <p class="text-sm text-slate-300 leading-relaxed">
             "Flagging the AI x DePIN rotation and Hyperliquid volume surge two weeks before CT caught on paid for my annual Floss Alpha membership twenty times over."
           </p>
@@ -1217,7 +1531,7 @@
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+        <div class="spotlight-card p-6 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
           <p class="text-sm text-slate-300 leading-relaxed">
             "The token unlock calendar alone saved me from holding into two brutal L2 cliff unlocks. Cleanest 5-minute morning routine in crypto."
           </p>
@@ -1227,7 +1541,7 @@
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
+        <div class="spotlight-card p-6 rounded-2xl bg-terminal border border-borderdark flex flex-col justify-between">
           <p class="text-sm text-slate-300 leading-relaxed">
             "No hype, no moonboy calls—just exact invalidation stops, funding rate shifts, and institutional RWA flow data I can actually act on."
           </p>
@@ -1262,7 +1576,7 @@
               <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed">
-              Sign in or create an account using the Member Login button. Once your Supabase profile tier is set to Alpha or Desk, the frosted lock overlay immediately removes itself and loads live setups directly from our database.
+              Sign in or create an account using the Member Login button. Once your Supabase profile tier is set to Alpha or Desk, the frosted lock overlay immediately removes itself and loads live setups directly from our database in real time.
             </div>
           </div>
 
@@ -1272,7 +1586,7 @@
               <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed">
-              Yes. Every subscription tier supports instant Card checkout (via Whop) as well as Crypto (USDC) via hosted checkout or direct Base, Solana, Arbitrum, and Ethereum USDC transfer.
+              Yes. Every subscription tier supports instant Card checkout (via Whop) as well as Crypto (USDC) via direct Base, Arbitrum, and Ethereum on-chain transfer or hosted checkout.
             </div>
           </div>
 
@@ -1302,7 +1616,8 @@
           <span class="font-mono text-accent">ALPHA TERMINAL</span>
         </div>
         <div class="flex flex-wrap items-center gap-5 font-mono">
-          <a href="#preview" class="hover:text-white transition-colors">Preview Terminal</a>
+          <a href="#preview" class="hover:text-white transition-colors">Terminal</a>
+          <a href="#track-record" class="hover:text-white transition-colors">Desk Calls</a>
           <a href="#roi-simulator" class="hover:text-white transition-colors">ROI Simulator</a>
           <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
           <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
@@ -1314,6 +1629,56 @@
       <div class="text-slate-600 font-mono">© 2026 Floss Academy Research. All rights reserved.</div>
     </div>
   </footer>
+
+  <!-- ===================================================================== -->
+  <!-- BRIEFING "FOCUS READ" MODAL (DISTRACTION-FREE INSTITUTIONAL READER)   -->
+  <!-- ===================================================================== -->
+  <div id="focus-reader-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-lg">
+    <div class="bg-[#0A0E15] border border-borderdark rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-panel relative max-h-[90vh] flex flex-col">
+      <div class="px-6 py-4 border-b border-borderdark flex items-center justify-between bg-obsidian/90">
+        <div class="flex items-center gap-2.5">
+          <span id="reader-dispatch-num" class="px-2.5 py-0.5 rounded bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #418</span>
+          <span id="reader-timestamp" class="text-xs font-mono text-slate-400">NOV 22, 2026 • 06:00 EST</span>
+        </div>
+        <button type="button" onclick="closeFocusReader()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-terminal transition-colors" aria-label="Close Focus Reader">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+        <div class="inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-gold">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+          FLOSS ACADEMY • MORNING INSTITUTIONAL BRIEFING
+        </div>
+
+        <h2 id="reader-headline" class="font-display text-2xl sm:text-3xl font-bold text-white leading-tight">
+          BTC Tests $58.5K Demand Shelf While AI x DePIN &amp; Perp DEX Flows Diverge
+        </h2>
+
+        <p id="reader-summary" class="text-base text-slate-200 leading-relaxed">
+          Overnight liquidations flushed $310M in crowded leverage as Bitcoin probed $58,520 and ETH drifted to $1,710.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          <div class="p-5 rounded-xl bg-terminal border border-borderdark">
+            <div class="text-xs font-mono text-accent uppercase font-semibold mb-2">Desk Takeaway #1 — Derivatives &amp; Positioning</div>
+            <p id="reader-takeaway-1" class="text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+          <div class="p-5 rounded-xl bg-terminal border border-borderdark">
+            <div class="text-xs font-mono text-gold uppercase font-semibold mb-2">Desk Takeaway #2 — Institutional On-Chain Flows</div>
+            <p id="reader-takeaway-2" class="text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 py-4 border-t border-borderdark bg-obsidian/80 flex items-center justify-between gap-3">
+        <span class="text-xs font-mono text-slate-500">ESC to close • Synced with Live Terminal</span>
+        <button type="button" onclick="closeFocusReader(); openCheckoutModal('Floss Alpha', currentBilling)" class="px-4 py-2 rounded-xl text-xs font-semibold btn-accent-primary">
+          Unlock Trade Levels →
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ===================================================================== -->
   <!-- MEMBER AUTH MODAL (SUPABASE POWERED + INSTANT TEST MODE)              -->
@@ -1335,14 +1700,12 @@
         <h3 id="auth-modal-title" class="font-display text-2xl font-bold text-white">Member Sign In</h3>
         <p id="auth-modal-sub" class="text-xs text-slate-400 mt-1">Sign in to sync your subscription tier and unlock live Alpha Trade Levels.</p>
 
-        <!-- Auth Mode Tabs -->
         <div class="mt-5 grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-obsidian border border-borderdark text-xs font-semibold">
           <button type="button" id="auth-tab-signin" onclick="switchAuthTab('signin')" class="py-2 rounded-lg bg-terminal text-white border border-accent-soft transition-all">Sign In</button>
           <button type="button" id="auth-tab-signup" onclick="switchAuthTab('signup')" class="py-2 rounded-lg text-slate-400 hover:text-white border border-transparent transition-all">Create Account</button>
           <button type="button" id="auth-tab-magic" onclick="switchAuthTab('magic')" class="py-2 rounded-lg text-slate-400 hover:text-white border border-transparent transition-all">Magic Link</button>
         </div>
 
-        <!-- Auth Form -->
         <form id="supabase-auth-form" onsubmit="handleAuthSubmit(event)" class="mt-5 space-y-4">
           <div>
             <label for="auth-email" class="block text-xs font-medium text-slate-300 mb-1.5">Email Address</label>
@@ -1366,7 +1729,6 @@
             />
           </div>
 
-          <!-- Status / Error Feedback -->
           <div id="auth-feedback" class="hidden p-3.5 rounded-xl text-xs leading-relaxed animate-panel"></div>
 
           <button
@@ -1378,7 +1740,6 @@
           </button>
         </form>
 
-        <!-- Instant Test Mode Bar -->
         <div class="mt-6 pt-5 border-t border-borderdark">
           <div class="flex items-center justify-between mb-2.5">
             <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Instant Test Mode</span>
@@ -1406,7 +1767,6 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <!-- Checkout Configuration View -->
       <div id="checkout-form-view" class="p-6 sm:p-8">
         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-accent-soft text-accent font-mono text-[11px] font-bold mb-3">
           SECURE CHECKOUT DISPATCH
@@ -1414,7 +1774,6 @@
         <h3 id="modal-plan-title" class="font-display text-2xl font-bold text-white">Floss Alpha</h3>
         <p id="modal-plan-price-line" class="text-sm font-mono text-accent mt-1">$74/mo • Billed Annually ($888/yr)</p>
 
-        <!-- Billing Cycle Switcher -->
         <div class="mt-4 p-2.5 rounded-xl bg-obsidian border border-borderdark flex items-center justify-between text-xs">
           <span class="text-slate-400 pl-1">Billing Cycle:</span>
           <div class="flex gap-1.5">
@@ -1423,7 +1782,6 @@
           </div>
         </div>
 
-        <!-- Payment Method Switcher -->
         <div class="mt-3 grid grid-cols-2 gap-2 p-1 rounded-xl bg-obsidian border border-borderdark text-xs font-semibold">
           <button type="button" id="pay-method-card" onclick="setPaymentMethod('card')" class="py-2.5 rounded-lg bg-terminal text-white border border-accent-soft transition-all">
             Card (Whop)
@@ -1447,25 +1805,21 @@
             />
           </div>
 
-          <!-- DIRECT ON-CHAIN USDC PANEL (Shown when Crypto (USDC) is selected) -->
           <div id="crypto-usdc-panel" class="hidden p-4 rounded-xl bg-obsidian border border-gold-soft space-y-3 animate-panel">
             <div class="flex items-center justify-between">
               <span class="text-[11px] font-mono font-bold text-gold uppercase tracking-wider">USDC Payment Options</span>
               <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-accent-soft text-accent">0% CARD FEES</span>
             </div>
 
-            <!-- Hosted vs Direct Wallet Mode Selector -->
             <div class="grid grid-cols-2 gap-1.5 p-1 rounded-lg bg-terminal border border-borderdark text-[11px] font-mono">
               <button type="button" id="usdc-mode-direct" onclick="setUsdcMode('direct')" class="py-1.5 rounded bg-obsidian text-white border border-accent-soft">Direct Wallet</button>
               <button type="button" id="usdc-mode-hosted" onclick="setUsdcMode('hosted')" class="py-1.5 rounded text-slate-400 hover:text-white border border-transparent">Hosted Link</button>
             </div>
 
-            <!-- Hosted USDC Checkout Info -->
             <div id="usdc-hosted-info" class="hidden text-xs text-slate-300 leading-relaxed">
               Pay instantly via <strong class="text-white">Coinbase Commerce / NOWPayments</strong> using USDC on Base, Solana, Polygon, or Ethereum.
             </div>
 
-            <!-- Direct On-Chain USDC Wallet Info -->
             <div id="usdc-direct-info" class="space-y-3">
               <div>
                 <div class="text-[11px] font-mono text-slate-400 mb-1.5">SELECT USDC NETWORK:</div>
@@ -1524,7 +1878,6 @@
             </div>
           </div>
 
-          <!-- Placeholder Setup Helper -->
           <div id="checkout-placeholder-card" class="hidden p-4 rounded-xl bg-amber-500/10 border border-amber-400/40 text-left space-y-2 animate-panel">
             <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-300">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
@@ -1547,7 +1900,6 @@
         </form>
       </div>
 
-      <!-- Checkout Redirect / USDC Receipt Confirmation View -->
       <div id="checkout-success-view" class="hidden p-8 text-center">
         <div class="w-14 h-14 mx-auto rounded-full bg-accent-soft border border-accent-soft flex items-center justify-center mb-4 shadow-accent-glow">
           <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -1570,6 +1922,11 @@
       </div>
     </div>
   </div>
+
+  <!-- ===================================================================== -->
+  <!-- REAL-TIME TERMINAL TOAST NOTIFICATION STACK (BOTTOM-RIGHT)            -->
+  <!-- ===================================================================== -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-[70] flex flex-col gap-2.5 max-w-sm w-[calc(100vw-2.5rem)] pointer-events-none"></div>
 
   <!-- ===================================================================== -->
   <!-- APPLICATION JAVASCRIPT                                                -->
@@ -1634,7 +1991,7 @@
     };
 
     /* =======================================================================
-       UTILITY HELPERS
+       UTILITY HELPERS & TERMINAL TOAST NOTIFICATIONS
     ======================================================================= */
     function setText(id, value) {
       const el = document.getElementById(id);
@@ -1649,13 +2006,134 @@
         .replace(/"/g, '&quot;');
     }
 
+    function showToast(title, subtitle = '', tone = 'accent') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const dotClass = tone === 'gold' ? 'bg-gold' : tone === 'rose' ? 'bg-rose-400' : 'bg-accent';
+      const borderClass = tone === 'gold' ? 'border-gold-soft' : tone === 'rose' ? 'border-rose-500/40' : 'border-accent-soft';
+
+      const toast = document.createElement('div');
+      toast.className = `pointer-events-auto p-3.5 rounded-xl bg-terminal/95 backdrop-blur-xl border ${borderClass} shadow-2xl flex items-start gap-3 animate-toast`;
+      toast.innerHTML = `
+        <span class="w-2 h-2 rounded-full ${dotClass} mt-1.5 shrink-0"></span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-mono font-bold text-white tracking-wide">${escapeHtml(title)}</div>
+          ${subtitle ? `<div class="text-[11px] text-slate-400 mt-0.5 leading-snug">${escapeHtml(subtitle)}</div>` : ''}
+        </div>
+      `;
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(16px)';
+        setTimeout(() => toast.remove(), 260);
+      }, 3600);
+    }
+
+    /* =======================================================================
+       0. SCROLL-REVEAL, ANIMATED COUNTERS, SPOTLIGHT & FOCUS READER
+    ======================================================================= */
+    function initPolishInteractions() {
+      // Staggered Scroll-Reveal Observer
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              // Trigger animated counters inside newly visible blocks
+              entry.target.querySelectorAll('[data-count-target]').forEach((el) => {
+                if (el.dataset.counted) return;
+                el.dataset.counted = '1';
+                animateCounter(el, Number(el.dataset.countTarget), el.dataset.countSuffix || '');
+              });
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => revealObserver.observe(el));
+      } else {
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // Cursor-Tracking Spotlight Glow on Cards
+      document.addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.spotlight-card');
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+
+      // ESC key closes modals cleanly
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeFocusReader();
+          closeAuthModal();
+          closeCheckoutModal();
+        }
+      });
+    }
+
+    function animateCounter(el, target, suffix) {
+      const duration = 900;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(target * eased);
+        el.textContent = current.toLocaleString('en-US') + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function openFocusReader() {
+      setText('reader-dispatch-num', document.getElementById('briefing-dispatch-num')?.textContent || 'DISPATCH #418');
+      setText('reader-timestamp', document.getElementById('briefing-timestamp')?.textContent || '');
+      setText('reader-headline', document.getElementById('briefing-headline')?.textContent || '');
+      setText('reader-summary', document.getElementById('briefing-summary')?.textContent || '');
+      setText('reader-takeaway-1', document.getElementById('briefing-takeaway-1')?.textContent || '');
+      setText('reader-takeaway-2', document.getElementById('briefing-takeaway-2')?.textContent || '');
+
+      const modal = document.getElementById('focus-reader-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeFocusReader() {
+      const modal = document.getElementById('focus-reader-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function filterDeskCalls(status, clickedBtn) {
+      document.querySelectorAll('.desk-filter-btn').forEach((btn) => {
+        btn.className = 'desk-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all';
+      });
+      if (clickedBtn) {
+        clickedBtn.className = 'desk-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-accent text-obsidian transition-all';
+      }
+      document.querySelectorAll('.desk-call-row').forEach((row) => {
+        row.classList.toggle('hidden', status !== 'all' && row.dataset.status !== status);
+      });
+    }
+
     /* =======================================================================
        1. SUPABASE AUTHENTICATION & TIER-BASED CONTENT UNLOCKING
     ======================================================================= */
     let supabaseClient = null;
     let currentUser = null;
-    let currentUserTier = 'free'; // 'free' | 'briefing' | 'alpha' | 'desk'
+    let currentUserTier = 'free';
     let activeAuthTab = 'signin';
+    let activeNarrativeSector = 'all';
+    let realtimeChannel = null;
 
     const SAMPLE_ALPHA_LEVELS = [
       { pair: '$RENDER / USDT', bias: 'LONG BIAS', entry_zone: '$7.45–$7.85', stop_or_target: 'STOP: $6.90', is_target: false },
@@ -1684,10 +2162,160 @@
               handleSignedOutUI();
             }
           });
+
+          loadLiveBriefing();
+          loadLiveNarratives();
+          loadLiveCatalysts();
+          initSupabaseRealtime();
         }
       } catch (err) {
         console.warn('Supabase initialization warning:', err);
       }
+    }
+
+    /* =======================================================================
+       1B. LIVE TERMINAL TABLES (BRIEFING, NARRATIVES, CATALYSTS) & REALTIME
+    ======================================================================= */
+    async function loadLiveBriefing() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('daily_briefings')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(1);
+
+        if (!error && Array.isArray(data) && data.length > 0) {
+          const b = data[0];
+          setText('briefing-dispatch-num', `DISPATCH #${b.dispatch_number}`);
+          setText('briefing-timestamp', b.published_label);
+          setText('briefing-headline', b.headline);
+          setText('briefing-summary', b.summary);
+          setText('briefing-takeaway-1', b.takeaway_1);
+          setText('briefing-takeaway-2', b.takeaway_2);
+        }
+      } catch (err) {
+        console.warn('Daily briefing sync notice:', err);
+      }
+    }
+
+    async function loadLiveNarratives() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('narratives')
+          .select('*')
+          .order('sort_order', { ascending: true });
+
+        if (!error && Array.isArray(data) && data.length > 0) {
+          const grid = document.getElementById('narratives-grid');
+          if (!grid) return;
+
+          grid.innerHTML = data.map((item) => {
+            const isGold = item.accent_style === 'gold';
+            const badgeClass = isGold ? 'bg-gold-soft text-gold' : 'bg-accent-soft text-accent';
+            const scoreClass = Number(item.conviction) >= 9.0 ? 'text-accent' : 'text-gold';
+            const hiddenClass = (activeNarrativeSector !== 'all' && item.sector !== activeNarrativeSector) ? ' hidden' : '';
+
+            return `
+              <div class="spotlight-card narrative-card p-5 rounded-2xl bg-terminal border border-borderdark hover-border-accent transition-all${hiddenClass}" data-sector="${escapeHtml(item.sector)}">
+                <div class="flex items-center justify-between text-xs font-mono mb-3">
+                  <span class="px-2 py-0.5 rounded ${badgeClass} font-semibold">${escapeHtml(item.sector_label)}</span>
+                  <span class="${scoreClass} font-bold">CONVICTION: ${Number(item.conviction).toFixed(1)}/10</span>
+                </div>
+                <h4 class="font-display text-lg font-bold text-white">${escapeHtml(item.title)}</h4>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed">${escapeHtml(item.description)}</p>
+                <div class="mt-4 pt-3 border-t border-borderdark flex items-center justify-between text-xs font-mono">
+                  <span class="text-slate-400">LEADERS</span>
+                  <span class="text-white">${escapeHtml(item.leaders)}</span>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      } catch (err) {
+        console.warn('Narratives sync notice:', err);
+      }
+    }
+
+    async function loadLiveCatalysts() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('catalysts')
+          .select('*')
+          .order('sort_order', { ascending: true });
+
+        if (!error && Array.isArray(data) && data.length > 0) {
+          const tbody = document.getElementById('catalysts-tbody');
+          if (!tbody) return;
+
+          const impactMap = {
+            accent: 'bg-accent-soft text-accent',
+            rose:   'bg-rose-500/15 text-rose-400',
+            gold:   'bg-gold-soft text-gold',
+            amber:  'bg-amber-500/15 text-amber-300'
+          };
+          const biasMap = {
+            accent: 'text-accent',
+            rose:   'text-rose-400',
+            gold:   'text-gold'
+          };
+
+          tbody.innerHTML = data.map((row) => {
+            const impactCls = impactMap[row.impact_tone] || impactMap.accent;
+            const biasCls = biasMap[row.bias_tone] || biasMap.accent;
+            return `
+              <tr class="hover:bg-terminalhover/60 transition-colors">
+                <td class="py-4 px-5 font-mono text-xs text-slate-300">${escapeHtml(row.event_date)}</td>
+                <td class="py-4 px-5 font-semibold text-white">${escapeHtml(row.asset_name)}</td>
+                <td class="py-4 px-5 text-slate-300">${escapeHtml(row.catalyst_desc)}</td>
+                <td class="py-4 px-5"><span class="px-2 py-0.5 rounded text-xs font-mono ${impactCls}">${escapeHtml(row.impact_label)}</span></td>
+                <td class="py-4 px-5 text-right font-mono text-xs ${biasCls}">${escapeHtml(row.desk_bias)}</td>
+              </tr>
+            `;
+          }).join('');
+        }
+      } catch (err) {
+        console.warn('Catalysts sync notice:', err);
+      }
+    }
+
+    function initSupabaseRealtime() {
+      if (!supabaseClient || realtimeChannel) return;
+
+      const badge = document.getElementById('terminal-realtime-badge');
+
+      realtimeChannel = supabaseClient
+        .channel('floss-terminal-realtime')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'daily_briefings' }, () => {
+          loadLiveBriefing();
+          showToast('LIVE BRIEFING UPDATED', 'New morning dispatch synced via Supabase Realtime.');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'narratives' }, () => {
+          loadLiveNarratives();
+          showToast('NARRATIVE RADAR UPDATED', 'Hot sector convictions refreshed in real time.', 'gold');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'catalysts' }, () => {
+          loadLiveCatalysts();
+          showToast('CATALYST CALENDAR SYNCED', 'New unlock or catalyst event pushed live.', 'gold');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'trade_levels' }, () => {
+          if (currentUserTier === 'alpha' || currentUserTier === 'desk') {
+            loadAlphaTradeLevels(Boolean(currentUser && currentUser.isDemo));
+            showToast('NEW ALPHA SETUP PUSHED', 'Live trade levels updated inside your terminal.');
+          }
+        })
+        .subscribe((status) => {
+          if (!badge) return;
+          if (status === 'SUBSCRIBED') {
+            badge.textContent = 'SUPABASE REALTIME • LIVE';
+            badge.className = 'px-2 py-0.5 rounded bg-accent-soft border border-accent-soft text-[10px] text-accent tracking-wider font-bold';
+          } else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
+            badge.textContent = 'LIVE SYNC • STANDBY';
+            badge.className = 'px-2 py-0.5 rounded bg-obsidian border border-borderdark text-[10px] text-slate-400 tracking-wider';
+          }
+        });
     }
 
     async function handleSignedInUser(user) {
@@ -1949,12 +2577,14 @@
           const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
           if (error) throw error;
           showAuthFeedback('Authenticated! Syncing your Floss Terminal tier...', 'success');
+          showToast('SIGNED IN', `Welcome back, ${email}`);
           setTimeout(() => closeAuthModal(), 800);
         } else if (activeAuthTab === 'signup') {
           const { data, error } = await supabaseClient.auth.signUp({ email, password });
           if (error) throw error;
           if (data && data.session) {
             showAuthFeedback('Account created and signed in!', 'success');
+            showToast('ACCOUNT CREATED', `Signed in as ${email}`);
             setTimeout(() => closeAuthModal(), 900);
           } else {
             showAuthFeedback('Account created! Please check your email inbox to confirm your address before signing in.', 'success');
@@ -1966,6 +2596,7 @@
           });
           if (error) throw error;
           showAuthFeedback('Magic link sent! Open the email from Supabase to sign in instantly.', 'success');
+          showToast('MAGIC LINK SENT', `Check ${email} to sign in.`);
         }
       } catch (err) {
         showAuthFeedback(err.message || 'Authentication error. Please verify your email and password.', 'error');
@@ -1983,6 +2614,11 @@
       };
       handleSignedInUser(demoUser);
       closeAuthModal();
+      showToast(
+        tier === 'alpha' ? 'ALPHA DEMO UNLOCKED' : 'FREE DEMO ACTIVE',
+        tier === 'alpha' ? 'Alpha Trade Levels are now unblurred.' : 'Showing standard free member view.',
+        tier === 'alpha' ? 'accent' : 'gold'
+      );
       const preview = document.getElementById('preview');
       if (preview) preview.scrollIntoView({ behavior: 'smooth' });
     }
@@ -1996,17 +2632,18 @@
         console.warn('Sign out notice:', err);
       }
       handleSignedOutUI();
+      showToast('SIGNED OUT', 'Your Floss Terminal session has ended.', 'gold');
     }
 
     /* =======================================================================
        2. LIVE COLOR ACCENT CUSTOMIZER ENGINE
     ======================================================================= */
     const THEME_PRESETS = {
-      emerald: { primary: '#10B981', gold: '#D4AF37' },
-      cyan:    { primary: '#06B6D4', gold: '#38BDF8' },
-      violet:  { primary: '#8B5CF6', gold: '#E879F9' },
-      amber:   { primary: '#F59E0B', gold: '#FBBF24' },
-      crimson: { primary: '#F43F5E', gold: '#FB7185' }
+      emerald: { primary: '#10B981', gold: '#D4AF37', label: 'Emerald & Gold' },
+      cyan:    { primary: '#06B6D4', gold: '#38BDF8', label: 'Quant Cyan' },
+      violet:  { primary: '#8B5CF6', gold: '#E879F9', label: 'Royal Violet' },
+      amber:   { primary: '#F59E0B', gold: '#FBBF24', label: 'Obsidian Amber' },
+      crimson: { primary: '#F43F5E', gold: '#FB7185', label: 'Crimson Desk' }
     };
 
     function hexToRgbTuple(hex) {
@@ -2050,6 +2687,7 @@
           btn.classList.add('border-transparent');
         }
       });
+      showToast('TERMINAL THEME UPDATED', `Switched accent to ${preset.label}.`);
     }
 
     function applyCustomHex(hex) {
@@ -2131,6 +2769,7 @@
         if (data.success) {
           if (successBox) successBox.classList.remove('hidden');
           if (emailInput) emailInput.value = '';
+          showToast('DISPATCH SUBSCRIBED', 'Check your inbox for the 6:00 AM EST Floss Briefing.');
         } else {
           throw new Error(data.message || 'Submission failed');
         }
@@ -2161,6 +2800,7 @@
     }
 
     function filterNarratives(sector, clickedBtn) {
+      activeNarrativeSector = sector;
       document.querySelectorAll('.narrative-filter-btn').forEach((btn) => {
         btn.className = 'narrative-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-obsidian text-slate-300 border border-borderdark hover:border-slate-500 transition-all';
       });
@@ -2471,8 +3111,8 @@
     ======================================================================= */
     let currentBilling = 'annual';
     let modalSelectedTier = 'Floss Alpha';
-    let modalPaymentMethod = 'card'; // 'card' | 'crypto'
-    let modalUsdcMode = 'direct';    // 'direct' | 'hosted'
+    let modalPaymentMethod = 'card';
+    let modalUsdcMode = 'direct';
     let selectedUsdcNetwork = 'base';
 
     const TIER_PRICING = {
@@ -2602,11 +3242,22 @@
 
     function copyUsdcAddress() {
       const addr = FLOSS_CONFIG.usdcWallets[selectedUsdcNetwork] || '';
-      if (navigator.clipboard && addr) {
-        navigator.clipboard.writeText(addr).then(() => {
-          setText('usdc-copy-btn', 'Copied!');
-          setTimeout(() => setText('usdc-copy-btn', 'Copy'), 1600);
-        });
+      if (!addr) return;
+      try {
+        const temp = document.createElement('textarea');
+        temp.value = addr;
+        temp.setAttribute('readonly', '');
+        temp.style.position = 'absolute';
+        temp.style.left = '-9999px';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        setText('usdc-copy-btn', 'Copied!');
+        showToast('USDC ADDRESS COPIED', `${selectedUsdcNetwork.toUpperCase()} wallet copied to clipboard.`);
+        setTimeout(() => setText('usdc-copy-btn', 'Copy'), 1600);
+      } catch (err) {
+        console.warn('Copy failed:', err);
       }
     }
 
@@ -2641,7 +3292,6 @@
       setText('summary-total', isAnnual ? `$${dueAmount.toLocaleString()} / yr` : `$${dueAmount} / mo`);
       setText('checkout-submit-btn', submitLabel);
 
-      // Update Direct USDC fields
       setText('usdc-network-label', `SEND EXACT USDC (${selectedUsdcNetwork.toUpperCase()}):`);
       setText('usdc-exact-amount', `${dueAmount.toLocaleString()} USDC`);
       setText('usdc-wallet-address', FLOSS_CONFIG.usdcWallets[selectedUsdcNetwork] || '');
@@ -2669,7 +3319,6 @@
       const email = emailEl ? emailEl.value.trim() : '';
       const placeholderCard = document.getElementById('checkout-placeholder-card');
 
-      // ROUTE 1: DIRECT ON-CHAIN USDC WALLET TRANSFER
       if (modalPaymentMethod === 'crypto' && modalUsdcMode === 'direct') {
         const wallet = FLOSS_CONFIG.usdcWallets[selectedUsdcNetwork] || '';
         const txHash = (document.getElementById('usdc-tx-hash')?.value || '').trim();
@@ -2689,7 +3338,6 @@
           return;
         }
 
-        // Forward USDC verification receipt to Web3Forms
         const hasWeb3Forms = FLOSS_CONFIG.web3formsAccessKey && !FLOSS_CONFIG.web3formsAccessKey.includes('YOUR_WEB3FORMS');
         if (hasWeb3Forms) {
           try {
@@ -2719,10 +3367,10 @@
 
         document.getElementById('checkout-form-view')?.classList.add('hidden');
         document.getElementById('checkout-success-view')?.classList.remove('hidden');
+        showToast('USDC TXID LOGGED', 'Verification sent to the Floss Academy desk.');
         return;
       }
 
-      // ROUTE 2: HOSTED CHECKOUT LINK (CARD WHOP OR HOSTED CRYPTO USDC)
       const url = FLOSS_CONFIG.paymentLinks[tierKey][currentBilling][modalPaymentMethod];
 
       if (!url || url.includes('YOUR_')) {
@@ -2789,9 +3437,13 @@
           });
           document.querySelectorAll(`[data-cg-change="${coinId}"]`).forEach((el) => {
             el.textContent = formattedChange;
-            el.className = isPositive
-              ? 'text-accent bg-accent-soft px-1.5 py-0.5 rounded'
-              : 'text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded';
+            if (el.closest('.ticker-track')) {
+              el.className = isPositive
+                ? 'text-accent bg-accent-soft px-1.5 py-0.5 rounded'
+                : 'text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded';
+            } else {
+              el.className = isPositive ? 'text-accent font-semibold' : 'text-rose-400 font-semibold';
+            }
           });
         });
 
@@ -2803,15 +3455,75 @@
     }
 
     /* =======================================================================
+       7B. LIVE CRYPTO FEAR & GREED INDEX API (ALTERNATIVE.ME)
+    ======================================================================= */
+    async function fetchLiveFearAndGreed() {
+      try {
+        const res = await fetch('https://api.alternative.me/fng/?limit=1', {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error(`FNG HTTP ${res.status}`);
+        const json = await res.json();
+        const entry = json && Array.isArray(json.data) ? json.data[0] : null;
+        if (!entry || !entry.value) return;
+
+        const val = parseInt(entry.value, 10);
+        const label = String(entry.value_classification || 'Neutral').toUpperCase();
+
+        let toneClass = 'bg-amber-500/10 border-amber-500/25 text-amber-400';
+        let scoreColor = 'text-amber-400';
+        if (val <= 25) {
+          toneClass = 'bg-rose-500/15 border-rose-500/30 text-rose-400';
+          scoreColor = 'text-rose-400';
+        } else if (val >= 55) {
+          toneClass = 'bg-accent-soft border-accent-soft text-accent';
+          scoreColor = 'text-accent';
+        } else if (val >= 45 && val < 55) {
+          toneClass = 'bg-slate-800/80 border-borderdark text-slate-200';
+          scoreColor = 'text-slate-200';
+        }
+
+        document.querySelectorAll('[data-fng-ticker]').forEach((el) => {
+          el.textContent = `Fear & Greed: ${val} (${entry.value_classification})`;
+          el.className = `px-2 py-0.5 rounded border font-semibold ${toneClass}`;
+        });
+
+        const briefingBadge = document.getElementById('briefing-fng-badge');
+        if (briefingBadge) {
+          briefingBadge.textContent = `FEAR & GREED: ${val} (${label})`;
+          briefingBadge.className = `text-xs font-mono border px-2.5 py-1 rounded-md ${toneClass}`;
+        }
+
+        // Sync Live Sentiment Gauge in Market Pulse Bar
+        const pulseScore = document.getElementById('pulse-fng-score');
+        if (pulseScore) {
+          pulseScore.textContent = String(val);
+          pulseScore.className = `font-mono text-2xl font-bold ${scoreColor}`;
+        }
+        setText('pulse-fng-label', label);
+        const marker = document.getElementById('pulse-fng-marker');
+        if (marker) {
+          marker.style.left = `${Math.max(2, Math.min(94, val))}%`;
+        }
+      } catch (err) {
+        console.warn('Fear & Greed API fallback active:', err);
+      }
+    }
+
+    /* =======================================================================
        8. INITIALIZATION ON WINDOW LOAD
     ======================================================================= */
     window.addEventListener('load', () => {
+      initPolishInteractions();
       initSupabase();
       recalculateSimulator();
       fetchLiveCoinGeckoPrices();
+      fetchLiveFearAndGreed();
       setInterval(fetchLiveCoinGeckoPrices, FLOSS_CONFIG.coingeckoRefreshMs || 60000);
+      setInterval(fetchLiveFearAndGreed, 300000);
 
       const canvas = document.getElementById('roi-canvas');
+      const tooltip = document.getElementById('roi-tooltip');
       if (canvas) {
         canvas.addEventListener('mousemove', (e) => handleChartPointer(e.clientX));
         canvas.addEventListener('touchmove', (e) => {
@@ -2819,8 +3531,7 @@
         }, { passive: true });
         canvas.addEventListener('mouseleave', () => {
           simState.hoverIndex = -1;
-          const tt = document.getElementById('roi-tooltip');
-          if (tt) tt.classList.add('hidden');
+          if (tooltip) tooltip.classList.add('hidden');
           drawRoiChart();
         });
       }
