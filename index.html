@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Floss Academy — Institutional Crypto Intelligence &amp; Alpha Terminal</title>
-  <meta name="description" content="Daily 6:00 AM EST institutional crypto briefings, early narrative rotation radar across AI x DePIN, RWA, Perp DEXs &amp; ZK Privacy, and exact invalidation levels." />
+  <meta name="description" content="Daily 6:00 AM EST institutional crypto briefings, early narrative rotation radar across Perp DEXs, RWA, ZK Privacy, AI x DePIN &amp; L1 Infra, and exact invalidation levels." />
   <meta name="theme-color" content="#07090D" />
 
   <!-- Custom Geometric SVG Brand Favicon -->
@@ -73,13 +73,14 @@
       position: relative;
     }
 
+    /* Subtle institutional grain overlay */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 60;
-      opacity: 0.028;
+      opacity: 0.026;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
@@ -152,20 +153,14 @@
     }
     .spotlight-card:hover::after { opacity: 1; }
 
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-
     .ambient-primary {
-      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16) 0%, rgba(var(--accent-rgb), 0) 70%);
+      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.15) 0%, rgba(var(--accent-rgb), 0) 70%);
     }
     .ambient-secondary {
-      background: radial-gradient(circle, rgba(var(--gold-rgb), 0.14) 0%, rgba(var(--gold-rgb), 0) 70%);
+      background: radial-gradient(circle, rgba(var(--gold-rgb), 0.13) 0%, rgba(var(--gold-rgb), 0) 70%);
     }
 
+    /* Range sliders */
     input[type="range"].accent-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -198,6 +193,7 @@
       cursor: pointer;
     }
 
+    /* Seamless Ticker Animation */
     @keyframes tickerScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -240,7 +236,7 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
         </span>
-        <span id="ticker-feed-status" class="text-[11px] uppercase tracking-wider text-slate-300 font-semibold">LIVE COINGECKO • SYNCING</span>
+        <span id="ticker-feed-status" class="text-[11px] uppercase tracking-wider text-slate-300 font-semibold">LIVE FEED • CONNECTING</span>
       </div>
 
       <div class="overflow-hidden flex-1 py-2">
@@ -249,76 +245,2320 @@
           <div class="flex items-center gap-7 px-4">
             <span class="flex items-center gap-2">
               <span class="text-slate-400">BTC</span>
-              <span data-cg-price="bitcoin" class="text-white font-semibold">$61,420</span>
-              <span data-cg-change="bitcoin" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.4%</span>
+              <span data-cg-price="bitcoin" class="text-white font-semibold">$60,595</span>
+              <span data-cg-change="bitcoin" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.4%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">ETH</span>
-              <span data-cg-price="ethereum" class="text-white font-semibold">$1,716</span>
-              <span data-cg-change="ethereum" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.1%</span>
+              <span data-cg-price="ethereum" class="text-white font-semibold">$1,703</span>
+              <span data-cg-change="ethereum" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+0.8%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">SOL</span>
-              <span data-cg-price="solana" class="text-white font-semibold">$74.50</span>
-              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.0%</span>
+              <span data-cg-price="solana" class="text-white font-semibold">$71.71</span>
+              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.1%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
-              <span class="text-gold font-semibold">AI x DePIN</span>
+              <span class="text-gold font-semibold">PERP DEX</span>
+              <span class="text-slate-400">HYPE</span>
+              <span data-cg-price="hyperliquid" class="text-white font-semibold">$63.93</span>
+              <span data-cg-change="hyperliquid" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.3%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">ZEC</span>
+              <span data-cg-price="zcash" class="text-white font-semibold">$788</span>
+              <span data-cg-change="zcash" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.8%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
               <span class="text-slate-400">RENDER</span>
-              <span data-cg-price="render-token" class="text-white font-semibold">$7.85</span>
-              <span data-cg-change="render-token" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+6.2%</span>
+              <span data-cg-price="render-token" class="text-white font-semibold">$1.33</span>
+              <span data-cg-change="render-token" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.1%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">ONDO</span>
-              <span data-cg-price="ondo-finance" class="text-white font-semibold">$1.14</span>
-              <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.1%</span>
+              <span data-cg-price="ondo-finance" class="text-white font-semibold">$0.2898</span>
+              <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.9%</span>
             </span>
             <span class="text-borderdark">|</span>
-            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 18</span>
+            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 21</span>
             <span class="text-borderdark">|</span>
-            <span data-defi-tvl class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">DeFi TVL: Syncing...</span>
+            <span data-defi-tvl class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">DeFi TVL: $68.9B</span>
             <span class="text-borderdark">|</span>
-            <span data-btc-dom-ticker class="px-2 py-0.5 rounded bg-gold-soft text-gold font-semibold">BTC.D: --%</span>
-            <span class="text-borderdark">|</span>
-            <span data-zk-ticker class="px-2 py-0.5 rounded bg-slate-800/80 text-slate-200 font-semibold">ZK Privacy --%</span>
+            <span data-btc-dom-ticker class="px-2 py-0.5 rounded bg-gold-soft text-gold font-semibold">BTC.D: 58.8%</span>
           </div>
 
           <!-- Set 2 (Seamless Clone) -->
           <div class="flex items-center gap-7 px-4" aria-hidden="true">
             <span class="flex items-center gap-2">
               <span class="text-slate-400">BTC</span>
-              <span data-cg-price="bitcoin" class="text-white font-semibold">$61,420</span>
-              <span data-cg-change="bitcoin" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.4%</span>
+              <span data-cg-price="bitcoin" class="text-white font-semibold">$60,595</span>
+              <span data-cg-change="bitcoin" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.4%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">ETH</span>
-              <span data-cg-price="ethereum" class="text-white font-semibold">$1,716</span>
-              <span data-cg-change="ethereum" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.1%</span>
+              <span data-cg-price="ethereum" class="text-white font-semibold">$1,703</span>
+              <span data-cg-change="ethereum" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+0.8%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">SOL</span>
-              <span data-cg-price="solana" class="text-white font-semibold">$74.50</span>
-              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.0%</span>
+              <span data-cg-price="solana" class="text-white font-semibold">$71.71</span>
+              <span data-cg-change="solana" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.1%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
-              <span class="text-gold font-semibold">AI x DePIN</span>
+              <span class="text-gold font-semibold">PERP DEX</span>
+              <span class="text-slate-400">HYPE</span>
+              <span data-cg-price="hyperliquid" class="text-white font-semibold">$63.93</span>
+              <span data-cg-change="hyperliquid" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.3%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
+              <span class="text-slate-400">ZEC</span>
+              <span data-cg-price="zcash" class="text-white font-semibold">$788</span>
+              <span data-cg-change="zcash" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.8%</span>
+            </span>
+            <span class="text-borderdark">|</span>
+            <span class="flex items-center gap-2">
               <span class="text-slate-400">RENDER</span>
-              <span data-cg-price="render-token" class="text-white font-semibold">$7.85</span>
-              <span data-cg-change="render-token" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+6.2%</span>
+              <span data-cg-price="render-token" class="text-white font-semibold">$1.33</span>
+              <span data-cg-change="render-token" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+3.1%</span>
             </span>
             <span class="text-borderdark">|</span>
             <span class="flex items-center gap-2">
               <span class="text-slate-400">ONDO</span>
-              <span data-cg-price="ondo-finance" class="text-white font-semibold">$1.14</span>
-              <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+4.1%</span>
+              <span data-cg-price="ondo-finance" class="text-white font-semibold">$0.2898</span>
+              <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.9%</span>
             </span>
             <span class="text-borderdark">|</span>
-            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 18</span>
-            <span
+            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 21</span>
+            <span class="text-borderdark">|</span>
+            <span data-defi-tvl class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">DeFi TVL: $68.9B</span>
+            <span class="text-borderdark">|</span>
+            <span data-btc-dom-ticker class="px-2 py-0.5 rounded bg-gold-soft text-gold font-semibold">BTC.D: 58.8%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. STICKY INSTITUTIONAL NAVIGATION BAR                                -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 w-full bg-[#07090D]/85 backdrop-blur-xl border-b border-borderdark/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Mark -->
+      <a href="#" class="flex items-center gap-3 group shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-terminal border border-accent-soft flex items-center justify-center shadow-accent-glow group-hover:scale-105 transition">
+          <svg class="w-5 h-5" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8L53 20V44L32 56L11 44V20L32 8Z" stroke="#10B981" stroke-width="4" stroke-linejoin="round" />
+            <path d="M32 56V32M53 20L32 32L11 20" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="32" cy="32" r="5.5" fill="#D4AF37" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white leading-none">FLOSS ACADEMY</span>
+          <span class="font-mono text-[10px] tracking-widest text-accent uppercase mt-0.5">Institutional Alpha Desk</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#preview" class="hover:text-white transition">Live Terminal</a>
+        <a href="#narratives" class="hover:text-white transition">Narratives</a>
+        <a href="#track-record" class="hover:text-white transition">Execution Ledger</a>
+        <a href="#simulator" class="hover:text-white transition">Edge Calculator</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+      </nav>
+
+      <!-- Desktop Actions -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button id="nav-auth-btn" type="button" onclick="openAuthModal()" class="px-4 py-2 rounded-xl border border-borderdark bg-terminal hover:bg-terminalhover hover-border-accent text-xs font-mono font-semibold text-slate-200 transition flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-slate-500" id="nav-auth-dot"></span>
+          <span id="nav-auth-label">Member Login</span>
+        </button>
+        <a href="#pricing" class="px-4 py-2 rounded-xl btn-accent-primary text-xs font-bold tracking-wide uppercase">
+          Unlock Desk
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-btn" type="button" aria-label="Open menu" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-borderdark bg-terminal text-slate-300 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-borderdark bg-[#080B10] px-4 py-4 space-y-3 animate-panel">
+      <a href="#preview" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Live Terminal</a>
+      <a href="#narratives" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Narrative Radar</a>
+      <a href="#track-record" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Execution Ledger</a>
+      <a href="#simulator" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Edge Calculator</a>
+      <a href="#pricing" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Pricing &amp; Access</a>
+      <div class="pt-2 border-t border-borderdark flex flex-col gap-2">
+        <button type="button" onclick="closeMobileMenu(); openAuthModal();" class="w-full py-2.5 rounded-xl border border-borderdark bg-terminal text-xs font-mono font-semibold text-slate-200">
+          Member Login / Account
+        </button>
+        <a href="#pricing" onclick="closeMobileMenu()" class="w-full py-2.5 rounded-xl btn-accent-primary text-center text-xs font-bold uppercase">
+          Unlock Floss Alpha
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 3. HERO SECTION + FREE 6:00 AM BRIEFING LEAD CAPTURE                  -->
+  <!-- ===================================================================== -->
+  <section class="relative overflow-hidden bg-terminal-grid border-b border-borderdark/80">
+    <!-- Ambient radial glows -->
+    <div class="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 w-[780px] h-[420px] ambient-primary blur-3xl"></div>
+    <div class="pointer-events-none absolute top-44 -right-24 w-[460px] h-[460px] ambient-secondary blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 sm:pt-20 sm:pb-20 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Dispatch Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-terminal/90 border border-accent-soft text-xs font-mono text-slate-200 mb-6 shadow-accent-glow">
+          <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+          <span class="text-accent font-semibold">DISPATCH #420 LIVE</span>
+          <span class="text-slate-500">•</span>
+          <span>NOV 24, 2026 • 06:00 EST</span>
+        </div>
+
+        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.08]">
+          Front-Run Crypto's Next <br class="hidden sm:inline" />
+          <span class="text-accent-gradient">Narrative Rotation</span> Before Retail Wakes Up.
+        </h1>
+
+        <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Every morning at <span class="text-white font-semibold">6:00 AM EST</span>, Floss Academy distills Hyperliquid perp funding, DeFiLlama stablecoin flows, token unlock shocks, and exact invalidation levels into a 5-minute institutional briefing.
+        </p>
+
+        <!-- Free Briefing Lead Capture Form (Web3Forms + UTM Tracking) -->
+        <form id="hero-lead-form" class="mt-8 max-w-xl mx-auto">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
+          <div class="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl bg-terminal/90 border border-borderdark shadow-2xl">
+            <input
+              id="hero-email-input"
+              type="email"
+              required
+              placeholder="Enter your email for the free 6:00 AM EST briefing..."
+              class="flex-1 bg-transparent px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none rounded-xl"
+            />
+            <button
+              id="hero-submit-btn"
+              type="submit"
+              class="btn-accent-primary px-6 py-3 rounded-xl text-sm font-bold tracking-wide whitespace-nowrap"
+            >
+              Get Free Briefing →
+            </button>
+          </div>
+          <div id="hero-form-status" class="mt-3 text-xs font-mono text-slate-400 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <span>✓ 100% Reader-Funded</span>
+            <span>✓ Zero Sponsored Shills</span>
+            <span>✓ Unsubscribe in 1 Click</span>
+          </div>
+        </form>
+
+        <!-- Verifiable Operational Proof Strip -->
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
+          <div class="rounded-2xl bg-terminal/85 border border-borderdark p-4 spotlight-card">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Delivery Cadence</div>
+            <div class="mt-1 font-display font-bold text-xl sm:text-2xl text-white">06:00 EST</div>
+            <div class="mt-1 text-xs text-accent font-mono">Daily Macro + Alt Flows</div>
+          </div>
+          <div class="rounded-2xl bg-terminal/85 border border-borderdark p-4 spotlight-card">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Live Telemetry Feeds</div>
+            <div class="mt-1 font-display font-bold text-xl sm:text-2xl text-white">5 Real-Time</div>
+            <div class="mt-1 text-xs text-gold font-mono">Spot • Perps • TVL • News</div>
+          </div>
+          <div class="rounded-2xl bg-terminal/85 border border-borderdark p-4 spotlight-card">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Independence Charter</div>
+            <div class="mt-1 font-display font-bold text-xl sm:text-2xl text-white">0% Paid Calls</div>
+            <div class="mt-1 text-xs text-slate-300 font-mono">Zero Token Retainers</div>
+          </div>
+          <div class="rounded-2xl bg-terminal/85 border border-borderdark p-4 spotlight-card">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Execution Policy</div>
+            <div class="mt-1 font-display font-bold text-xl sm:text-2xl text-white">Defined Risk</div>
+            <div class="mt-1 text-xs text-accent font-mono">Entry Zone + Hard Stop</div>
+          </div>
+        </div>
+
+        <!-- Data Sources Trust Strip -->
+        <div class="mt-10 pt-6 border-t border-borderdark/70 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-widest text-slate-500">
+          <span class="text-slate-400">Telemetry Stack:</span>
+          <span>CoinGecko</span>
+          <span>•</span>
+          <span>Hyperliquid</span>
+          <span>•</span>
+          <span>DeFiLlama</span>
+          <span>•</span>
+          <span>Alternative.me</span>
+          <span>•</span>
+          <span>CryptoCompare</span>
+          <span>•</span>
+          <span>Supabase Realtime</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. LIVE MARKET PULSE & ON-CHAIN TELEMETRY STRIP                       -->
+  <!-- ===================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+      <div>
+        <span class="text-[11px] font-mono uppercase tracking-widest text-accent">Real-Time Derivatives &amp; Liquidity Pulse</span>
+        <h2 class="font-display font-bold text-xl sm:text-2xl text-white mt-0.5">Live On-Chain Market Telemetry</h2>
+      </div>
+      <div class="text-xs font-mono text-slate-400 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        <span id="telemetry-last-sync">Synced with live APIs</span>
+      </div>
+    </div>
+
+    <!-- Top 4 Macro & Derivatives Metric Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+      <!-- Global Market Cap & BTC.D -->
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
+        <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
+          <span>Global Crypto Cap</span>
+          <span id="pulse-mcap-change" class="text-accent">+0.4%</span>
+        </div>
+        <div id="pulse-mcap" class="mt-2 font-mono font-bold text-2xl text-white">$2.11T</div>
+        <div class="mt-2 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>BTC.D: <strong id="pulse-btcd" class="text-gold">58.8%</strong></span>
+          <span>24h Vol: <strong id="pulse-vol" class="text-slate-200">$97.6B</strong></span>
+        </div>
+      </div>
+
+      <!-- Hyperliquid Perp Funding & OI -->
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
+        <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
+          <span>Hyperliquid BTC Perp</span>
+          <span class="px-1.5 py-0.5 rounded bg-gold-soft text-gold text-[10px]">LIVE CLOB</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="hl-funding-apr" class="font-mono font-bold text-2xl text-white">+2.6%</span>
+          <span class="text-xs font-mono text-slate-400">APR Funding</span>
+        </div>
+        <div class="mt-2 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>Total OI: <strong id="hl-total-oi" class="text-accent">$5.38B</strong></span>
+          <span id="hl-funding-regime" class="text-slate-300">Balanced</span>
+        </div>
+      </div>
+
+      <!-- DeFiLlama Stablecoin Dry Powder & TVL -->
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
+        <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
+          <span>Stablecoin Dry Powder</span>
+          <span class="text-accent text-[10px]">DEFILLAMA</span>
+        </div>
+        <div id="dl-stables" class="mt-2 font-mono font-bold text-2xl text-white">$281.1B</div>
+        <div class="mt-2 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>DeFi TVL: <strong id="dl-tvl-card" class="text-white">$68.9B</strong></span>
+          <span class="text-accent">On-Chain Liquidity</span>
+        </div>
+      </div>
+
+      <!-- Crypto Fear & Greed Sentiment -->
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
+        <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
+          <span>Market Sentiment</span>
+          <span id="fng-label" class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-semibold">EXTREME FEAR</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="fng-value" class="font-mono font-bold text-2xl text-white">21</span>
+          <span class="text-xs font-mono text-slate-400">/ 100 Index</span>
+        </div>
+        <div class="mt-3 w-full h-1.5 rounded-full bg-[#18202D] overflow-hidden">
+          <div id="fng-bar" class="h-full rounded-full bg-gradient-to-r from-rose-500 via-amber-400 to-emerald-400 transition-all duration-700" style="width: 21%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7D Sparklines for BTC / ETH / SOL -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 flex items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono text-slate-400">BTC / USD (7D)</div>
+          <div data-cg-price="bitcoin" class="font-mono font-bold text-lg text-white mt-0.5">$60,595</div>
+          <span data-cg-change="bitcoin" class="inline-block mt-1 text-[11px] font-mono text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.4%</span>
+        </div>
+        <div id="spark-bitcoin" class="w-32 h-12 shrink-0 flex items-center justify-end"></div>
+      </div>
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 flex items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono text-slate-400">ETH / USD (7D)</div>
+          <div data-cg-price="ethereum" class="font-mono font-bold text-lg text-white mt-0.5">$1,703</div>
+          <span data-cg-change="ethereum" class="inline-block mt-1 text-[11px] font-mono text-accent bg-accent-soft px-1.5 py-0.5 rounded">+0.8%</span>
+        </div>
+        <div id="spark-ethereum" class="w-32 h-12 shrink-0 flex items-center justify-end"></div>
+      </div>
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4 flex items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono text-slate-400">SOL / USD (7D)</div>
+          <div data-cg-price="solana" class="font-mono font-bold text-lg text-white mt-0.5">$71.71</div>
+          <span data-cg-change="solana" class="inline-block mt-1 text-[11px] font-mono text-accent bg-accent-soft px-1.5 py-0.5 rounded">+2.1%</span>
+        </div>
+        <div id="spark-solana" class="w-32 h-12 shrink-0 flex items-center justify-end"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. FLOSS INTELLIGENCE TERMINAL (DISPATCH + GATED LEVELS + CATALYSTS)  -->
+  <!-- ===================================================================== -->
+  <section id="preview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <div>
+        <span class="text-[11px] font-mono uppercase tracking-widest text-gold">Live Institutional Workspace</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Inside the Floss Terminal</h2>
+      </div>
+      <div class="flex items-center gap-2 text-xs font-mono">
+        <span id="supabase-status-badge" class="px-3 py-1.5 rounded-full bg-terminal border border-borderdark text-slate-300">
+          ● Supabase Sync Ready
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- LEFT COLUMN (7 cols): Daily Dispatch + Live News Wire -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        <!-- Daily Dispatch Card -->
+        <article class="rounded-2xl bg-terminal border border-borderdark p-6 sm:p-7 relative overflow-hidden">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-borderdark">
+            <div class="flex items-center gap-2.5">
+              <span id="briefing-dispatch-num" class="px-2.5 py-1 rounded-lg bg-accent-soft border border-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #420</span>
+              <span id="briefing-date-label" class="font-mono text-xs text-slate-400">NOV 24, 2026 • 06:00 EST</span>
+            </div>
+            <button type="button" onclick="openFocusReadModal()" class="px-3 py-1.5 rounded-xl border border-borderdark bg-[#090D14] hover:border-accent text-xs font-mono text-slate-200 transition">
+              Focus Read ↗
+            </button>
+          </div>
+
+          <h3 id="briefing-headline" class="mt-5 font-display font-bold text-xl sm:text-2xl text-white leading-snug">
+            BTC Defends $60.5K as $217M Monad Unlock Hits &amp; Markets Brace for PCE/GDP
+          </h3>
+
+          <p id="briefing-summary" class="mt-4 text-sm sm:text-[15px] text-slate-300 leading-relaxed">
+            Bitcoin is consolidating near $60,595 after probing $59,544 in early Asia following Monday's bounce off Saturday's $55,326 capitulation low ($1.8B in liquidations). ETH is defending the $1,703 shelf and SOL trades near $71.71 while South Korea's KOSPI surged +7.1%, offering a cautious risk-on bid even as November spot BTC ETF redemptions exceed $3.5B amid hawkish Fed minutes.
+          </p>
+
+          <div class="mt-6 space-y-3">
+            <div class="p-4 rounded-xl bg-[#080C12] border border-borderdark/90 flex gap-3">
+              <span class="font-mono text-xs font-bold text-accent mt-0.5">01</span>
+              <p id="briefing-takeaway-1" class="text-sm text-slate-300 leading-relaxed">
+                Supply shock live today: 16.61B Monad ($MON, ~$217.2M) unlocks into thinning Thanksgiving orderbooks, leading $567.2M+ in final-week November token emissions alongside Plasma ($10.1M) and SoSoValue ($6.0M).
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#080C12] border border-borderdark/90 flex gap-3">
+              <span class="font-mono text-xs font-bold text-gold mt-0.5">02</span>
+              <p id="briefing-takeaway-2" class="text-sm text-slate-300 leading-relaxed">
+                All eyes turn to tomorrow's (Wed, Nov 25, 8:30 AM ET) U.S. PCE inflation &amp; Q3 GDP doubleheader; meanwhile Hyperliquid ($HYPE at $63.93, +2.3% 24h) continues showing relative strength with $5.38B in open interest and $75.9M in 30d buybacks.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Live Institutional News Wire -->
+        <div class="rounded-2xl bg-terminal border border-borderdark p-6">
+          <div class="flex items-center justify-between pb-3 border-b border-borderdark">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <h3 class="font-display font-bold text-base text-white">Live Crypto Wire</h3>
+            </div>
+            <span class="text-[11px] font-mono text-slate-400">AUTO-CURATED HEADLINES</span>
+          </div>
+          <div id="live-news-list" class="mt-4 divide-y divide-borderdark/70 space-y-1">
+            <div class="py-2.5 text-sm text-slate-300">Loading real-time wire headlines...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN (5 cols): Gated Alpha Trade Levels + Catalyst Calendar -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+        <!-- Alpha Trade Levels Card (Supabase RLS Paywall) -->
+        <div class="rounded-2xl bg-terminal border border-borderdark p-6 relative overflow-hidden">
+          <div class="flex items-center justify-between gap-2 pb-4 border-b border-borderdark">
+            <div>
+              <h3 class="font-display font-bold text-base text-white">Alpha Trade Levels</h3>
+              <p class="text-xs font-mono text-slate-400 mt-0.5">Exact Entry Bands &amp; Invalidation Stops</p>
+            </div>
+            <span id="trade-levels-badge" class="px-2.5 py-1 rounded-lg bg-gold-soft border border-gold-soft text-gold font-mono text-[11px] font-bold">
+              ALPHA / DESK ONLY
+            </span>
+          </div>
+
+          <div class="relative mt-4">
+            <!-- Rows Container (Blurred when locked) -->
+            <div id="trade-levels-content" class="space-y-3 select-none blur-[6px] pointer-events-none transition duration-300">
+              <div class="p-3.5 rounded-xl bg-[#080C12] border border-borderdark flex items-center justify-between gap-2">
+                <div>
+                  <div class="font-mono font-bold text-sm text-white">$HYPE / USDC</div>
+                  <div class="text-[11px] font-mono text-accent">LONG BIAS • PERP DEX</div>
+                </div>
+                <div class="text-right font-mono text-xs">
+                  <div class="text-slate-200">ENTRY: $61.50 – $63.80</div>
+                  <div class="text-rose-400">STOP: $57.40</div>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-[#080C12] border border-borderdark flex items-center justify-between gap-2">
+                <div>
+                  <div class="font-mono font-bold text-sm text-white">$RENDER / USDT</div>
+                  <div class="text-[11px] font-mono text-accent">ACCUMULATE • AI DEPIN</div>
+                </div>
+                <div class="text-right font-mono text-xs">
+                  <div class="text-slate-200">ENTRY: $1.26 – $1.34</div>
+                  <div class="text-rose-400">STOP: $1.14</div>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-[#080C12] border border-borderdark flex items-center justify-between gap-2">
+                <div>
+                  <div class="font-mono font-bold text-sm text-white">$ONDO / USDT</div>
+                  <div class="text-[11px] font-mono text-gold">BREAKOUT • RWA</div>
+                </div>
+                <div class="text-right font-mono text-xs">
+                  <div class="text-slate-200">ENTRY: $0.275 – $0.292</div>
+                  <div class="text-accent">TARGET: $0.380</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paywall Overlay (Hidden automatically when logged-in tier is alpha/desk) -->
+            <div id="trade-levels-lock-overlay" class="absolute inset-0 flex flex-col items-center justify-center text-center p-5 rounded-xl bg-[#07090D]/60 backdrop-blur-[2px]">
+              <div class="w-10 h-10 rounded-xl bg-terminal border border-gold-soft flex items-center justify-center text-gold mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <div class="font-display font-bold text-base text-white">Member-Only Execution Levels</div>
+              <p class="mt-1 text-xs text-slate-300 max-w-xs">Sign in with an active Floss Alpha or Floss Desk account to unlock live database rows.</p>
+              <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+                <button type="button" onclick="openCheckoutModal('alpha')" class="btn-accent-primary px-4 py-2 rounded-xl text-xs font-bold uppercase">
+                  Unlock Alpha
+                </button>
+                <button type="button" onclick="openAuthModal()" class="px-4 py-2 rounded-xl border border-borderdark bg-terminal hover:bg-terminalhover text-xs font-mono text-slate-200">
+                  Member Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalyst & Token Unlock Calendar -->
+        <div class="rounded-2xl bg-terminal border border-borderdark p-6 flex-1">
+          <div class="flex items-center justify-between pb-4 border-b border-borderdark">
+            <div>
+              <h3 class="font-display font-bold text-base text-white">Catalyst &amp; Unlock Calendar</h3>
+              <p class="text-xs font-mono text-slate-400 mt-0.5">Nov 24 – Dec 09, 2026 Risk Window</p>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 font-mono text-[10px] font-bold">LIVE SCHEDULE</span>
+          </div>
+
+          <div id="catalysts-list" class="mt-4 space-y-3">
+            <!-- Dynamically rendered from DEFAULT_CATALYSTS or Supabase `catalysts` -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. EARLY SECTOR ROTATION RADAR (UPDATED NOV 24, 2026)                 -->
+  <!-- ===================================================================== -->
+  <section id="narratives" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-borderdark/70">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="text-[11px] font-mono uppercase tracking-widest text-accent">Early Sector Rotation Radar</span>
+          <span class="px-2 py-0.5 rounded-md bg-accent-soft border border-accent-soft text-accent font-mono text-[10px] font-bold">UPDATED NOV 24, 2026</span>
+        </div>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Where Smart Money Is Rotating</h2>
+      </div>
+      <!-- Sector Filter Pills -->
+      <div id="narrative-filters" class="flex flex-wrap gap-2">
+        <button type="button" data-sector="all" onclick="filterNarratives('all')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-accent text-[#07090D]">ALL SECTORS</button>
+        <button type="button" data-sector="perp-dex" onclick="filterNarratives('perp-dex')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">PERP DEXs</button>
+        <button type="button" data-sector="rwa" onclick="filterNarratives('rwa')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">RWA</button>
+        <button type="button" data-sector="zk-privacy" onclick="filterNarratives('zk-privacy')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">ZK PRIVACY</button>
+        <button type="button" data-sector="ai-depin" onclick="filterNarratives('ai-depin')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">AI x DePIN</button>
+        <button type="button" data-sector="l1-infra" onclick="filterNarratives('l1-infra')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">L1 / INFRA</button>
+      </div>
+    </div>
+
+    <div id="narratives-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Populated via JS / Supabase `narratives` -->
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. TRANSPARENT EXECUTION LEDGER (LIVE COINGECKO MARK-TO-MARKET)       -->
+  <!-- ===================================================================== -->
+  <section id="track-record" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-borderdark/70">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+      <div>
+        <span class="text-[11px] font-mono uppercase tracking-widest text-gold">Auditable Mark-to-Market Record</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Transparent Execution Ledger</h2>
+        <p class="mt-1.5 text-sm text-slate-400">Active desk watchlist marked to live CoinGecko spot prices every 60 seconds. Closed winners and stop-outs are locked permanently.</p>
+      </div>
+
+      <!-- Ledger Filter Tabs -->
+      <div class="flex items-center gap-2">
+        <button type="button" data-ledger-filter="all" onclick="setLedgerFilter('all')" class="ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-accent text-[#07090D]">ALL</button>
+        <button type="button" data-ledger-filter="active" onclick="setLedgerFilter('active')" class="ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">ACTIVE</button>
+        <button type="button" data-ledger-filter="closed" onclick="setLedgerFilter('closed')" class="ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">CLOSED</button>
+      </div>
+    </div>
+
+    <!-- Ledger Performance Summary Strip -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4">
+        <div class="text-[11px] font-mono uppercase text-slate-400">Ledger Status</div>
+        <div id="ledger-stat-primary" class="mt-1 font-mono font-bold text-xl text-accent">LIVE TRACKING</div>
+        <div id="ledger-stat-primary-sub" class="mt-0.5 text-xs font-mono text-slate-400">Ledger Inception: NOV 24, 2026</div>
+      </div>
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4">
+        <div class="text-[11px] font-mono uppercase text-slate-400">Active Watched Setups</div>
+        <div id="ledger-stat-active" class="mt-1 font-mono font-bold text-xl text-white">6 Positions</div>
+        <div class="mt-0.5 text-xs font-mono text-slate-400">Marked to CoinGecko Spot</div>
+      </div>
+      <div class="rounded-2xl bg-terminal border border-borderdark p-4">
+        <div class="text-[11px] font-mono uppercase text-slate-400">Closed Performance</div>
+        <div id="ledger-stat-closed" class="mt-1 font-mono font-bold text-xl text-gold">Awaiting 1st Close</div>
+        <div id="ledger-stat-closed-sub" class="mt-0.5 text-xs font-mono text-slate-400">Win Rate &amp; Avg R:R Auto-Calculate</div>
+      </div>
+    </div>
+
+    <!-- Responsive Table -->
+    <div class="rounded-2xl bg-terminal border border-borderdark overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[680px]">
+          <thead>
+            <tr class="border-b border-borderdark bg-[#090D14] text-[11px] font-mono uppercase tracking-wider text-slate-400">
+              <th class="py-3.5 px-5">Dispatch</th>
+              <th class="py-3.5 px-4">Pair</th>
+              <th class="py-3.5 px-4">Narrative</th>
+              <th class="py-3.5 px-4">Entry Zone</th>
+              <th class="py-3.5 px-4">Live / Ref Spot</th>
+              <th class="py-3.5 px-4">Status</th>
+              <th class="py-3.5 px-5 text-right">Return (PnL)</th>
+            </tr>
+          </thead>
+          <tbody id="desk-calls-tbody" class="divide-y divide-borderdark/70 text-sm">
+            <!-- Populated via JS / Supabase `desk_calls` -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 8. INTERACTIVE EDGE & RISK-REWARD CALCULATOR                          -->
+  <!-- ===================================================================== -->
+  <section id="simulator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-borderdark/70">
+    <div class="rounded-3xl bg-terminal border border-borderdark p-6 sm:p-10 relative overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-accent">Disciplined Risk Framing</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Research Fee vs. Portfolio Edge</h2>
+            <p class="mt-2 text-sm text-slate-400 leading-relaxed">
+              Model how avoiding a single cliff-unlock drawdown or capturing a modest monthly information edge compares against the $99/mo cost of Floss Alpha.
+            </p>
+          </div>
+
+          <!-- Slider 1: Portfolio Size -->
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span class="text-slate-300">Active Crypto Portfolio</span>
+              <span id="sim-portfolio-val" class="text-white font-bold">$25,000</span>
+            </div>
+            <input id="sim-portfolio" type="range" min="5000" max="250000" step="2500" value="25000" class="accent-slider" />
+          </div>
+
+          <!-- Slider 2: Hypothetical Monthly Net Edge -->
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span class="text-slate-300">Hypothetical Monthly Information Edge</span>
+              <span id="sim-edge-val" class="text-accent font-bold">+3.5% / mo</span>
+            </div>
+            <input id="sim-edge" type="range" min="1" max="10" step="0.5" value="3.5" class="accent-slider" />
+          </div>
+
+          <!-- Unlock Avoidance Toggle -->
+          <label class="flex items-center justify-between gap-4 p-4 rounded-2xl bg-[#080C12] border border-borderdark cursor-pointer">
+            <div>
+              <div class="text-sm font-semibold text-white">Include 1 Avoided Cliff-Unlock Drawdown (-12%)</div>
+              <div class="text-xs text-slate-400">E.g., stepping aside before a $200M+ VC supply shock</div>
+            </div>
+            <input id="sim-avoid-unlock" type="checkbox" checked class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" />
+          </label>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="rounded-2xl bg-[#080C12] border border-borderdark p-6 space-y-5">
+            <div class="flex items-center justify-between border-b border-borderdark pb-4">
+              <span class="text-xs font-mono uppercase text-slate-400">Illustrative 12-Month Impact</span>
+              <span class="px-2.5 py-1 rounded-lg bg-accent-soft text-accent font-mono text-[11px] font-bold">FLOSS ALPHA ($99/mo)</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-terminal border border-borderdark">
+                <div class="text-[11px] font-mono uppercase text-slate-400">Est. Annual Value Add</div>
+                <div id="sim-annual-impact" class="mt-1 font-mono font-bold text-2xl text-accent">$13,500</div>
+              </div>
+              <div class="p-4 rounded-xl bg-terminal border border-borderdark">
+                <div class="text-[11px] font-mono uppercase text-slate-400">Annual Subscription Cost</div>
+                <div class="mt-1 font-mono font-bold text-2xl text-white">$1,188</div>
+                <div class="text-[11px] font-mono text-gold mt-0.5">or $888 billed annually</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-terminal border border-accent-soft flex items-center justify-between gap-4">
+              <div>
+                <div class="text-xs font-mono text-slate-300">Illustrative Fee Coverage Ratio</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Potential value vs. annual desk fee</div>
+              </div>
+              <div id="sim-coverage-ratio" class="font-mono font-bold text-2xl text-gold">11.4x</div>
+            </div>
+
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              <strong>Educational Simulation Only:</strong> Outputs are strictly mathematical illustrations based on your slider inputs—not a forecast, guarantee, or promise of investment returns. Digital assets carry high risk of capital loss.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 9. PRICING TIERS (WHOP CARD + DIRECT 0% FEE USDC)                     -->
+  <!-- ===================================================================== -->
+  <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 border-t border-borderdark/70">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="text-[11px] font-mono uppercase tracking-widest text-gold">Transparent Reader-Funded Tiers</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-2">Choose Your Institutional Edge</h2>
+      <p class="mt-3 text-sm sm:text-base text-slate-400">Pay by Card / Apple Pay via Whop or settle directly in USDC on Base, Arbitrum, or Ethereum with 0% card processing fees.</p>
+
+      <!-- Billing Toggle -->
+      <div class="mt-6 inline-flex items-center p-1.5 rounded-2xl bg-terminal border border-borderdark">
+        <button id="bill-monthly-btn" type="button" onclick="setBillingCycle('monthly')" class="px-5 py-2 rounded-xl text-xs font-mono font-bold bg-accent text-[#07090D] transition">
+          MONTHLY
+        </button>
+        <button id="bill-annual-btn" type="button" onclick="setBillingCycle('annual')" class="px-5 py-2 rounded-xl text-xs font-mono font-bold text-slate-300 hover:text-white transition">
+          ANNUAL <span class="text-gold ml-1">(-25%)</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      <!-- Tier 1: The Briefing -->
+      <div class="rounded-3xl bg-terminal border border-borderdark p-7 flex flex-col justify-between spotlight-card">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-wider text-sky-400 font-semibold">Tier 01</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono text-[10px]">MACRO &amp; FLOWS</span>
+          </div>
+          <h3 class="mt-3 font-display font-bold text-2xl text-white">The Briefing</h3>
+          <p class="mt-2 text-sm text-slate-400">Clean 6:00 AM EST market intelligence, macro wraps, and unlock risk alerts.</p>
+
+          <div class="mt-6 pb-6 border-b border-borderdark">
+            <div class="flex items-baseline gap-1.5">
+              <span id="price-briefing" class="font-display font-bold text-4xl text-white">$29</span>
+              <span class="text-sm font-mono text-slate-400">/ month</span>
+            </div>
+            <div id="sub-briefing" class="mt-1 text-xs font-mono text-slate-500">Billed monthly • Cancel anytime</div>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Daily 6:00 AM EST institutional briefing</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Full Catalyst &amp; Token Unlock risk alerts</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Private Discord &amp; Telegram Briefing channels</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Weekly macro &amp; stablecoin liquidity wrap</li>
+          </ul>
+        </div>
+
+        <button type="button" onclick="openCheckoutModal('briefing')" class="mt-8 w-full py-3.5 rounded-2xl border border-borderdark bg-[#090D14] hover:border-accent hover:text-white text-sm font-bold text-slate-200 transition">
+          Select The Briefing
+        </button>
+      </div>
+
+      <!-- Tier 2: Floss Alpha (Flagship) -->
+      <div class="rounded-3xl bg-terminal border-2 border-accent p-7 flex flex-col justify-between relative shadow-accent-glow spotlight-card">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full btn-accent-solid text-[11px] font-mono font-bold uppercase tracking-wider">
+          Most Popular
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-wider text-accent font-semibold">Tier 02</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-accent-soft text-accent font-mono text-[10px] font-semibold">EXECUTION DESK</span>
+          </div>
+          <h3 class="mt-3 font-display font-bold text-2xl text-white">Floss Alpha</h3>
+          <p class="mt-2 text-sm text-slate-300">Full terminal unlock: exact entry zones, hard stops, early narrative radar &amp; active floor.</p>
+
+          <div class="mt-6 pb-6 border-b border-borderdark">
+            <div class="flex items-baseline gap-1.5">
+              <span id="price-alpha" class="font-display font-bold text-4xl text-white">$99</span>
+              <span class="text-sm font-mono text-slate-400">/ month</span>
+            </div>
+            <div id="sub-alpha" class="mt-1 text-xs font-mono text-accent">Billed monthly • Instant terminal sync</div>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate-200">
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> <strong>Everything in The Briefing</strong></li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Unblurred live Alpha Trade Levels on terminal</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Early mid-cap rotations (Perp DEXs, RWA, ZK, AI DePIN)</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Private Floss Alpha Discord + Instant Telegram alerts</li>
+            <li class="flex items-start gap-2.5"><span class="text-accent">✓</span> Real-time funding &amp; whale flow alerts</li>
+          </ul>
+        </div>
+
+        <button type="button" onclick="openCheckoutModal('alpha')" class="mt-8 w-full py-3.5 rounded-2xl btn-accent-primary text-sm font-bold uppercase tracking-wide">
+          Unlock Floss Alpha
+        </button>
+      </div>
+
+      <!-- Tier 3: Floss Desk -->
+      <div class="rounded-3xl bg-terminal border border-gold-soft p-7 flex flex-col justify-between spotlight-card">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-wider text-gold font-semibold">Tier 03</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-gold-soft text-gold font-mono text-[10px] font-semibold">INSTITUTIONAL</span>
+          </div>
+          <h3 class="mt-3 font-display font-bold text-2xl text-white">Floss Desk</h3>
+          <p class="mt-2 text-sm text-slate-400">Direct analyst access, weekly live strategy calls, bespoke token audits &amp; pre-TGE playbooks.</p>
+
+          <div class="mt-6 pb-6 border-b border-borderdark">
+            <div class="flex items-baseline gap-1.5">
+              <span id="price-desk" class="font-display font-bold text-4xl text-white">$299</span>
+              <span class="text-sm font-mono text-slate-400">/ month</span>
+            </div>
+            <div id="sub-desk" class="mt-1 text-xs font-mono text-gold">Billed monthly • Priority analyst Q&amp;A</div>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2.5"><span class="text-gold">✓</span> <strong>Everything in Floss Alpha</strong></li>
+            <li class="flex items-start gap-2.5"><span class="text-gold">✓</span> Weekly live institutional desk strategy calls</li>
+            <li class="flex items-start gap-2.5"><span class="text-gold">✓</span> Direct analyst Q&amp;A in private Telegram &amp; Discord</li>
+            <li class="flex items-start gap-2.5"><span class="text-gold">✓</span> Custom tokenomics &amp; unlock audit requests</li>
+            <li class="flex items-start gap-2.5"><span class="text-gold">✓</span> Pre-TGE, points &amp; airdrop execution playbooks</li>
+          </ul>
+        </div>
+
+        <button type="button" onclick="openCheckoutModal('desk')" class="mt-8 w-full py-3.5 rounded-2xl border border-gold-soft bg-gold-soft hover:bg-[#D4AF37] hover:text-[#07090D] text-sm font-bold text-gold transition">
+          Apply / Join Floss Desk
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 10. METHODOLOGY & FAQ                                                 -->
+  <!-- ===================================================================== -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-borderdark/70">
+    <div class="text-center mb-8">
+      <span class="text-[11px] font-mono uppercase tracking-widest text-accent">Desk FAQ</span>
+      <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Common Questions</h2>
+    </div>
+
+    <div class="space-y-3">
+      <details class="group rounded-2xl bg-terminal border border-borderdark p-5">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-sm sm:text-base list-none">
+          <span>How do I get access to the terminal, Discord, and Telegram after paying?</span>
+          <span class="text-accent font-mono group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+          Card buyers on Whop receive instant one-click access to their private Discord role and Telegram channels. Create a free account under Member Login using the same email address and your on-site Alpha Trade Levels unlock automatically. Direct USDC buyers submit their transaction hash in the checkout modal and are activated promptly with full Discord, Telegram, and terminal access.
+        </p>
+      </details>
+
+      <details class="group rounded-2xl bg-terminal border border-borderdark p-5">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-sm sm:text-base list-none">
+          <span>Does Floss Academy ever accept paid token promotions or advisory bags?</span>
+          <span class="text-accent font-mono group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+          Never. Floss Academy is 100% reader-funded. We do not accept protocol marketing budgets, token allocations, or paid shoutouts—which is why we freely flag predatory VC cliff unlocks and crowded retail exits.
+        </p>
+      </details>
+
+      <details class="group rounded-2xl bg-terminal border border-borderdark p-5">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-white text-sm sm:text-base list-none">
+          <span>Can I cancel my monthly plan at any time?</span>
+          <span class="text-accent font-mono group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+          Yes. Monthly memberships have zero lockups and can be canceled directly inside your Whop dashboard in two clicks before your next billing date.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 11. INSTITUTIONAL FOOTER                                              -->
+  <!-- ===================================================================== -->
+  <footer class="border-t border-borderdark bg-[#05070B] mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-borderdark">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-terminal border border-accent-soft flex items-center justify-center">
+              <svg class="w-4 h-4" viewBox="0 0 64 64" fill="none">
+                <path d="M32 8L53 20V44L32 56L11 44V20L32 8Z" stroke="#10B981" stroke-width="4" stroke-linejoin="round" />
+                <circle cx="32" cy="32" r="5.5" fill="#D4AF37" />
+              </svg>
+            </div>
+            <span class="font-display font-bold text-lg text-white">FLOSS ACADEMY</span>
+          </div>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed max-w-sm">
+            Independent crypto market intelligence, on-chain liquidity telemetry, and narrative rotation research delivered daily at 6:00 AM EST.
+          </p>
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <a id="footer-discord-link" href="https://discord.gg/JNsaj5rvS4" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-terminal border border-borderdark hover:border-accent text-xs font-mono text-slate-200 transition inline-flex items-center gap-2">
+              <span>Discord</span> <span>↗</span>
+            </a>
+            <a id="footer-telegram-link" href="https://t.me/flossacademy" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-terminal border border-borderdark hover:border-accent text-xs font-mono text-slate-200 transition inline-flex items-center gap-2">
+              <span>Telegram</span> <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-2.5 text-xs font-mono">
+          <div class="text-slate-200 font-semibold uppercase tracking-wider">Terminal</div>
+          <a href="#preview" class="block text-slate-400 hover:text-white transition">Daily Dispatch</a>
+          <a href="#narratives" class="block text-slate-400 hover:text-white transition">Narrative Radar</a>
+          <a href="#track-record" class="block text-slate-400 hover:text-white transition">Execution Ledger</a>
+          <a href="#pricing" class="block text-slate-400 hover:text-white transition">Membership Tiers</a>
+        </div>
+
+        <div class="md:col-span-4 space-y-2.5 text-xs font-mono">
+          <div class="text-slate-200 font-semibold uppercase tracking-wider">Support &amp; Compliance</div>
+          <a href="mailto:support@flossacademy.io" class="block text-accent hover:underline">support@flossacademy.io</a>
+          <button type="button" onclick="openLegalModal('terms')" class="block text-slate-400 hover:text-white transition">Terms of Service</button>
+          <button type="button" onclick="openLegalModal('privacy')" class="block text-slate-400 hover:text-white transition">Privacy Policy</button>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] text-slate-500 leading-relaxed">
+        <p class="max-w-3xl">
+          <strong>Risk Disclaimer:</strong> All content published by Floss Academy—including briefings, on-chain data, trade levels, and execution logs—is provided strictly for informational and educational purposes and does not constitute financial, legal, or investment advice. Cryptocurrency trading involves substantial risk of loss.
+        </p>
+        <div class="font-mono shrink-0">© 2026 Floss Academy</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- MODALS (ALL WITH BACKDROP TAP-TO-CLOSE & ZERO ALERT/CONFIRM)          -->
+  <!-- ===================================================================== -->
+
+  <!-- A. Member Auth Modal (Supabase Sign In / Sign Up / Magic Link) -->
+  <div id="auth-modal" onclick="handleBackdropClose(event, 'auth-modal')" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-3xl bg-terminal border border-borderdark p-6 sm:p-7 shadow-2xl animate-panel">
+      <div class="flex items-center justify-between pb-4 border-b border-borderdark">
+        <div>
+          <h3 class="font-display font-bold text-xl text-white">Member Terminal Access</h3>
+          <p class="text-xs font-mono text-slate-400 mt-0.5">Supabase Encrypted Session</p>
+        </div>
+        <button type="button" onclick="closeModal('auth-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <!-- Logged-in Member Account View -->
+      <div id="auth-logged-in-view" class="hidden mt-5 space-y-4">
+        <div class="p-4 rounded-2xl bg-[#080C12] border border-accent-soft">
+          <div class="text-[11px] font-mono uppercase text-slate-400">Signed In As</div>
+          <div id="auth-user-email" class="font-mono text-sm text-white font-semibold mt-1 break-all">member@flossacademy.io</div>
+          <div class="mt-3 flex items-center justify-between">
+            <span class="text-xs text-slate-400">Active Tier</span>
+            <span id="auth-user-tier" class="px-2.5 py-0.5 rounded-lg bg-accent-soft text-accent font-mono text-xs font-bold uppercase">FREE</span>
+          </div>
+        </div>
+        <button type="button" onclick="handleSignOut()" class="w-full py-3 rounded-xl border border-rose-500/40 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 text-xs font-mono font-bold uppercase">
+          Sign Out
+        </button>
+      </div>
+
+      <!-- Logged-out Auth Forms -->
+      <div id="auth-logged-out-view" class="mt-5">
+        <div class="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-[#080C12] border border-borderdark mb-5 text-xs font-mono">
+          <button id="auth-tab-signin" type="button" onclick="switchAuthTab('signin')" class="py-2 rounded-lg bg-accent text-[#07090D] font-bold">Sign In</button>
+          <button id="auth-tab-signup" type="button" onclick="switchAuthTab('signup')" class="py-2 rounded-lg text-slate-400 hover:text-white">Create</button>
+          <button id="auth-tab-magic" type="button" onclick="switchAuthTab('magic')" class="py-2 rounded-lg text-slate-400 hover:text-white">Magic Link</button>
+        </div>
+
+        <form id="auth-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-mono text-slate-400 mb-1.5">Email Address</label>
+            <input id="auth-email" type="email" required placeholder="you@domain.com" class="w-full px-4 py-3 rounded-xl bg-[#080C12] border border-borderdark text-sm text-white focus:outline-none focus-accent" />
+          </div>
+          <div id="auth-password-group">
+            <label class="block text-xs font-mono text-slate-400 mb-1.5">Password</label>
+            <input id="auth-password" type="password" minlength="6" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-[#080C12] border border-borderdark text-sm text-white focus:outline-none focus-accent" />
+          </div>
+          <div id="auth-feedback" class="hidden text-xs font-mono p-3 rounded-xl"></div>
+          <button id="auth-submit-btn" type="submit" class="w-full py-3 rounded-xl btn-accent-primary text-xs font-bold uppercase tracking-wider">
+            Sign In to Terminal
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. Checkout Modal (Whop Card + Direct On-Chain USDC) -->
+  <div id="checkout-modal" onclick="handleBackdropClose(event, 'checkout-modal')" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-3xl bg-terminal border border-borderdark p-6 sm:p-7 shadow-2xl max-h-[90vh] overflow-y-auto animate-panel">
+      <div class="flex items-center justify-between pb-4 border-b border-borderdark">
+        <div>
+          <span id="checkout-tier-tag" class="text-[11px] font-mono uppercase text-accent font-semibold">FLOSS ALPHA</span>
+          <h3 id="checkout-modal-title" class="font-display font-bold text-xl text-white">Complete Membership</h3>
+        </div>
+        <button type="button" onclick="closeModal('checkout-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <!-- Summary Banner -->
+      <div class="mt-4 p-4 rounded-2xl bg-[#080C12] border border-borderdark flex items-center justify-between">
+        <div>
+          <div id="checkout-plan-desc" class="text-sm font-semibold text-white">Floss Alpha — Monthly</div>
+          <div class="text-xs font-mono text-slate-400 mt-0.5">Terminal + Discord + Private Telegram</div>
+        </div>
+        <div id="checkout-plan-amount" class="font-mono font-bold text-xl text-accent">$99</div>
+      </div>
+
+      <!-- Payment Method Tabs -->
+      <div class="mt-5 grid grid-cols-2 gap-2 p-1 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono">
+        <button id="pay-tab-card" type="button" onclick="switchPayMethod('card')" class="py-2.5 rounded-lg bg-accent text-[#07090D] font-bold">Card / Apple Pay</button>
+        <button id="pay-tab-usdc" type="button" onclick="switchPayMethod('usdc')" class="py-2.5 rounded-lg text-slate-300 hover:text-white font-bold">USDC (0% Fee)</button>
+      </div>
+
+      <!-- Method 1: Whop Card Checkout -->
+      <div id="pay-panel-card" class="mt-5 space-y-4">
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Checkout securely via <strong>Whop</strong> with credit card, debit card, or Apple Pay. Your private Discord role and Telegram invites unlock automatically after confirmation.
+        </p>
+        <a id="whop-checkout-link" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-3.5 rounded-xl btn-accent-primary text-sm font-bold uppercase tracking-wide">
+          Continue to Whop Checkout ↗
+        </a>
+        <div class="text-[11px] font-mono text-center text-slate-500">Use the same email for Member Login to auto-sync terminal levels.</div>
+      </div>
+
+      <!-- Method 2: Direct On-Chain USDC (Base / Arbitrum / Ethereum) -->
+      <div id="pay-panel-usdc" class="hidden mt-5 space-y-4">
+        <div>
+          <div class="text-xs font-mono text-slate-400 mb-2">Select Network (Lowest Fee: Base)</div>
+          <div class="grid grid-cols-3 gap-2 text-xs font-mono">
+            <button type="button" data-chain="Base" onclick="selectUsdcChain('Base')" class="usdc-chain-btn py-2 rounded-xl border border-accent bg-accent-soft text-accent font-bold">Base</button>
+            <button type="button" data-chain="Arbitrum" onclick="selectUsdcChain('Arbitrum')" class="usdc-chain-btn py-2 rounded-xl border border-borderdark bg-[#080C12] text-slate-300">Arbitrum</button>
+            <button type="button" data-chain="Ethereum" onclick="selectUsdcChain('Ethereum')" class="usdc-chain-btn py-2 rounded-xl border border-borderdark bg-[#080C12] text-slate-300">Ethereum</button>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-[#080C12] border border-borderdark space-y-2">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>Send exact <strong id="usdc-exact-amount" class="text-white">$99 USDC</strong> on <strong id="usdc-selected-chain" class="text-accent">Base</strong></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <code id="usdc-wallet-display" class="flex-1 text-xs font-mono text-slate-200 bg-terminal px-3 py-2.5 rounded-xl border border-borderdark break-all">
+              0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D
+            </code>
+            <button type="button" onclick="copyUsdcAddress()" class="px-3.5 py-2.5 rounded-xl bg-accent-soft border border-accent-soft text-accent text-xs font-mono font-bold hover:brightness-110 shrink-0">
+              Copy
+            </button>
+          </div>
+        </div>
+
+        <form id="usdc-confirm-form" class="space-y-3">
+          <input id="usdc-buyer-email" type="email" required placeholder="Your account email (for terminal &amp; Discord invite)" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs text-white focus:outline-none focus-accent" />
+          <input id="usdc-txid" type="text" required placeholder="Paste transaction hash (0x...)" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          <button id="usdc-submit-btn" type="submit" class="w-full py-3 rounded-xl btn-accent-solid text-xs font-bold uppercase tracking-wide">
+            Submit USDC Payment for Activation
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- C. Focus Read Modal -->
+  <div id="focus-read-modal" onclick="handleBackdropClose(event, 'focus-read-modal')" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl rounded-3xl bg-terminal border border-borderdark p-6 sm:p-8 shadow-2xl max-h-[88vh] overflow-y-auto animate-panel">
+      <div class="flex items-center justify-between pb-4 border-b border-borderdark">
+        <div class="flex items-center gap-2">
+          <span id="focus-dispatch-num" class="px-2.5 py-1 rounded-lg bg-accent-soft text-accent font-mono text-xs font-bold">DISPATCH #420</span>
+          <span id="focus-date-label" class="font-mono text-xs text-slate-400">NOV 24, 2026 • 06:00 EST</span>
+        </div>
+        <button type="button" onclick="closeModal('focus-read-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
+      </div>
+      <h3 id="focus-headline" class="mt-5 font-display font-bold text-2xl text-white leading-snug"></h3>
+      <p id="focus-summary" class="mt-4 text-base text-slate-300 leading-relaxed"></p>
+      <div class="mt-6 space-y-4">
+        <div class="p-4 rounded-2xl bg-[#080C12] border border-borderdark">
+          <div class="text-xs font-mono font-bold text-accent uppercase mb-1">Key Takeaway 01</div>
+          <p id="focus-t1" class="text-sm text-slate-200 leading-relaxed"></p>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#080C12] border border-borderdark">
+          <div class="text-xs font-mono font-bold text-gold uppercase mb-1">Key Takeaway 02</div>
+          <p id="focus-t2" class="text-sm text-slate-200 leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D. Legal (Terms / Privacy) Modal -->
+  <div id="legal-modal" onclick="handleBackdropClose(event, 'legal-modal')" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-xl rounded-3xl bg-terminal border border-borderdark p-6 sm:p-7 shadow-2xl max-h-[85vh] overflow-y-auto animate-panel">
+      <div class="flex items-center justify-between pb-4 border-b border-borderdark">
+        <h3 id="legal-modal-title" class="font-display font-bold text-lg text-white">Terms of Service</h3>
+        <button type="button" onclick="closeModal('legal-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
+      </div>
+      <div id="legal-modal-body" class="mt-4 space-y-3 text-sm text-slate-300 leading-relaxed"></div>
+    </div>
+  </div>
+
+  <!-- E. Private Desk Admin & Live API Diagnostic Modal (Ctrl+Shift+A or ?admin=1) -->
+  <div id="admin-modal" onclick="handleBackdropClose(event, 'admin-modal')" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl rounded-3xl bg-terminal border border-accent-soft p-6 sm:p-7 shadow-2xl max-h-[90vh] overflow-y-auto animate-panel">
+      <div class="flex items-center justify-between pb-4 border-b border-borderdark">
+        <div>
+          <span class="text-[10px] font-mono uppercase text-accent">Private Operator Console</span>
+          <h3 class="font-display font-bold text-lg text-white">Desk Admin &amp; Live Deployment Test</h3>
+        </div>
+        <button type="button" onclick="closeModal('admin-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="mt-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <p class="text-xs text-slate-400">Ping all live feeds directly from your browser to verify uptime and latency.</p>
+          <button type="button" onclick="runLiveDiagnosticTest()" class="px-4 py-2 rounded-xl btn-accent-solid text-xs font-mono font-bold">
+            Run Live API Test
+          </button>
+        </div>
+        <div id="admin-test-results" class="rounded-2xl bg-[#080C12] border border-borderdark p-4 font-mono text-xs text-slate-300 space-y-2">
+          Click "Run Live API Test" to verify Supabase, CoinGecko, Hyperliquid, DeFiLlama, and Sentiment feeds.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom-Right Toast Stack -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-[calc(100%-2.5rem)] pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION LOGIC & LIVE TELEMETRY ENGINE                             -->
+  <!-- ===================================================================== -->
+  <script>
+    // =========================================================================
+    // 1. CENTRAL CONFIGURATION
+    // =========================================================================
+    const FLOSS_CONFIG = {
+      supabaseUrl: "https://qvrzilfslipnsmtrhxvf.supabase.co",
+      supabaseAnonKey: "sb_publishable_qTCAXTt_Pz0e3daIzbPMMw___r9A3lx",
+
+      web3formsAccessKey: "12d704fd-f833-41ed-baa5-75daffff593d",
+      web3formsSubject: "New Floss Academy Lead Capture",
+
+      coingeckoRefreshMs: 60000,
+
+      directUsdcAddress: "0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D",
+
+      socials: {
+        discord: "https://discord.gg/JNsaj5rvS4",
+        telegram: "https://t.me/flossacademy",
+        supportEmail: "support@flossacademy.io"
+      },
+
+      paymentLinks: {
+        briefing: {
+          monthly: "https://whop.com/checkout/plan_0uUvr9vijyctD",
+          annual: "https://whop.com/checkout/plan_0uUvr9vijyctD"
+        },
+        alpha: {
+          monthly: "https://whop.com/checkout/plan_AaZMUAtTR1tMB",
+          annual: "https://whop.com/checkout/plan_AaZMUAtTR1tMB"
+        },
+        desk: {
+          monthly: "https://whop.com/checkout/plan_9ziZGkAwZL5Bh",
+          annual: "https://whop.com/checkout/plan_9ziZGkAwZL5Bh"
+        }
+      },
+
+      pricing: {
+        briefing: { name: "The Briefing", monthly: 29, annualMonthly: 22, annualTotal: 264 },
+        alpha:    { name: "Floss Alpha",  monthly: 99, annualMonthly: 74, annualTotal: 888 },
+        desk:     { name: "Floss Desk",   monthly: 299, annualMonthly: 224, annualTotal: 2688 }
+      }
+    };
+
+    // =========================================================================
+    // 2. FALLBACK DATASETS (Up-to-Date Nov 24, 2026 Market & Sector Baseline)
+    // =========================================================================
+    const DEFAULT_NARRATIVES = [
+      {
+        sector: "perp-dex",
+        sector_label: "PERP DEXs",
+        conviction: 9.5,
+        title: "On-Chain Equity & Perp CLOBs",
+        description: "Hyperliquid commands 54% of on-chain OI ($5.38B) and $75.9M in 30d HYPE buybacks as HIP-3 stock & commodity perps surge to 69% of non-BTC/ETH volume.",
+        leaders: "HYPE, DYDX, GMX",
+        accent_style: "gold"
+      },
+      {
+        sector: "rwa",
+        sector_label: "RWA",
+        conviction: 9.2,
+        title: "Tokenized Treasuries & Equities",
+        description: "DeFiLlama on-chain RWA AUM reached $34.8B ($30.8B active AUM) as 24/7 tokenized U.S. equities and institutional yield rails absorb stablecoin flows.",
+        leaders: "ONDO, SYRUP, CFG",
+        accent_style: "accent"
+      },
+      {
+        sector: "zk-privacy",
+        sector_label: "ZK PRIVACY",
+        conviction: 8.9,
+        title: "Institutional Privacy & ZK Rails",
+        description: "Grayscale's 2x leveraged Zcash ETF ($ZECX) debuts on NYSE Arca as ZEC snaps a 10-day ETF outflow streak following its NU7 25-second block upgrade.",
+        leaders: "ZEC, XMR, RAIL",
+        accent_style: "gold"
+      },
+      {
+        sector: "ai-depin",
+        sector_label: "AI x DePIN",
+        conviction: 8.4,
+        title: "Decentralized GPU & AI Compute",
+        description: "Render job fees jumped 3.6x MoM ($834K Oct burns) and Akash voted to migrate AKT to Solana, though GPU tokens still carry 0.60 beta to BTC chop.",
+        leaders: "TAO, RENDER, AKT",
+        accent_style: "accent"
+      },
+      {
+        sector: "l1-infra",
+        sector_label: "L1 / INFRA",
+        conviction: 8.3,
+        title: "High-Throughput Execution L1s",
+        description: "DeFi TVL ($68.9B across 609 chains) consolidates into Ethereum ($36.0B), Base ($5.1B), and Solana ($4.6B) while Monad absorbs today's $217M cliff unlock.",
+        leaders: "ETH, SOL, SUI",
+        accent_style: "accent"
+      }
+    ];
+
+    const DEFAULT_CATALYSTS = [
+      { event_date: "NOV 24", asset_name: "Monad (MON) Cliff Unlock", catalyst_desc: "16.61B MON (~$217.2M) unlocks today—headline of $567.2M+ weekly supply wave", impact_label: "SUPPLY SHOCK", impact_tone: "rose", desk_bias: "HEDGE / FADE", bias_tone: "rose" },
+      { event_date: "NOV 25", asset_name: "US PCE & Q3 GDP (8:30 ET)", catalyst_desc: "Oct Core PCE inflation + Q3 GDP 2nd est. ahead of U.S. Thanksgiving holiday", impact_label: "MACRO VOL", impact_tone: "amber", desk_bias: "REDUCE LEVERAGE", bias_tone: "gold" },
+      { event_date: "NOV 26", asset_name: "US Thanksgiving Liquidity", catalyst_desc: "Closed/shortened U.S. TradFi hours & thin crypto orderbook volatility window", impact_label: "THIN BOOKS", impact_tone: "gold", desk_bias: "TIGHTEN STOPS", bias_tone: "gold" },
+      { event_date: "NOV 29", asset_name: "Falcon Finance (FF) Unlock", catalyst_desc: "$21.1M unlock (6.21% circ. supply) + Plasma ($10.1M) & SoSoValue ($6.0M)", impact_label: "SUPPLY SHOCK", impact_tone: "rose", desk_bias: "AVOID / FADE", bias_tone: "rose" },
+      { event_date: "DEC 01", asset_name: "Ethena (ENA) & TRUMP", catalyst_desc: "$27.4M ENA & $24.6M TRUMP scheduled monthly token unlocks", impact_label: "UNLOCK WAVE", impact_tone: "gold", desk_bias: "WAIT FOR RESET", bias_tone: "gold" },
+      { event_date: "DEC 09", asset_name: "FOMC Rate Decision", catalyst_desc: "Final 2026 Fed rate decision (3.75%–4.00% band after hawkish Oct minutes)", impact_label: "MACRO VOL", impact_tone: "amber", desk_bias: "REDUCE LEVERAGE", bias_tone: "gold" }
+    ];
+
+    const DEFAULT_DESK_CALLS = [
+      { dispatch_ref: "#420 • NOV 24", pair: "$BTC / USDT", narrative: "BTC MACRO", narrative_tone: "gold", entry_zone: "$59,800 – $61,200", entry_mid: 60595, coingecko_id: "bitcoin", status: "active", status_label: "ACTIVE • LIVE TRACKING", realized_return_pct: 0 },
+      { dispatch_ref: "#420 • NOV 24", pair: "$ETH / USDT", narrative: "L1 MAJOR", narrative_tone: "accent", entry_zone: "$1,680 – $1,725", entry_mid: 1703, coingecko_id: "ethereum", status: "active", status_label: "ACTIVE • LIVE TRACKING", realized_return_pct: 0 },
+      { dispatch_ref: "#420 • NOV 24", pair: "$SOL / USDC", narrative: "EXECUTION L1", narrative_tone: "accent", entry_zone: "$70.50 – $73.00", entry_mid: 71.71, coingecko_id: "solana", status: "active", status_label: "ACTIVE • LIVE TRACKING", realized_return_pct: 0 },
+      { dispatch_ref: "#420 • NOV 24", pair: "$HYPE / USDC", narrative: "PERP DEXs", narrative_tone: "gold", entry_zone: "$62.00 – $64.50", entry_mid: 63.93, coingecko_id: "hyperliquid", status: "active", status_label: "ACTIVE • LIVE TRACKING", realized_return_pct: 0 },
+      { dispatch_ref: "#420 • NOV 24", pair: "$RENDER / USDT", narrative: "AI x DePIN", narrative_tone: "accent", entry_zone: "$1.28 – $1.36", entry_mid: 1.33, coingecko_id: "render-token", status: "active", status_label: "ACTIVE • LIVE TRACKING", realized_return_pct: 0 },
+      { dispatch_ref: "#420 • NOV 24", pair: "$ONDO / USDT", narrative: "RWA TREASURIES", narrative_tone: "accent", entry_zone: "$0.275 – $0.295", entry_mid: 0.2898, coingecko_id: "ondo-finance", status: "active", status_label: "ACTIVE • LIVE TRACKING", realized_return_pct: 0 }
+    ];
+
+    const FALLBACK_NEWS = [
+      { title: "Bitcoin defends $60.5K demand shelf following weekend derivatives flush as institutional flows stabilize", source: "Floss Wire", url: "#preview", time: "Today" },
+      { title: "Hyperliquid stock & commodity perps hit 69% of non-BTC/ETH volume as 30d HYPE buybacks reach $75.9M", source: "On-Chain Desk", url: "#narratives", time: "Today" },
+      { title: "Grayscale launches 2x leveraged Zcash ETF ($ZECX) on NYSE Arca as ZCSH snaps 10-day outflow streak", source: "ETF Flows", url: "#narratives", time: "Today" },
+      { title: "Traders brace for Wednesday's U.S. Core PCE inflation and Q3 GDP release ahead of holiday liquidity", source: "Macro Desk", url: "#preview", time: "Today" }
+    ];
+
+    // =========================================================================
+    // 3. APPLICATION STATE
+    // =========================================================================
+    const appState = {
+      supabase: null,
+      user: null,
+      tier: "free",
+      authMode: "signin",
+      billingCycle: "monthly",
+      selectedTier: "alpha",
+      selectedUsdcChain: "Base",
+      activeNarrativeFilter: "all",
+      activeLedgerFilter: "all",
+      narratives: [...DEFAULT_NARRATIVES],
+      catalysts: [...DEFAULT_CATALYSTS],
+      deskCalls: [...DEFAULT_DESK_CALLS],
+      liveSpotPrices: {
+        bitcoin: 60595,
+        ethereum: 1703,
+        solana: 71.71,
+        hyperliquid: 63.93,
+        zcash: 788,
+        "render-token": 1.33,
+        "ondo-finance": 0.2898
+      },
+      cgRequestInFlight: false
+    };
+
+    // =========================================================================
+    // 4. UTILITY HELPERS
+    // =========================================================================
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function formatPrice(num) {
+      const n = Number(num);
+      if (!Number.isFinite(n)) return "--";
+      if (n >= 1000) return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+      if (n >= 10) return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (n >= 1) return "$" + n.toFixed(2);
+      return "$" + n.toFixed(4);
+    }
+
+    function formatCompactUsd(num) {
+      const n = Number(num);
+      if (!Number.isFinite(n) || n <= 0) return "--";
+      if (n >= 1e12) return "$" + (n / 1e12).toFixed(2) + "T";
+      if (n >= 1e9) return "$" + (n / 1e9).toFixed(1) + "B";
+      if (n >= 1e6) return "$" + (n / 1e6).toFixed(1) + "M";
+      return "$" + n.toLocaleString("en-US");
+    }
+
+    function showToast(message, tone = "accent") {
+      const container = document.getElementById("toast-container");
+      if (!container) return;
+      const borderClass = tone === "rose" ? "border-rose-500/50 text-rose-200" : tone === "gold" ? "border-gold-soft text-amber-100" : "border-accent-soft text-slate-100";
+      const dotClass = tone === "rose" ? "bg-rose-400" : tone === "gold" ? "bg-gold" : "bg-accent";
+      const toast = document.createElement("div");
+      toast.className = `pointer-events-auto animate-toast rounded-2xl bg-[#0B1018]/95 backdrop-blur-md border ${borderClass} px-4 py-3 shadow-2xl flex items-center gap-3 text-xs font-mono`;
+      toast.innerHTML = `<span class="w-2 h-2 rounded-full ${dotClass} shrink-0"></span><span class="flex-1">${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transition = "opacity 0.25s ease";
+        setTimeout(() => toast.remove(), 260);
+      }, 3600);
+    }
+
+    function toneBadgeClasses(tone) {
+      if (tone === "rose") return "bg-rose-500/15 text-rose-400 border border-rose-500/30";
+      if (tone === "amber") return "bg-amber-500/15 text-amber-400 border border-amber-500/30";
+      if (tone === "gold") return "bg-gold-soft text-gold border border-gold-soft";
+      if (tone === "slate") return "bg-slate-800 text-slate-300 border border-slate-700";
+      return "bg-accent-soft text-accent border border-accent-soft";
+    }
+
+    // =========================================================================
+    // 5. RENDERERS (CATALYSTS, NARRATIVES, EXECUTION LEDGER, SPARKLINES)
+    // =========================================================================
+    function renderCatalysts() {
+      const el = document.getElementById("catalysts-list");
+      if (!el) return;
+      el.innerHTML = appState.catalysts.map((item) => `
+        <div class="p-3.5 rounded-xl bg-[#080C12] border border-borderdark/90 hover:border-slate-700 transition">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="font-mono text-[11px] font-bold text-slate-300 bg-terminal px-2 py-0.5 rounded border border-borderdark">${escapeHtml(item.event_date)}</span>
+              <span class="font-semibold text-sm text-white">${escapeHtml(item.asset_name)}</span>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${toneBadgeClasses(item.impact_tone)}">${escapeHtml(item.impact_label)}</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400 leading-relaxed">${escapeHtml(item.catalyst_desc)}</p>
+          <div class="mt-2 flex items-center justify-between text-[11px] font-mono">
+            <span class="text-slate-500">DESK BIAS:</span>
+            <span class="${item.bias_tone === 'rose' ? 'text-rose-400' : item.bias_tone === 'gold' ? 'text-gold' : 'text-accent'} font-semibold">${escapeHtml(item.desk_bias)}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderNarratives() {
+      const grid = document.getElementById("narratives-grid");
+      if (!grid) return;
+      const items = appState.activeNarrativeFilter === "all"
+        ? appState.narratives
+        : appState.narratives.filter((n) => n.sector === appState.activeNarrativeFilter);
+
+      grid.innerHTML = items.map((n) => {
+        const pct = Math.min(100, Math.max(10, Number(n.conviction) * 10));
+        const isGold = n.accent_style === "gold";
+        return `
+          <div class="rounded-2xl bg-terminal border border-borderdark p-6 flex flex-col justify-between spotlight-card hover-border-accent transition">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold ${isGold ? 'bg-gold-soft text-gold' : 'bg-accent-soft text-accent'}">${escapeHtml(n.sector_label)}</span>
+                <span class="font-mono text-xs text-slate-300">Conviction: <strong class="text-white">${Number(n.conviction).toFixed(1)}/10</strong></span>
+              </div>
+              <h3 class="mt-4 font-display font-bold text-lg text-white">${escapeHtml(n.title)}</h3>
+              <p class="mt-2 text-sm text-slate-400 leading-relaxed">${escapeHtml(n.description)}</p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-borderdark">
+              <div class="w-full h-1.5 rounded-full bg-[#151C28] overflow-hidden mb-3">
+                <div class="h-full rounded-full ${isGold ? 'bg-gold' : 'bg-accent'}" style="width: ${pct}%"></div>
+              </div>
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-slate-500">LEADERS</span>
+                <span class="text-slate-200 font-semibold">${escapeHtml(n.leaders)}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterNarratives(sector) {
+      appState.activeNarrativeFilter = sector;
+      document.querySelectorAll(".narrative-filter-btn").forEach((btn) => {
+        const active = btn.getAttribute("data-sector") === sector;
+        btn.className = active
+          ? "narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-accent text-[#07090D]"
+          : "narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white";
+      });
+      renderNarratives();
+    }
+
+    function renderDeskCalls() {
+      const tbody = document.getElementById("desk-calls-tbody");
+      if (!tbody) return;
+
+      const allCalls = appState.deskCalls;
+      const activeCalls = allCalls.filter((c) => c.status === "active");
+      const closedCalls = allCalls.filter((c) => c.status === "closed");
+
+      const statPrimary = document.getElementById("ledger-stat-primary");
+      const statPrimarySub = document.getElementById("ledger-stat-primary-sub");
+      const statActive = document.getElementById("ledger-stat-active");
+      const statClosed = document.getElementById("ledger-stat-closed");
+      const statClosedSub = document.getElementById("ledger-stat-closed-sub");
+
+      if (statActive) statActive.textContent = `${activeCalls.length} Position${activeCalls.length === 1 ? "" : "s"}`;
+
+      if (closedCalls.length > 0) {
+        const winners = closedCalls.filter((c) => Number(c.realized_return_pct) > 0);
+        const winRate = ((winners.length / closedCalls.length) * 100).toFixed(0);
+        const avgRet = (closedCalls.reduce((acc, c) => acc + Number(c.realized_return_pct || 0), 0) / closedCalls.length).toFixed(1);
+        if (statPrimary) statPrimary.textContent = `${winRate}% Closed Win Rate`;
+        if (statPrimarySub) statPrimarySub.textContent = `${winners.length} of ${closedCalls.length} Closed Setups Profitable`;
+        if (statClosed) statClosed.textContent = `${Number(avgRet) >= 0 ? "+" : ""}${avgRet}% Avg`;
+        if (statClosedSub) statClosedSub.textContent = `Across ${closedCalls.length} Locked Trades`;
+      } else {
+        if (statPrimary) statPrimary.textContent = "LIVE TRACKING";
+        if (statPrimarySub) statPrimarySub.textContent = "Ledger Inception: NOV 24, 2026";
+        if (statClosed) statClosed.textContent = "Awaiting 1st Close";
+        if (statClosedSub) statClosedSub.textContent = "Win Rate Auto-Calculates on Close";
+      }
+
+      const filtered = appState.activeLedgerFilter === "all"
+        ? allCalls
+        : allCalls.filter((c) => c.status === appState.activeLedgerFilter);
+
+      if (filtered.length === 0) {
+        const emptyMsg = appState.activeLedgerFilter === "closed"
+          ? "No closed positions yet — live execution tracking began Nov 24, 2026. Closed winners and stop-outs will lock here permanently."
+          : "No desk calls logged yet.";
+        tbody.innerHTML = `<tr><td colspan="7" class="py-10 px-5 text-center text-xs font-mono text-slate-400">${escapeHtml(emptyMsg)}</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((call) => {
+        const liveSpot = call.coingecko_id ? appState.liveSpotPrices[call.coingecko_id] : null;
+        let pctReturn = Number(call.realized_return_pct || 0);
+        if (call.status === "active" && liveSpot && Number(call.entry_mid) > 0) {
+          pctReturn = ((liveSpot - Number(call.entry_mid)) / Number(call.entry_mid)) * 100;
+        }
+        const isPos = pctReturn >= 0;
+        const pctStr = `${isPos ? "+" : ""}${pctReturn.toFixed(2)}%`;
+        const spotDisplay = call.status === "active" && liveSpot ? formatPrice(liveSpot) : "Locked";
+
+        return `
+          <tr class="hover:bg-[#0F1520] transition">
+            <td class="py-4 px-5 font-mono text-xs text-slate-400 whitespace-nowrap">${escapeHtml(call.dispatch_ref)}</td>
+            <td class="py-4 px-4 font-mono font-bold text-white whitespace-nowrap">${escapeHtml(call.pair)}</td>
+            <td class="py-4 px-4 whitespace-nowrap">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold ${toneBadgeClasses(call.narrative_tone)}">${escapeHtml(call.narrative)}</span>
+            </td>
+            <td class="py-4 px-4 font-mono text-xs text-slate-300 whitespace-nowrap">${escapeHtml(call.entry_zone)}</td>
+            <td class="py-4 px-4 font-mono text-xs text-slate-200 whitespace-nowrap">${escapeHtml(spotDisplay)}</td>
+            <td class="py-4 px-4 whitespace-nowrap">
+              <span class="inline-flex items-center gap-1.5 text-[11px] font-mono ${call.status === 'active' ? 'text-accent' : 'text-slate-300'}">
+                <span class="w-1.5 h-1.5 rounded-full ${call.status === 'active' ? 'bg-accent animate-pulse' : 'bg-slate-500'}"></span>
+                ${escapeHtml(call.status_label)}
+              </span>
+            </td>
+            <td class="py-4 px-5 text-right font-mono font-bold whitespace-nowrap ${isPos ? 'text-accent' : 'text-rose-400'}">${pctStr}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function setLedgerFilter(filter) {
+      appState.activeLedgerFilter = filter;
+      document.querySelectorAll(".ledger-tab-btn").forEach((btn) => {
+        const active = btn.getAttribute("data-ledger-filter") === filter;
+        btn.className = active
+          ? "ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-accent text-[#07090D]"
+          : "ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white";
+      });
+      renderDeskCalls();
+    }
+
+    function renderSvgSparkline(containerId, prices, positive) {
+      const el = document.getElementById(containerId);
+      if (!el || !Array.isArray(prices) || prices.length < 2) return;
+      const w = 128, h = 44, pad = 3;
+      const min = Math.min(...prices);
+      const max = Math.max(...prices);
+      const range = max - min || 1;
+      const step = (w - pad * 2) / (prices.length - 1);
+      const pts = prices.map((p, i) => {
+        const x = pad + i * step;
+        const y = h - pad - ((p - min) / range) * (h - pad * 2);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(" ");
+      const stroke = positive ? "#10B981" : "#F43F5E";
+      el.innerHTML = `
+        <svg viewBox="0 0 ${w} ${h}" class="w-full h-full overflow-visible">
+          <polyline fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${pts}" />
+        </svg>
+      `;
+    }
+
+    function renderNewsList(items) {
+      const el = document.getElementById("live-news-list");
+      if (!el) return;
+      el.innerHTML = items.slice(0, 4).map((n) => `
+        <a href="${escapeHtml(n.url || '#preview')}" ${n.url && n.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="block py-3 group">
+          <div class="text-sm text-slate-200 group-hover:text-accent transition leading-snug font-medium">${escapeHtml(n.title)}</div>
+          <div class="mt-1 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+            <span class="text-gold">${escapeHtml(n.source || 'Wire')}</span>
+            <span>•</span>
+            <span>${escapeHtml(n.time || 'Live')}</span>
+          </div>
+        </a>
+      `).join("");
+    }
+
+    // =========================================================================
+    // 6. DEDUPLICATED & STAGGERED LIVE TELEMETRY FEEDS (NO 429 BURSTS)
+    // =========================================================================
+    async function fetchCoinGeckoPrices() {
+      if (appState.cgRequestInFlight) return;
+      appState.cgRequestInFlight = true;
+      try {
+        const baseIds = ["bitcoin", "ethereum", "solana", "hyperliquid", "zcash", "render-token", "ondo-finance"];
+        const ledgerIds = appState.deskCalls.map((c) => c.coingecko_id).filter(Boolean);
+        const uniqueIds = [...new Set([...baseIds, ...ledgerIds])].join(",");
+
+        const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${encodeURIComponent(uniqueIds)}&vs_currencies=usd&include_24hr_change=true`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        Object.keys(data).forEach((id) => {
+          const price = data[id]?.usd;
+          const change = data[id]?.usd_24h_change;
+          if (typeof price === "number") {
+            appState.liveSpotPrices[id] = price;
+            document.querySelectorAll(`[data-cg-price="${id}"]`).forEach((el) => {
+              el.textContent = formatPrice(price);
+            });
+          }
+          if (typeof change === "number") {
+            const isPos = change >= 0;
+            const label = `${isPos ? "+" : ""}${change.toFixed(1)}%`;
+            document.querySelectorAll(`[data-cg-change="${id}"]`).forEach((el) => {
+              el.textContent = label;
+              el.className = isPos
+                ? "text-accent bg-accent-soft px-1.5 py-0.5 rounded"
+                : "text-rose-400 bg-rose-500/15 px-1.5 py-0.5 rounded";
+            });
+          }
+        });
+
+        const statusEl = document.getElementById("ticker-feed-status");
+        if (statusEl) statusEl.textContent = "LIVE COINGECKO • ONLINE";
+        const syncEl = document.getElementById("telemetry-last-sync");
+        if (syncEl) syncEl.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+
+        renderDeskCalls();
+      } catch (err) {
+        const statusEl = document.getElementById("ticker-feed-status");
+        if (statusEl) statusEl.textContent = "MARKET SNAPSHOT • ACTIVE";
+      } finally {
+        appState.cgRequestInFlight = false;
+      }
+    }
+
+    async function fetchCoinGeckoGlobalAndSparklines() {
+      try {
+        const gRes = await fetch("https://api.coingecko.com/api/v3/global");
+        if (gRes.ok) {
+          const g = (await gRes.json()).data;
+          if (g?.total_market_cap?.usd) {
+            const mcap = formatCompactUsd(g.total_market_cap.usd);
+            const vol = formatCompactUsd(g.total_volume?.usd);
+            const btcd = g.market_cap_percentage?.btc ? g.market_cap_percentage.btc.toFixed(1) + "%" : "58.8%";
+            const chg = Number(g.market_cap_change_percentage_24h_usd || 0);
+            const mEl = document.getElementById("pulse-mcap");
+            const vEl = document.getElementById("pulse-vol");
+            const bEl = document.getElementById("pulse-btcd");
+            const cEl = document.getElementById("pulse-mcap-change");
+            if (mEl) mEl.textContent = mcap;
+            if (vEl) vEl.textContent = vol;
+            if (bEl) bEl.textContent = btcd;
+            if (cEl) {
+              cEl.textContent = `${chg >= 0 ? "+" : ""}${chg.toFixed(1)}%`;
+              cEl.className = chg >= 0 ? "text-accent" : "text-rose-400";
+            }
+            document.querySelectorAll("[data-btc-dom-ticker]").forEach((el) => {
+              el.textContent = `BTC.D: ${btcd}`;
+            });
+          }
+        }
+      } catch (_) {}
+
+      setTimeout(async () => {
+        try {
+          const sRes = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana&sparkline=true");
+          if (sRes.ok) {
+            const rows = await sRes.json();
+            rows.forEach((coin) => {
+              const arr = coin.sparkline_in_7d?.price;
+              if (arr && arr.length > 4) {
+                const step = Math.max(1, Math.floor(arr.length / 28));
+                const sampled = arr.filter((_, i) => i % step === 0);
+                renderSvgSparkline(`spark-${coin.id}`, sampled, (coin.price_change_percentage_24h || 0) >= 0);
+              }
+            });
+          }
+        } catch (_) {}
+      }, 1400);
+    }
+
+    async function fetchHyperliquidTelemetry() {
+      try {
+        const res = await fetch("https://api.hyperliquid.xyz/info", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ type: "metaAndAssetCtxs" })
+        });
+        if (!res.ok) return;
+        const [meta, ctxs] = await res.json();
+        if (!meta?.universe || !Array.isArray(ctxs)) return;
+
+        let totalOiUsd = 0;
+        let btcFundingHr = 0;
+        meta.universe.forEach((u, idx) => {
+          const c = ctxs[idx];
+          if (!c) return;
+          const oi = Number(c.openInterest || 0);
+          const mark = Number(c.markPx || 0);
+          if (oi > 0 && mark > 0) totalOiUsd += oi * mark;
+          if (u.name === "BTC") btcFundingHr = Number(c.funding || 0);
+        });
+
+        const apr = btcFundingHr * 24 * 365 * 100;
+        const fEl = document.getElementById("hl-funding-apr");
+        const oiEl = document.getElementById("hl-total-oi");
+        const regEl = document.getElementById("hl-funding-regime");
+        if (fEl) fEl.textContent = `${apr >= 0 ? "+" : ""}${apr.toFixed(1)}%`;
+        if (oiEl && totalOiUsd > 0) oiEl.textContent = formatCompactUsd(totalOiUsd);
+        if (regEl) regEl.textContent = apr < 0 ? "Negative / Squeeze" : apr > 15 ? "Overheated" : "Balanced";
+      } catch (_) {}
+    }
+
+    async function fetchDeFiLlamaTelemetry() {
+      try {
+        const [chainsRes, stablesRes] = await Promise.all([
+          fetch("https://api.llama.fi/v2/chains"),
+          fetch("https://stablecoins.llama.fi/stablecoins?includePrices=false")
+        ]);
+        if (chainsRes.ok) {
+          const chains = await chainsRes.json();
+          const totalTvl = chains.reduce((acc, c) => acc + Number(c.tvl || 0), 0);
+          const formatted = formatCompactUsd(totalTvl);
+          const cardEl = document.getElementById("dl-tvl-card");
+          if (cardEl) cardEl.textContent = formatted;
+          document.querySelectorAll("[data-defi-tvl]").forEach((el) => {
+            el.textContent = `DeFi TVL: ${formatted}`;
+          });
+        }
+        if (stablesRes.ok) {
+          const data = await stablesRes.json();
+          const assets = data?.peggedAssets || [];
+          const totalStables = assets.reduce((acc, s) => acc + Number(s.circulating?.peggedUSD || 0), 0);
+          const sEl = document.getElementById("dl-stables");
+          if (sEl && totalStables > 0) sEl.textContent = formatCompactUsd(totalStables);
+        }
+      } catch (_) {}
+    }
+
+    async function fetchFearAndGreed() {
+      try {
+        const res = await fetch("https://api.alternative.me/fng/?limit=1");
+        if (!res.ok) return;
+        const item = (await res.json())?.data?.[0];
+        if (!item) return;
+        const val = Number(item.value);
+        const cls = item.value_classification || "Neutral";
+        const valEl = document.getElementById("fng-value");
+        const lblEl = document.getElementById("fng-label");
+        const barEl = document.getElementById("fng-bar");
+        if (valEl) valEl.textContent = String(val);
+        if (lblEl) lblEl.textContent = cls.toUpperCase();
+        if (barEl) barEl.style.width = `${Math.min(100, Math.max(4, val))}%`;
+        document.querySelectorAll("[data-fng-ticker]").forEach((el) => {
+          el.textContent = `Fear & Greed: ${val} (${cls})`;
+        });
+      } catch (_) {}
+    }
+
+    async function fetchLiveNews() {
+      try {
+        const res = await fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN");
+        if (!res.ok) throw new Error("News API unavailable");
+        const payload = await res.json();
+        const rows = (payload?.Data || []).slice(0, 4).map((n) => ({
+          title: n.title,
+          source: n.source_info?.name || n.source || "Wire",
+          url: n.url,
+          time: n.published_on ? new Date(n.published_on * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Live"
+        }));
+        renderNewsList(rows.length ? rows : FALLBACK_NEWS);
+      } catch (_) {
+        renderNewsList(FALLBACK_NEWS);
+      }
+    }
+
+    // =========================================================================
+    // 7. SUPABASE CLIENT, AUTH & REAL-TIME TERMINAL SYNC
+    // =========================================================================
+    function isSupabaseConfigured() {
+      return (
+        typeof window.supabase !== "undefined" &&
+        FLOSS_CONFIG.supabaseUrl.startsWith("https://") &&
+        FLOSS_CONFIG.supabaseAnonKey &&
+        !FLOSS_CONFIG.supabaseAnonKey.includes("PASTE_YOUR_")
+      );
+    }
+
+    async function initSupabase() {
+      const badge = document.getElementById("supabase-status-badge");
+      if (!isSupabaseConfigured()) {
+        if (badge) badge.textContent = "● Snapshot Mode (Add Anon Key for Live DB)";
+        return;
+      }
+
+      try {
+        appState.supabase = window.supabase.createClient(
+          FLOSS_CONFIG.supabaseUrl,
+          FLOSS_CONFIG.supabaseAnonKey
+        );
+
+        const { data: { session } } = await appState.supabase.auth.getSession();
+        await syncUserSession(session);
+
+        appState.supabase.auth.onAuthStateChange(async (_event, newSession) => {
+          await syncUserSession(newSession);
+        });
+
+        await loadPublicTerminalTables();
+        if (badge) {
+          badge.textContent = "● Supabase Live Connected";
+          badge.className = "px-3 py-1.5 rounded-full bg-accent-soft border border-accent-soft text-accent";
+        }
+
+        try {
+          appState.supabase
+            .channel("floss-terminal-live")
+            .on("postgres_changes", { event: "*", schema: "public", table: "daily_briefings" }, () => {
+              loadPublicTerminalTables();
+              showToast("New Daily Dispatch pushed live.");
+            })
+            .on("postgres_changes", { event: "*", schema: "public", table: "desk_calls" }, () => {
+              loadPublicTerminalTables();
+              showToast("Execution Ledger updated in real time.");
+            })
+            .on("postgres_changes", { event: "*", schema: "public", table: "narratives" }, () => {
+              loadPublicTerminalTables();
+              showToast("Sector Rotation Radar updated.");
+            })
+            .on("postgres_changes", { event: "*", schema: "public", table: "catalysts" }, () => loadPublicTerminalTables())
+            .subscribe();
+        } catch (_) {}
+      } catch (err) {
+        if (badge) badge.textContent = "● Local Snapshot Active";
+      }
+    }
+
+    async function loadPublicTerminalTables() {
+      if (!appState.supabase) return;
+      try {
+        const [bRes, nRes, cRes, dRes] = await Promise.all([
+          appState.supabase.from("daily_briefings").select("*").order("created_at", { ascending: false }).limit(1),
+          appState.supabase.from("narratives").select("*").order("sort_order", { ascending: true }),
+          appState.supabase.from("catalysts").select("*").order("sort_order", { ascending: true }),
+          appState.supabase.from("desk_calls").select("*").order("sort_order", { ascending: true })
+        ]);
+
+        if (bRes.data && bRes.data[0]) {
+          const b = bRes.data[0];
+          const setEl = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+          setEl("briefing-dispatch-num", `DISPATCH #${b.dispatch_number}`);
+          setEl("briefing-date-label", b.published_label);
+          setEl("briefing-headline", b.headline);
+          setEl("briefing-summary", b.summary);
+          setEl("briefing-takeaway-1", b.takeaway_1);
+          setEl("briefing-takeaway-2", b.takeaway_2);
+        }
+
+        if (nRes.data && nRes.data.length) {
+          appState.narratives = nRes.data;
+          renderNarratives();
+        }
+
+        if (cRes.data && cRes.data.length) {
+          appState.catalysts = cRes.data;
+          renderCatalysts();
+        }
+
+        if (dRes.data) {
+          appState.deskCalls = dRes.data;
+          renderDeskCalls();
+        }
+      } catch (_) {}
+    }
+
+    async function syncUserSession(session) {
+      appState.user = session?.user || null;
+      appState.tier = "free";
+
+      const navLabel = document.getElementById("nav-auth-label");
+      const navDot = document.getElementById("nav-auth-dot");
+      const loggedInView = document.getElementById("auth-logged-in-view");
+      const loggedOutView = document.getElementById("auth-logged-out-view");
+
+      if (!appState.user) {
+        if (navLabel) navLabel.textContent = "Member Login";
+        if (navDot) navDot.className = "w-2 h-2 rounded-full bg-slate-500";
+        if (loggedInView) loggedInView.classList.add("hidden");
+        if (loggedOutView) loggedOutView.classList.remove("hidden");
+        lockTradeLevels();
+        return;
+      }
+
+      if (appState.supabase) {
+        const { data } = await appState.supabase
+          .from("profiles")
+          .select("tier")
+          .eq("id", appState.user.id)
+          .single();
+        if (data?.tier) appState.tier = data.tier;
+      }
+
+      if (navLabel) navLabel.textContent = `${appState.tier.toUpperCase()} • ACCOUNT`;
+      if (navDot) navDot.className = "w-2 h-2 rounded-full bg-accent";
+      if (loggedInView) loggedInView.classList.remove("hidden");
+      if (loggedOutView) loggedOutView.classList.add("hidden");
+
+      const emailEl = document.getElementById("auth-user-email");
+      const tierEl = document.getElementById("auth-user-tier");
+      if (emailEl) emailEl.textContent = appState.user.email || "";
+      if (tierEl) tierEl.textContent = appState.tier.toUpperCase();
+
+      if (appState.tier === "alpha" || appState.tier === "desk") {
+        await unlockTradeLevels();
+      } else {
+        lockTradeLevels();
+      }
+    }
+
+    function lockTradeLevels() {
+      const content = document.getElementById("trade-levels-content");
+      const overlay = document.getElementById("trade-levels-lock-overlay");
+      const badge = document.getElementById("trade-levels-badge");
+      if (content) content.className = "space-y-3 select-none blur-[6px] pointer-events-none transition duration-300";
+      if (overlay) overlay.classList.remove("hidden");
+      if (badge) {
+        badge.textContent = "ALPHA / DESK ONLY";
+        badge.className = "px-2.5 py-1 rounded-lg bg-gold-soft border border-gold-soft text-gold font-mono text-[11px] font-bold";
+      }
+    }
+
+    async function unlockTradeLevels() {
+      const content = document.getElementById("trade-levels-content");
+      const overlay = document.getElementById("trade-levels-lock-overlay");
+      const badge = document.getElementById("trade-levels-badge");
+      if (!appState.supabase || !content) return;
+
+      const { data } = await appState.supabase
+        .from("trade_levels")
+        .select("*")
+        .eq("active", true)
+        .order("created_at", { ascending: false });
+
+      if (data && data.length) {
+        content.innerHTML = data.map((row) => `
+          <div class="p-3.5 rounded-xl bg-[#080C12] border border-accent-soft/60 flex items-center justify-between gap-2">
+            <div>
+              <div class="font-mono font-bold text-sm text-white">${escapeHtml(row.pair)}</div>
+              <div class="text-[11px] font-mono text-accent">${escapeHtml(row.bias)}</div>
+            </div>
+            <div class="text-right font-mono text-xs">
+              <div class="text-slate-200">ENTRY: ${escapeHtml(row.entry_zone)}</div>
+              <div class="${row.is_target ? 'text-accent' : 'text-rose-400'}">${escapeHtml(row.stop_or_target)}</div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      content.className = "space-y-3 transition duration-300";
+      if (overlay) overlay.classList.add("hidden");
+      if (badge) {
+        badge.textContent = `${appState.tier.toUpperCase()} UNLOCKED`;
+        badge.className = "px-2.5 py-1 rounded-lg bg-accent-soft border border-accent-soft text-accent font-mono text-[11px] font-bold";
+      }
+    }
+
+    // =========================================================================
+    // 8. INTERACTIVE UI HANDLERS (AUTH, CHECKOUT, FORMS, SIMULATOR, MODALS)
+    // =========================================================================
+    function toggleMobileMenu() {
+      document.getElementById("mobile-menu")?.classList.toggle("hidden");
+    }
+    function closeMobileMenu() {
+      document.getElementById("mobile-menu")?.classList.add("hidden");
+    }
+
+    function openModal(id) {
+      document.getElementById(id)?.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(id) {
+      document.getElementById(id)?.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+    function handleBackdropClose(event, id) {
+      if (event.target && event.target.id === id) closeModal(id);
+    }
+
+    function openAuthModal() {
+      openModal("auth-modal");
+    }
+
+    function switchAuthTab(mode) {
+      appState.authMode = mode;
+      const pwGroup = document.getElementById("auth-password-group");
+      const pwInput = document.getElementById("auth-password");
+      const btn = document.getElementById("auth-submit-btn");
+
+      ["signin", "signup", "magic"].forEach((t) => {
+        const el = document.getElementById(`auth-tab-${t}`);
+        if (!el) return;
+        el.className = t === mode
+          ? "py-2 rounded-lg bg-accent text-[#07090D] font-bold"
+          : "py-2 rounded-lg text-slate-400 hover:text-white";
+      });
+
+      if (mode === "magic") {
+        pwGroup?.classList.add("hidden");
+        if (pwInput) pwInput.required = false;
+        if (btn) btn.textContent = "Send Magic Login Link";
+      } else {
+        pwGroup?.classList.remove("hidden");
+        if (pwInput) pwInput.required = true;
+        if (btn) btn.textContent = mode === "signup" ? "Create Member Account" : "Sign In to Terminal";
+      }
+    }
+
+    async function handleSignOut() {
+      if (appState.supabase) await appState.supabase.auth.signOut();
+      closeModal("auth-modal");
+      showToast("Signed out of Floss Terminal.", "gold");
+    }
+
+    function setBillingCycle(cycle) {
+      appState.billingCycle = cycle;
+      const mBtn = document.getElementById("bill-monthly-btn");
+      const aBtn = document.getElementById("bill-annual-btn");
+      if (mBtn && aBtn) {
+        mBtn.className = cycle === "monthly"
+          ? "px-5 py-2 rounded-xl text-xs font-mono font-bold bg-accent text-[#07090D] transition"
+          : "px-5 py-2 rounded-xl text-xs font-mono font-bold text-slate-300 hover:text-white transition";
+        aBtn.className = cycle === "annual"
+          ? "px-5 py-2 rounded-xl text-xs font-mono font-bold bg-accent text-[#07090D] transition"
+          : "px-5 py-2 rounded-xl text-xs font-mono font-bold text-slate-300 hover:text-white transition";
+      }
+
+      ["briefing", "alpha", "desk"].forEach((tierKey) => {
+        const p = FLOSS_CONFIG.pricing[tierKey];
+        const priceEl = document.getElementById(`price-${tierKey}`);
+        const subEl = document.getElementById(`sub-${tierKey}`);
+        if (priceEl) priceEl.textContent = `$${cycle === "annual" ? p.annualMonthly : p.monthly}`;
+        if (subEl) {
+          subEl.textContent = cycle === "annual"
+            ? `Billed $${p.annualTotal.toLocaleString()} annually (Save 25%)`
+            : "Billed monthly • Cancel anytime";
+        }
+      });
+    }
+
+    function openCheckoutModal(tierKey) {
+      appState.selectedTier = tierKey;
+      const p = FLOSS_CONFIG.pricing[tierKey];
+      const isAnnual = appState.billingCycle === "annual";
+      const amount = isAnnual ? p.annualTotal : p.monthly;
+      const cycleLabel = isAnnual ? "Annual (-25%)" : "Monthly";
+
+      const tagEl = document.getElementById("checkout-tier-tag");
+      const descEl = document.getElementById("checkout-plan-desc");
+      const amtEl = document.getElementById("checkout-plan-amount");
+      const usdcAmtEl = document.getElementById("usdc-exact-amount");
+      const whopLink = document.getElementById("whop-checkout-link");
+      const walletEl = document.getElementById("usdc-wallet-display");
+
+      if (tagEl) tagEl.textContent = p.name.toUpperCase();
+      if (descEl) descEl.textContent = `${p.name} — ${cycleLabel}`;
+      if (amtEl) amtEl.textContent = `$${amount.toLocaleString()}`;
+      if (usdcAmtEl) usdcAmtEl.textContent = `$${amount.toLocaleString()} USDC`;
+      if (whopLink) whopLink.href = FLOSS_CONFIG.paymentLinks[tierKey][appState.billingCycle];
+      if (walletEl) walletEl.textContent = FLOSS_CONFIG.directUsdcAddress;
+
+      switchPayMethod("card");
+      openModal("checkout-modal");
+    }
+
+    function switchPayMethod(method) {
+      const cardBtn = document.getElementById("pay-tab-card");
+      const usdcBtn = document.getElementById("pay-tab-usdc");
+      const cardPanel = document.getElementById("pay-panel-card");
+      const usdcPanel = document.getElementById("pay-panel-usdc");
+
+      if (method === "card") {
+        cardBtn.className = "py-2.5 rounded-lg bg-accent text-[#07090D] font-bold";
+        usdcBtn.className = "py-2.5 rounded-lg text-slate-300 hover:text-white font-bold";
+        cardPanel.classList.remove("hidden");
+        usdcPanel.classList.add("hidden");
+      } else {
+        usdcBtn.className = "py-2.5 rounded-lg bg-accent text-[#07090D] font-bold";
+        cardBtn.className = "py-2.5 rounded-lg text-slate-300 hover:text-white font-bold";
+        usdcPanel.classList.remove("hidden");
+        cardPanel.classList.add("hidden");
+      }
+    }
+
+    function selectUsdcChain(chain) {
+      appState.selectedUsdcChain = chain;
+      const lbl = document.getElementById("usdc-selected-chain");
+      if (lbl) lbl.textContent = chain;
+      document.querySelectorAll(".usdc-chain-btn").forEach((btn) => {
+        const active = btn.getAttribute("data-chain") === chain;
+        btn.className = active
+          ? "usdc-chain-btn py-2 rounded-xl border border-accent bg-accent-soft text-accent font-bold"
+          : "usdc-chain-btn py-2 rounded-xl border border-borderdark bg-[#080C12] text-slate-300";
+      });
+    }
+
+    function copyUsdcAddress() {
+      const addr = FLOSS_CONFIG.directUsdcAddress;
+      const ta = document.createElement("textarea");
+      ta.value = addr;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast(`Copied ${appState.selectedUsdcChain} USDC address!`);
+      } catch (_) {
+        showToast("Please highlight and copy the address manually.", "gold");
+      }
+      document.body.removeChild(ta);
+    }
+
+    function openFocusReadModal() {
+      const copyText = (src, dst) => {
+        const s = document.getElementById(src);
+        const d = document.getElementById(dst);
+        if (s && d) d.textContent = s.textContent;
+      };
+      copyText("briefing-dispatch-num", "focus-dispatch-num");
+      copyText("briefing-date-label", "focus-date-label");
+      copyText("briefing-headline", "focus-headline");
+      copyText("briefing-summary", "focus-summary");
+      copyText("briefing-takeaway-1", "focus-t1");
+      copyText("briefing-takeaway-2", "focus-t2");
+      openModal("focus-read-modal");
+    }
+
+    function openLegalModal(type) {
+      const title = document.getElementById("legal-modal-title");
+      const body = document.getElementById("legal-modal-body");
+      if (!title || !body) return;
+
+      if (type === "terms") {
+        title.textContent = "Terms of Service & Risk Disclosure";
+        body.innerHTML = `
+          <p><strong>1. Educational Research Only:</strong> Floss Academy publishes independent cryptocurrency research, on-chain data, and market commentary strictly for informational and educational purposes. Nothing on flossacademy.io, Discord, or Telegram constitutes personalized financial, tax, or investment advice.</p>
+          <p><strong>2. Subscription &amp; Cancellations:</strong> Recurring card memberships are billed via Whop and may be canceled anytime prior to renewal. Direct on-chain USDC transfers are final once confirmed on-chain.</p>
+          <p><strong>3. Anti-Leak Policy:</strong> Redistributing gated Alpha Trade Levels, private dispatches, or Desk audits outside your personal membership may result in immediate termination without refund.</p>
+        `;
+      } else {
+        title.textContent = "Privacy Policy";
+        body.innerHTML = `
+          <p><strong>1. Data We Collect:</strong> We collect only the email address you submit for the Free 6:00 AM Briefing, Supabase account authentication, or payment confirmation.</p>
+          <p><strong>2. Zero Data Resale:</strong> Floss Academy never sells, rents, or trades subscriber email lists to third-party advertisers or token promoters.</p>
+          <p><strong>3. Contact &amp; Deletion:</strong> Request account or email deletion anytime by emailing <span class="text-accent font-mono">support@flossacademy.io</span>.</p>
+        `;
+      }
+      openModal("legal-modal");
+    }
+
+    function updateSimulator() {
+      const port = Number(document.getElementById("sim-portfolio")?.value || 25000);
+      const edgePct = Number(document.getElementById("sim-edge")?.value || 3.5);
+      const avoidUnlock = Boolean(document.getElementById("sim-avoid-unlock")?.checked);
+
+      const portLabel = document.getElementById("sim-portfolio-val");
+      const edgeLabel = document.getElementById("sim-edge-val");
+      const impactEl = document.getElementById("sim-annual-impact");
+      const ratioEl = document.getElementById("sim-coverage-ratio");
+
+      if (portLabel) portLabel.textContent = "$" + port.toLocaleString("en-US");
+      if (edgeLabel) edgeLabel.textContent = `+${edgePct.toFixed(1)}% / mo`;
+
+      const monthlyValue = port * (edgePct / 100);
+      const avoidedDrawdown = avoidUnlock ? port * 0.12 : 0;
+      const annualImpact = Math.round(monthlyValue * 12 + avoidedDrawdown);
+      const ratio = (annualImpact / 1188).toFixed(1);
+
+      if (impactEl) impactEl.textContent = "$" + annualImpact.toLocaleString("en-US");
+      if (ratioEl) ratioEl.textContent = `${ratio}x`;
+    }
+
+    // =========================================================================
+    // 9. PRIVATE DESK ADMIN LIVE DIAGNOSTIC TEST (Ctrl + Shift + A or ?admin=1)
+    // =========================================================================
+    async function runLiveDiagnosticTest() {
+      const out = document.getElementById("admin-test-results");
+      if (!out) return;
+      out.innerHTML = `<div class="text-gold">Running live endpoint probes...</div>`;
+
+      const tests = [
+        { name: "CoinGecko Spot API", fn: () => fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd") },
+        { name: "Hyperliquid CLOB API", fn: () => fetch("https://api.hyperliquid.xyz/info", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "meta" }) }) },
+        { name: "DeFiLlama TVL API", fn: () => fetch("https://api.llama.fi/v2/chains") },
+        { name: "Fear & Greed API", fn: () => fetch("https://api.alternative.me/fng/?limit=1") },
+        { name: "CryptoCompare Wire", fn: () => fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN") }
+      ];
+
+      const rows = [];
+      for (const t of tests) {
+        const start = performance.now();
+        try {
+          const r = await t.fn();
+          const ms = Math.round(performance.now() - start);
+          rows.push(`<div class="flex justify-between"><span>${t.name}</span><span class="${r.ok ? 'text-accent' : 'text-rose-400'}">${r.ok ? 'PASS' : 'HTTP ' + r.status} (${ms}ms)</span></div>`);
+        } catch (e) {
+          rows.push(`<div class="flex justify-between"><span>${t.name}</span><span class="text-rose-400">BLOCKED / OFFLINE</span></div>`);
+        }
+      }
+
+      const sbOk = isSupabaseConfigured();
+      rows.unshift(`<div class="flex justify-between"><span>Supabase Publishable Key</span><span class="${sbOk ? 'text-accent' : 'text-gold'}">${sbOk ? 'CONFIGURED' : 'NEEDS KEY'}</span></div>`);
+      rows.push(`<div class="flex justify-between"><span>Direct USDC Wallet</span><span class="text-accent">CONFIGURED</span></div>`);
+
+      out.innerHTML = rows.join("");
+    }
+
+    // =========================================================================
+    // 10. FORM SUBMISSION HANDLERS & BOOTSTRAP
+    // =========================================================================
+    function getUtmParams() {
+      const p = new URLSearchParams(window.location.search);
+      return {
+        utm_source: p.get("utm_source") || "direct",
+        utm_campaign: p.get("utm_campaign") || "organic"
+      };
+    }
+
+    document.getElementById("hero-lead-form")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const input = document.getElementById("hero-email-input");
+      const btn = document.getElementById("hero-submit-btn");
+      const email = input?.value?.trim();
+      if (!email) return;
+
+      const origText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Subscribing...";
+
+      try {
+        const utm = getUtmParams();
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: FLOSS_CONFIG.web3formsAccessKey,
+            subject: FLOSS_CONFIG.web3formsSubject,
+            email,
+            utm_source: utm.utm_source,
+            utm_campaign: utm.utm_campaign
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          input.value = "";
+          showToast("Subscribed! Watch your inbox at 6:00 AM EST.");
+        } else {
+          throw new Error(data.message || "Submission error");
+        }
+      } catch (_) {
+        showToast("Could not connect right now—please try again shortly.", "rose");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = origText;
+      }
+    });
+
+    document.getElementById("auth-form")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("auth-email")?.value?.trim();
+      const password = document.getElementById("auth-password")?.value || "";
+      const feedback = document.getElementById("auth-feedback");
+      const btn = document.getElementById("auth-submit-btn");
+
+      const setFb = (msg, ok) => {
+        if (!feedback) return;
+        feedback.textContent = msg;
+        feedback.className = ok
+          ? "text-xs font-mono p-3 rounded-xl bg-accent-soft text-accent border border-accent-soft"
+          : "text-xs font-mono p-3 rounded-xl bg-rose-500/15 text-rose-300 border border-rose-500/30";
+      };
+
+      if (!appState.supabase) {
+        setFb("Supabase key is not configured yet in FLOSS_CONFIG.", false);
+        return;
+      }
+
+      btn.disabled = true;
+      try {
+        let result;
+        if (appState.authMode === "magic") {
+          result = await appState.supabase.auth.signInWithOtp({
+            email,
+            options: { emailRedirectTo: window.location.origin }
+          });
+          if (result.error) throw result.error;
+          setFb("Magic login link sent! Check your email inbox.", true);
+        } else if (appState.authMode === "signup") {
+          result = await appState.supabase.auth.signUp({ email, password });
+          if (result.error) throw result.error;
+          setFb("Account created! Confirm your email if prompted, then sign in.", true);
+        } else {
+          result = await appState.supabase.auth.signInWithPassword({ email, password });
+          if (result.error) throw result.error;
+          showToast("Signed in to Floss Terminal!");
+          closeModal("auth-modal");
+        }
+      } catch (err) {
+        setFb(err.message || "Authentication failed.", false);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById("usdc-confirm-form")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("usdc-buyer-email")?.value?.trim();
+      const txid = document.getElementById("usdc-txid")?.value?.trim();
+      const btn = document.getElementById("usdc-submit-btn");
+      if (!email || !txid) return;
+
+      btn.disabled = true;
+      btn.textContent = "Submitting TXID...";
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: FLOSS_CONFIG.web3formsAccessKey,
+            subject: `Direct USDC Payment — ${appState.selectedTier.toUpperCase()} (${appState.billingCycle})`,
+            email,
+            network: appState.selectedUsdcChain,
+            tx_hash: txid
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          closeModal("checkout-modal");
+          showToast("TXID received! Your tier & Discord/Telegram invites will activate shortly.");
+        } else {
+          throw new Error("Submit failed");
+        }
+      } catch (_) {
+        showToast("Error submitting TXID—please email support@flossacademy.io.", "rose");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Submit USDC Payment for Activation";
+      }
+    });
+
+    // Cursor spotlight glow on cards
+    document.addEventListener("mousemove", (e) => {
+      document.querySelectorAll(".spotlight-card").forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+        card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Keyboard shortcuts (ESC closes modals, Ctrl+Shift+A opens private Desk Admin)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        ["auth-modal", "checkout-modal", "focus-read-modal", "legal-modal", "admin-modal"].forEach(closeModal);
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
+        e.preventDefault();
+        openModal("admin-modal");
+      }
+    });
+
+    // Initialize App on Load
+    window.addEventListener("DOMContentLoaded", () => {
+      renderCatalysts();
+      renderNarratives();
+      renderDeskCalls();
+      renderNewsList(FALLBACK_NEWS);
+      updateSimulator();
+
+      renderSvgSparkline("spark-bitcoin", [58200, 57900, 56100, 55326, 58800, 61100, 60595], true);
+      renderSvgSparkline("spark-ethereum", [1680, 1650, 1620, 1590, 1665, 1716, 1703], true);
+      renderSvgSparkline("spark-solana", [69.5, 68.2, 66.8, 65.4, 70.1, 74.0, 71.71], true);
+
+      document.getElementById("sim-portfolio")?.addEventListener("input", updateSimulator);
+      document.getElementById("sim-edge")?.addEventListener("input", updateSimulator);
+      document.getElementById("sim-avoid-unlock")?.addEventListener("change", updateSimulator);
+
+      if (new URLSearchParams(window.location.search).get("admin") === "1") {
+        openModal("admin-modal");
+      }
+
+      initSupabase();
+      fetchCoinGeckoPrices();
+      fetchHyperliquidTelemetry();
+      fetchDeFiLlamaTelemetry();
+      fetchFearAndGreed();
+      fetchLiveNews();
+      setTimeout(fetchCoinGeckoGlobalAndSparklines, 900);
+
+      setInterval(fetchCoinGeckoPrices, FLOSS_CONFIG.coingeckoRefreshMs);
+    });
+  </script>
+</body>
