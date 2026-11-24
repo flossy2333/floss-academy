@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
   <meta charset="UTF-8" />
@@ -286,7 +287,7 @@
               <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.9%</span>
             </span>
             <span class="text-borderdark">|</span>
-            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 21</span>
+            <span data-fng-ticker class="px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-400 font-semibold">Fear &amp; Greed: 11 (Extreme Fear)</span>
             <span class="text-borderdark">|</span>
             <span data-defi-tvl class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">DeFi TVL: $68.9B</span>
             <span class="text-borderdark">|</span>
@@ -338,7 +339,7 @@
               <span data-cg-change="ondo-finance" class="text-accent bg-accent-soft px-1.5 py-0.5 rounded">+1.9%</span>
             </span>
             <span class="text-borderdark">|</span>
-            <span data-fng-ticker class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold">Fear &amp; Greed: 21</span>
+            <span data-fng-ticker class="px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-400 font-semibold">Fear &amp; Greed: 11 (Extreme Fear)</span>
             <span class="text-borderdark">|</span>
             <span data-defi-tvl class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">DeFi TVL: $68.9B</span>
             <span class="text-borderdark">|</span>
@@ -574,14 +575,18 @@
       <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
         <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
           <span>Market Sentiment</span>
-          <span id="fng-label" class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-semibold">EXTREME FEAR</span>
+          <span id="fng-label" class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-semibold">EXTREME FEAR</span>
         </div>
         <div class="mt-2 flex items-baseline gap-2">
-          <span id="fng-value" class="font-mono font-bold text-2xl text-white">21</span>
+          <span id="fng-value" class="font-mono font-bold text-2xl text-white">11</span>
           <span class="text-xs font-mono text-slate-400">/ 100 Index</span>
         </div>
-        <div class="mt-3 w-full h-1.5 rounded-full bg-[#18202D] overflow-hidden">
-          <div id="fng-bar" class="h-full rounded-full bg-gradient-to-r from-rose-500 via-amber-400 to-emerald-400 transition-all duration-700" style="width: 21%;"></div>
+        <div class="mt-2.5 w-full h-1.5 rounded-full bg-[#18202D] overflow-hidden">
+          <div id="fng-bar" class="h-full rounded-full bg-gradient-to-r from-rose-500 via-amber-400 to-emerald-400 transition-all duration-700" style="width: 11%;"></div>
+        </div>
+        <div id="fng-meta" class="mt-2 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+          <span>Prev: 11 (0)</span>
+          <span>Alternative.me • Live</span>
         </div>
       </div>
     </div>
@@ -1498,7 +1503,8 @@
         "render-token": 1.33,
         "ondo-finance": 0.2898
       },
-      cgRequestInFlight: false
+      cgRequestInFlight: false,
+      supabasePollTimer: null
     };
 
     // =========================================================================
@@ -1900,39 +1906,72 @@
     }
 
     async function fetchFearAndGreed() {
-      try {
-        const res = await fetch("https://api.alternative.me/fng/?limit=1");
-        if (!res.ok) return;
-        const item = (await res.json())?.data?.[0];
-        if (!item) return;
-        const val = Number(item.value);
-        const cls = item.value_classification || "Neutral";
-        const valEl = document.getElementById("fng-value");
-        const lblEl = document.getElementById("fng-label");
-        const barEl = document.getElementById("fng-bar");
-        if (valEl) valEl.textContent = String(val);
-        if (lblEl) lblEl.textContent = cls.toUpperCase();
-        if (barEl) barEl.style.width = `${Math.min(100, Math.max(4, val))}%`;
-        document.querySelectorAll("[data-fng-ticker]").forEach((el) => {
-          el.textContent = `Fear & Greed: ${val} (${cls})`;
-        });
-      } catch (_) {}
-    }
+      const endpoints = [
+        "https://api.alternative.me/fng/?limit=2",
+        "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://api.alternative.me/fng/?limit=2")
+      ];
 
-    async function fetchLiveNews() {
-      try {
-        const res = await fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN");
-        if (!res.ok) throw new Error("News API unavailable");
-        const payload = await res.json();
-        const rows = (payload?.Data || []).slice(0, 4).map((n) => ({
-          title: n.title,
-          source: n.source_info?.name || n.source || "Wire",
-          url: n.url,
-          time: n.published_on ? new Date(n.published_on * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Live"
-        }));
-        renderNewsList(rows.length ? rows : FALLBACK_NEWS);
-      } catch (_) {
-        renderNewsList(FALLBACK_NEWS);
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          if (!res.ok) continue;
+          const payload = await res.json();
+          const list = payload?.data;
+          const item = Array.isArray(list) ? list[0] : null;
+          if (!item || item.value == null) continue;
+
+          const val = Number(item.value);
+          const prevVal = list[1]?.value != null ? Number(list[1].value) : null;
+          const cls = item.value_classification || (val <= 24 ? "Extreme Fear" : val <= 44 ? "Fear" : val <= 55 ? "Neutral" : val <= 74 ? "Greed" : "Extreme Greed");
+          const updatedDate = item.timestamp
+            ? new Date(Number(item.timestamp) * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+            : "Today";
+
+          const isExtremeFear = val <= 24;
+          const isFear = val > 24 && val <= 44;
+          const isGreed = val >= 56;
+
+          const badgeClass = isExtremeFear
+            ? "px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-semibold"
+            : isFear
+              ? "px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-semibold"
+              : isGreed
+                ? "px-1.5 py-0.5 rounded bg-accent-soft text-accent text-[10px] font-semibold"
+                : "px-1.5 py-0.5 rounded bg-gold-soft text-gold text-[10px] font-semibold";
+
+          const tickerClass = isExtremeFear
+            ? "px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-400 font-semibold"
+            : isFear
+              ? "px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold"
+              : isGreed
+                ? "px-2 py-0.5 rounded bg-accent-soft border border-accent-soft text-accent font-semibold"
+                : "px-2 py-0.5 rounded bg-gold-soft border border-gold-soft text-gold font-semibold";
+
+          const valEl = document.getElementById("fng-value");
+          const lblEl = document.getElementById("fng-label");
+          const barEl = document.getElementById("fng-bar");
+          const metaEl = document.getElementById("fng-meta");
+
+          if (valEl) valEl.textContent = String(val);
+          if (lblEl) {
+            lblEl.textContent = cls.toUpperCase();
+            lblEl.className = badgeClass;
+          }
+          if (barEl) barEl.style.width = `${Math.min(100, Math.max(4, val))}%`;
+          if (metaEl) {
+            const delta = prevVal !== null ? val - prevVal : null;
+            const prevText = prevVal !== null ? `Prev: ${prevVal} (${delta > 0 ? "+" : ""}${delta})` : "Alternative.me";
+            metaEl.innerHTML = `<span>${escapeHtml(prevText)}</span><span>Synced ${escapeHtml(updatedDate)}</span>`;
+          }
+
+          document.querySelectorAll("[data-fng-ticker]").forEach((el) => {
+            el.textContent = `Fear & Greed: ${val} (${cls})`;
+            el.className = tickerClass;
+          });
+          return;
+        } catch (_) {
+          // Try next fallback endpoint
+        }
       }
     }
 
@@ -1946,6 +1985,31 @@
         FLOSS_CONFIG.supabaseAnonKey &&
         !FLOSS_CONFIG.supabaseAnonKey.includes("PASTE_YOUR_")
       );
+    }
+
+    /**
+     * Checks whether outbound WebSocket (wss://) connections are allowed.
+     * Canvas and sandboxed preview iframes block WebSockets with a SecurityError,
+     * so we fall back to HTTPS polling when embedded and enable Realtime on standalone hosts.
+     */
+    function canUseRealtimeWebSocket() {
+      try {
+        if (typeof WebSocket === "undefined") return false;
+        const isEmbedded = window.self !== window.top;
+        const isStandardHttp = window.location.protocol === "https:" || window.location.protocol === "http:";
+        const hasValidOrigin = Boolean(window.location.origin && window.location.origin !== "null");
+        const isPreviewHost = /googleusercontent\.com|usercontent\.goog|webcontainer|sandbox/i.test(window.location.hostname || "");
+        return !isEmbedded && isStandardHttp && hasValidOrigin && !isPreviewHost;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function startSupabaseHttpsPolling() {
+      if (appState.supabasePollTimer) return;
+      appState.supabasePollTimer = setInterval(() => {
+        loadPublicTerminalTables();
+      }, FLOSS_CONFIG.coingeckoRefreshMs);
     }
 
     async function initSupabase() {
@@ -1969,29 +2033,41 @@
         });
 
         await loadPublicTerminalTables();
-        if (badge) {
-          badge.textContent = "● Supabase Live Connected";
-          badge.className = "px-3 py-1.5 rounded-full bg-accent-soft border border-accent-soft text-accent";
-        }
 
-        try {
-          appState.supabase
-            .channel("floss-terminal-live")
-            .on("postgres_changes", { event: "*", schema: "public", table: "daily_briefings" }, () => {
-              loadPublicTerminalTables();
-              showToast("New Daily Dispatch pushed live.");
-            })
-            .on("postgres_changes", { event: "*", schema: "public", table: "desk_calls" }, () => {
-              loadPublicTerminalTables();
-              showToast("Execution Ledger updated in real time.");
-            })
-            .on("postgres_changes", { event: "*", schema: "public", table: "narratives" }, () => {
-              loadPublicTerminalTables();
-              showToast("Sector Rotation Radar updated.");
-            })
-            .on("postgres_changes", { event: "*", schema: "public", table: "catalysts" }, () => loadPublicTerminalTables())
-            .subscribe();
-        } catch (_) {}
+        if (canUseRealtimeWebSocket()) {
+          if (badge) {
+            badge.textContent = "● Supabase Realtime Live";
+            badge.className = "px-3 py-1.5 rounded-full bg-accent-soft border border-accent-soft text-accent";
+          }
+
+          try {
+            appState.supabase
+              .channel("floss-terminal-live")
+              .on("postgres_changes", { event: "*", schema: "public", table: "daily_briefings" }, () => {
+                loadPublicTerminalTables();
+                showToast("New Daily Dispatch pushed live.");
+              })
+              .on("postgres_changes", { event: "*", schema: "public", table: "desk_calls" }, () => {
+                loadPublicTerminalTables();
+                showToast("Execution Ledger updated in real time.");
+              })
+              .on("postgres_changes", { event: "*", schema: "public", table: "narratives" }, () => {
+                loadPublicTerminalTables();
+                showToast("Sector Rotation Radar updated.");
+              })
+              .on("postgres_changes", { event: "*", schema: "public", table: "catalysts" }, () => loadPublicTerminalTables())
+              .subscribe();
+          } catch (_) {
+            startSupabaseHttpsPolling();
+          }
+        } else {
+          // Canvas / iframe preview: avoid WebSocket SecurityError and stay synced over HTTPS
+          startSupabaseHttpsPolling();
+          if (badge) {
+            badge.textContent = "● Supabase Live (HTTPS Sync)";
+            badge.className = "px-3 py-1.5 rounded-full bg-accent-soft border border-accent-soft text-accent";
+          }
+        }
       } catch (err) {
         if (badge) badge.textContent = "● Local Snapshot Active";
       }
@@ -2559,6 +2635,8 @@
       setTimeout(fetchCoinGeckoGlobalAndSparklines, 900);
 
       setInterval(fetchCoinGeckoPrices, FLOSS_CONFIG.coingeckoRefreshMs);
+      setInterval(fetchFearAndGreed, 900000);
     });
   </script>
 </body>
+</html>
