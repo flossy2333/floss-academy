@@ -74,7 +74,6 @@
       position: relative;
     }
 
-    /* Subtle institutional grain overlay */
     body::before {
       content: "";
       position: fixed;
@@ -161,7 +160,6 @@
       background: radial-gradient(circle, rgba(var(--gold-rgb), 0.13) 0%, rgba(var(--gold-rgb), 0) 70%);
     }
 
-    /* Range sliders */
     input[type="range"].accent-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -194,7 +192,6 @@
       cursor: pointer;
     }
 
-    /* Seamless Ticker Animation */
     @keyframes tickerScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -355,7 +352,6 @@
   <!-- ===================================================================== -->
   <header class="sticky top-0 z-40 w-full bg-[#07090D]/85 backdrop-blur-xl border-b border-borderdark/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-      <!-- Brand Mark -->
       <a href="#" class="flex items-center gap-3 group shrink-0">
         <div class="w-9 h-9 rounded-xl bg-terminal border border-accent-soft flex items-center justify-center shadow-accent-glow group-hover:scale-105 transition">
           <svg class="w-5 h-5" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -370,7 +366,6 @@
         </div>
       </a>
 
-      <!-- Desktop Links -->
       <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
         <a href="#preview" class="hover:text-white transition">Live Terminal</a>
         <a href="#narratives" class="hover:text-white transition">Narratives</a>
@@ -379,7 +374,6 @@
         <a href="#pricing" class="hover:text-white transition">Pricing</a>
       </nav>
 
-      <!-- Desktop Actions -->
       <div class="hidden sm:flex items-center gap-3">
         <button id="nav-auth-btn" type="button" onclick="openAuthModal()" class="px-4 py-2 rounded-xl border border-borderdark bg-terminal hover:bg-terminalhover hover-border-accent text-xs font-mono font-semibold text-slate-200 transition flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-slate-500" id="nav-auth-dot"></span>
@@ -390,7 +384,6 @@
         </a>
       </div>
 
-      <!-- Mobile Menu Toggle -->
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-borderdark bg-terminal text-slate-300 hover:text-white">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -398,7 +391,6 @@
       </button>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden border-t border-borderdark bg-[#080B10] px-4 py-4 space-y-3 animate-panel">
       <a href="#preview" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Live Terminal</a>
       <a href="#narratives" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm text-slate-200 hover:bg-terminal">Narrative Radar</a>
@@ -420,13 +412,11 @@
   <!-- 3. HERO SECTION + FREE 6:00 AM BRIEFING LEAD CAPTURE                  -->
   <!-- ===================================================================== -->
   <section class="relative overflow-hidden bg-terminal-grid border-b border-borderdark/80">
-    <!-- Ambient radial glows -->
     <div class="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 w-[780px] h-[420px] ambient-primary blur-3xl"></div>
     <div class="pointer-events-none absolute top-44 -right-24 w-[460px] h-[460px] ambient-secondary blur-3xl"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 sm:pt-20 sm:pb-20 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <!-- Dispatch Status Pill -->
         <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-terminal/90 border border-accent-soft text-xs font-mono text-slate-200 mb-6 shadow-accent-glow">
           <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
           <span class="text-accent font-semibold">DISPATCH #420 LIVE</span>
@@ -443,7 +433,6 @@
           Every morning at <span class="text-white font-semibold">6:00 AM EST</span>, Floss Academy distills Hyperliquid perp funding, DeFiLlama stablecoin flows, token unlock shocks, and exact invalidation levels into a 5-minute institutional briefing.
         </p>
 
-        <!-- Free Briefing Lead Capture Form (Web3Forms + UTM Tracking) -->
         <form id="hero-lead-form" class="mt-8 max-w-xl mx-auto">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
           <div class="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl bg-terminal/90 border border-borderdark shadow-2xl">
@@ -469,7 +458,6 @@
           </div>
         </form>
 
-        <!-- Verifiable Operational Proof Strip -->
         <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
           <div class="rounded-2xl bg-terminal/85 border border-borderdark p-4 spotlight-card">
             <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Delivery Cadence</div>
@@ -493,7 +481,6 @@
           </div>
         </div>
 
-        <!-- Data Sources Trust Strip -->
         <div class="mt-10 pt-6 border-t border-borderdark/70 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-widest text-slate-500">
           <span class="text-slate-400">Telemetry Stack:</span>
           <span>CoinGecko</span>
@@ -527,9 +514,7 @@
       </div>
     </div>
 
-    <!-- Top 4 Macro & Derivatives Metric Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-      <!-- Global Market Cap & BTC.D -->
       <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
         <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
           <span>Global Crypto Cap</span>
@@ -542,7 +527,6 @@
         </div>
       </div>
 
-      <!-- Hyperliquid Perp Funding & OI -->
       <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
         <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
           <span>Hyperliquid BTC Perp</span>
@@ -558,7 +542,6 @@
         </div>
       </div>
 
-      <!-- DeFiLlama Stablecoin Dry Powder & TVL -->
       <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
         <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
           <span>Stablecoin Dry Powder</span>
@@ -571,7 +554,6 @@
         </div>
       </div>
 
-      <!-- Crypto Fear & Greed Sentiment -->
       <div class="rounded-2xl bg-terminal border border-borderdark p-4 spotlight-card">
         <div class="flex items-center justify-between text-[11px] font-mono uppercase text-slate-400">
           <span>Market Sentiment</span>
@@ -586,12 +568,11 @@
         </div>
         <div id="fng-meta" class="mt-2 text-[10px] font-mono text-slate-400 flex items-center justify-between">
           <span>Prev: 11 (0)</span>
-          <span>Alternative.me • Live</span>
+          <span>Alternative.me • Nov 24</span>
         </div>
       </div>
     </div>
 
-    <!-- 7D Sparklines for BTC / ETH / SOL -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="rounded-2xl bg-terminal border border-borderdark p-4 flex items-center justify-between gap-4">
         <div>
@@ -639,7 +620,6 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
       <!-- LEFT COLUMN (7 cols): Daily Dispatch + Live News Wire -->
       <div class="lg:col-span-7 flex flex-col gap-6">
-        <!-- Daily Dispatch Card -->
         <article class="rounded-2xl bg-terminal border border-borderdark p-6 sm:p-7 relative overflow-hidden">
           <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-borderdark">
             <div class="flex items-center gap-2.5">
@@ -675,7 +655,6 @@
           </div>
         </article>
 
-        <!-- Live Institutional News Wire -->
         <div class="rounded-2xl bg-terminal border border-borderdark p-6">
           <div class="flex items-center justify-between pb-3 border-b border-borderdark">
             <div class="flex items-center gap-2">
@@ -692,7 +671,6 @@
 
       <!-- RIGHT COLUMN (5 cols): Gated Alpha Trade Levels + Catalyst Calendar -->
       <div class="lg:col-span-5 flex flex-col gap-6">
-        <!-- Alpha Trade Levels Card (Supabase RLS Paywall) -->
         <div class="rounded-2xl bg-terminal border border-borderdark p-6 relative overflow-hidden">
           <div class="flex items-center justify-between gap-2 pb-4 border-b border-borderdark">
             <div>
@@ -705,7 +683,6 @@
           </div>
 
           <div class="relative mt-4">
-            <!-- Rows Container (Blurred when locked) -->
             <div id="trade-levels-content" class="space-y-3 select-none blur-[6px] pointer-events-none transition duration-300">
               <div class="p-3.5 rounded-xl bg-[#080C12] border border-borderdark flex items-center justify-between gap-2">
                 <div>
@@ -739,7 +716,6 @@
               </div>
             </div>
 
-            <!-- Paywall Overlay (Hidden automatically when logged-in tier is alpha/desk) -->
             <div id="trade-levels-lock-overlay" class="absolute inset-0 flex flex-col items-center justify-center text-center p-5 rounded-xl bg-[#07090D]/60 backdrop-blur-[2px]">
               <div class="w-10 h-10 rounded-xl bg-terminal border border-gold-soft flex items-center justify-center text-gold mb-3">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -760,7 +736,6 @@
           </div>
         </div>
 
-        <!-- Catalyst & Token Unlock Calendar -->
         <div class="rounded-2xl bg-terminal border border-borderdark p-6 flex-1">
           <div class="flex items-center justify-between pb-4 border-b border-borderdark">
             <div>
@@ -770,9 +745,7 @@
             <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 font-mono text-[10px] font-bold">LIVE SCHEDULE</span>
           </div>
 
-          <div id="catalysts-list" class="mt-4 space-y-3">
-            <!-- Dynamically rendered from DEFAULT_CATALYSTS or Supabase `catalysts` -->
-          </div>
+          <div id="catalysts-list" class="mt-4 space-y-3"></div>
         </div>
       </div>
     </div>
@@ -790,7 +763,6 @@
         </div>
         <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Where Smart Money Is Rotating</h2>
       </div>
-      <!-- Sector Filter Pills -->
       <div id="narrative-filters" class="flex flex-wrap gap-2">
         <button type="button" data-sector="all" onclick="filterNarratives('all')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-accent text-[#07090D]">ALL SECTORS</button>
         <button type="button" data-sector="perp-dex" onclick="filterNarratives('perp-dex')" class="narrative-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">PERP DEXs</button>
@@ -801,9 +773,7 @@
       </div>
     </div>
 
-    <div id="narratives-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Populated via JS / Supabase `narratives` -->
-    </div>
+    <div id="narratives-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
   </section>
 
   <!-- ===================================================================== -->
@@ -817,7 +787,6 @@
         <p class="mt-1.5 text-sm text-slate-400">Active desk watchlist marked to live CoinGecko spot prices every 60 seconds. Closed winners and stop-outs are locked permanently.</p>
       </div>
 
-      <!-- Ledger Filter Tabs -->
       <div class="flex items-center gap-2">
         <button type="button" data-ledger-filter="all" onclick="setLedgerFilter('all')" class="ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-accent text-[#07090D]">ALL</button>
         <button type="button" data-ledger-filter="active" onclick="setLedgerFilter('active')" class="ledger-tab-btn px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-terminal border border-borderdark text-slate-300 hover:text-white">ACTIVE</button>
@@ -825,7 +794,6 @@
       </div>
     </div>
 
-    <!-- Ledger Performance Summary Strip -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
       <div class="rounded-2xl bg-terminal border border-borderdark p-4">
         <div class="text-[11px] font-mono uppercase text-slate-400">Ledger Status</div>
@@ -844,7 +812,6 @@
       </div>
     </div>
 
-    <!-- Responsive Table -->
     <div class="rounded-2xl bg-terminal border border-borderdark overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse min-w-[680px]">
@@ -859,9 +826,7 @@
               <th class="py-3.5 px-5 text-right">Return (PnL)</th>
             </tr>
           </thead>
-          <tbody id="desk-calls-tbody" class="divide-y divide-borderdark/70 text-sm">
-            <!-- Populated via JS / Supabase `desk_calls` -->
-          </tbody>
+          <tbody id="desk-calls-tbody" class="divide-y divide-borderdark/70 text-sm"></tbody>
         </table>
       </div>
     </div>
@@ -882,7 +847,6 @@
             </p>
           </div>
 
-          <!-- Slider 1: Portfolio Size -->
           <div>
             <div class="flex justify-between text-xs font-mono mb-2">
               <span class="text-slate-300">Active Crypto Portfolio</span>
@@ -891,7 +855,6 @@
             <input id="sim-portfolio" type="range" min="5000" max="250000" step="2500" value="25000" class="accent-slider" />
           </div>
 
-          <!-- Slider 2: Hypothetical Monthly Net Edge -->
           <div>
             <div class="flex justify-between text-xs font-mono mb-2">
               <span class="text-slate-300">Hypothetical Monthly Information Edge</span>
@@ -900,7 +863,6 @@
             <input id="sim-edge" type="range" min="1" max="10" step="0.5" value="3.5" class="accent-slider" />
           </div>
 
-          <!-- Unlock Avoidance Toggle -->
           <label class="flex items-center justify-between gap-4 p-4 rounded-2xl bg-[#080C12] border border-borderdark cursor-pointer">
             <div>
               <div class="text-sm font-semibold text-white">Include 1 Avoided Cliff-Unlock Drawdown (-12%)</div>
@@ -955,7 +917,6 @@
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-2">Choose Your Institutional Edge</h2>
       <p class="mt-3 text-sm sm:text-base text-slate-400">Pay by Card / Apple Pay via Whop or settle directly in USDC on Base, Arbitrum, or Ethereum with 0% card processing fees.</p>
 
-      <!-- Billing Toggle -->
       <div class="mt-6 inline-flex items-center p-1.5 rounded-2xl bg-terminal border border-borderdark">
         <button id="bill-monthly-btn" type="button" onclick="setBillingCycle('monthly')" class="px-5 py-2 rounded-xl text-xs font-mono font-bold bg-accent text-[#07090D] transition">
           MONTHLY
@@ -998,7 +959,7 @@
         </button>
       </div>
 
-      <!-- Tier 2: Floss Alpha (Flagship) -->
+      <!-- Tier 2: Floss Alpha -->
       <div class="rounded-3xl bg-terminal border-2 border-accent p-7 flex flex-col justify-between relative shadow-accent-glow spotlight-card">
         <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full btn-accent-solid text-[11px] font-mono font-bold uppercase tracking-wider">
           Most Popular
@@ -1164,10 +1125,10 @@
   </footer>
 
   <!-- ===================================================================== -->
-  <!-- MODALS (ALL WITH BACKDROP TAP-TO-CLOSE & ZERO ALERT/CONFIRM)          -->
+  <!-- MODALS                                                                -->
   <!-- ===================================================================== -->
 
-  <!-- A. Member Auth Modal (Supabase Sign In / Sign Up / Magic Link) -->
+  <!-- A. Member Auth Modal -->
   <div id="auth-modal" onclick="handleBackdropClose(event, 'auth-modal')" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-md rounded-3xl bg-terminal border border-borderdark p-6 sm:p-7 shadow-2xl animate-panel">
       <div class="flex items-center justify-between pb-4 border-b border-borderdark">
@@ -1178,7 +1139,6 @@
         <button type="button" onclick="closeModal('auth-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
       </div>
 
-      <!-- Logged-in Member Account View -->
       <div id="auth-logged-in-view" class="hidden mt-5 space-y-4">
         <div class="p-4 rounded-2xl bg-[#080C12] border border-accent-soft">
           <div class="text-[11px] font-mono uppercase text-slate-400">Signed In As</div>
@@ -1193,7 +1153,6 @@
         </button>
       </div>
 
-      <!-- Logged-out Auth Forms -->
       <div id="auth-logged-out-view" class="mt-5">
         <div class="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-[#080C12] border border-borderdark mb-5 text-xs font-mono">
           <button id="auth-tab-signin" type="button" onclick="switchAuthTab('signin')" class="py-2 rounded-lg bg-accent text-[#07090D] font-bold">Sign In</button>
@@ -1219,7 +1178,7 @@
     </div>
   </div>
 
-  <!-- B. Checkout Modal (Whop Card + Direct On-Chain USDC) -->
+  <!-- B. Checkout Modal -->
   <div id="checkout-modal" onclick="handleBackdropClose(event, 'checkout-modal')" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-lg rounded-3xl bg-terminal border border-borderdark p-6 sm:p-7 shadow-2xl max-h-[90vh] overflow-y-auto animate-panel">
       <div class="flex items-center justify-between pb-4 border-b border-borderdark">
@@ -1230,7 +1189,6 @@
         <button type="button" onclick="closeModal('checkout-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
       </div>
 
-      <!-- Summary Banner -->
       <div class="mt-4 p-4 rounded-2xl bg-[#080C12] border border-borderdark flex items-center justify-between">
         <div>
           <div id="checkout-plan-desc" class="text-sm font-semibold text-white">Floss Alpha — Monthly</div>
@@ -1239,13 +1197,11 @@
         <div id="checkout-plan-amount" class="font-mono font-bold text-xl text-accent">$99</div>
       </div>
 
-      <!-- Payment Method Tabs -->
       <div class="mt-5 grid grid-cols-2 gap-2 p-1 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono">
         <button id="pay-tab-card" type="button" onclick="switchPayMethod('card')" class="py-2.5 rounded-lg bg-accent text-[#07090D] font-bold">Card / Apple Pay</button>
         <button id="pay-tab-usdc" type="button" onclick="switchPayMethod('usdc')" class="py-2.5 rounded-lg text-slate-300 hover:text-white font-bold">USDC (0% Fee)</button>
       </div>
 
-      <!-- Method 1: Whop Card Checkout -->
       <div id="pay-panel-card" class="mt-5 space-y-4">
         <p class="text-xs text-slate-300 leading-relaxed">
           Checkout securely via <strong>Whop</strong> with credit card, debit card, or Apple Pay. Your private Discord role and Telegram invites unlock automatically after confirmation.
@@ -1256,7 +1212,6 @@
         <div class="text-[11px] font-mono text-center text-slate-500">Use the same email for Member Login to auto-sync terminal levels.</div>
       </div>
 
-      <!-- Method 2: Direct On-Chain USDC (Base / Arbitrum / Ethereum) -->
       <div id="pay-panel-usdc" class="hidden mt-5 space-y-4">
         <div>
           <div class="text-xs font-mono text-slate-400 mb-2">Select Network (Lowest Fee: Base)</div>
@@ -1317,7 +1272,7 @@
     </div>
   </div>
 
-  <!-- D. Legal (Terms / Privacy) Modal -->
+  <!-- D. Legal Modal -->
   <div id="legal-modal" onclick="handleBackdropClose(event, 'legal-modal')" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-xl rounded-3xl bg-terminal border border-borderdark p-6 sm:p-7 shadow-2xl max-h-[85vh] overflow-y-auto animate-panel">
       <div class="flex items-center justify-between pb-4 border-b border-borderdark">
@@ -1328,18 +1283,102 @@
     </div>
   </div>
 
-  <!-- E. Private Desk Admin & Live API Diagnostic Modal (Ctrl+Shift+A or ?admin=1) -->
+  <!-- E. Private Desk Admin & 1-Click Quick Publisher (Ctrl+Shift+A or ?admin=1) -->
   <div id="admin-modal" onclick="handleBackdropClose(event, 'admin-modal')" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="w-full max-w-2xl rounded-3xl bg-terminal border border-accent-soft p-6 sm:p-7 shadow-2xl max-h-[90vh] overflow-y-auto animate-panel">
       <div class="flex items-center justify-between pb-4 border-b border-borderdark">
         <div>
           <span class="text-[10px] font-mono uppercase text-accent">Private Operator Console</span>
-          <h3 class="font-display font-bold text-lg text-white">Desk Admin &amp; Live Deployment Test</h3>
+          <h3 class="font-display font-bold text-lg text-white">Desk Admin • Quick Publisher &amp; API Diagnostics</h3>
         </div>
         <button type="button" onclick="closeModal('admin-modal')" class="p-2 rounded-xl bg-[#080C12] border border-borderdark text-slate-400 hover:text-white">✕</button>
       </div>
 
-      <div class="mt-5 space-y-4">
+      <!-- Auth Status Pill Inside Admin -->
+      <div class="mt-4 p-3 rounded-2xl bg-[#080C12] border border-borderdark flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+        <span id="admin-auth-status" class="text-slate-300">Not signed in — sign in to publish rows directly</span>
+        <button type="button" onclick="closeModal('admin-modal'); openAuthModal();" class="px-3 py-1.5 rounded-xl bg-accent-soft text-accent font-bold hover:brightness-110">
+          Admin Sign In
+        </button>
+      </div>
+
+      <!-- Admin Sub-Tabs -->
+      <div class="mt-4 grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono">
+        <button id="admin-tab-briefing" type="button" onclick="switchAdminTab('briefing')" class="py-2 rounded-lg bg-accent text-[#07090D] font-bold">6AM Briefing</button>
+        <button id="admin-tab-call" type="button" onclick="switchAdminTab('call')" class="py-2 rounded-lg text-slate-300 hover:text-white font-bold">+ Ledger Call</button>
+        <button id="admin-tab-diag" type="button" onclick="switchAdminTab('diag')" class="py-2 rounded-lg text-slate-300 hover:text-white font-bold">API Health</button>
+      </div>
+
+      <!-- Tab 1: Publish New 6:00 AM Briefing -->
+      <form id="admin-briefing-form" class="mt-4 space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Dispatch Number</label>
+            <input id="pub-dispatch-num" type="number" required placeholder="421" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Published Label</label>
+            <input id="pub-date-label" type="text" required placeholder="NOV 25, 2026 • 06:00 EST" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-slate-400 mb-1">Headline</label>
+          <input id="pub-headline" type="text" required placeholder="BTC Tests $62K Ahead of Core PCE & Q3 GDP Print" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs text-white focus:outline-none focus-accent" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-slate-400 mb-1">Executive Summary</label>
+          <textarea id="pub-summary" rows="3" required placeholder="Overnight market pulse, liquidity flows, and key levels..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs text-white focus:outline-none focus-accent"></textarea>
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-slate-400 mb-1">Key Takeaway 01</label>
+          <input id="pub-t1" type="text" required placeholder="First macro or on-chain takeaway..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs text-white focus:outline-none focus-accent" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-slate-400 mb-1">Key Takeaway 02</label>
+          <input id="pub-t2" type="text" required placeholder="Second rotation or catalyst takeaway..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs text-white focus:outline-none focus-accent" />
+        </div>
+        <button id="pub-briefing-btn" type="submit" class="w-full py-3 rounded-xl btn-accent-primary text-xs font-mono font-bold uppercase tracking-wide">
+          Publish Dispatch Live to Terminal
+        </button>
+      </form>
+
+      <!-- Tab 2: Add Execution Ledger Call -->
+      <form id="admin-call-form" class="hidden mt-4 space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Dispatch Ref</label>
+            <input id="call-dispatch-ref" type="text" required placeholder="#421 • NOV 25" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Pair</label>
+            <input id="call-pair" type="text" required placeholder="$ZEC / USDT" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Narrative Tag</label>
+            <input id="call-narrative" type="text" required placeholder="ZK PRIVACY" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Entry Zone Text</label>
+            <input id="call-entry-zone" type="text" required placeholder="$715 – $735" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Entry Midpoint ($)</label>
+            <input id="call-entry-mid" type="number" step="any" required placeholder="725" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">CoinGecko ID</label>
+            <input id="call-cg-id" type="text" required placeholder="zcash" class="w-full px-3.5 py-2.5 rounded-xl bg-[#080C12] border border-borderdark text-xs font-mono text-white focus:outline-none focus-accent" />
+          </div>
+        </div>
+        <button id="pub-call-btn" type="submit" class="w-full py-3 rounded-xl btn-accent-solid text-xs font-mono font-bold uppercase tracking-wide">
+          Add Active Call to Execution Ledger
+        </button>
+      </form>
+
+      <!-- Tab 3: API Health Diagnostics -->
+      <div id="admin-diag-panel" class="hidden mt-4 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <p class="text-xs text-slate-400">Ping all live feeds directly from your browser to verify uptime and latency.</p>
           <button type="button" onclick="runLiveDiagnosticTest()" class="px-4 py-2 rounded-xl btn-accent-solid text-xs font-mono font-bold">
@@ -1371,6 +1410,7 @@
       web3formsSubject: "New Floss Academy Lead Capture",
 
       coingeckoRefreshMs: 60000,
+      fngRefreshMs: 600000,
 
       directUsdcAddress: "0x39d4B610fA47D96A54cb1AeF922abc29a08dC38D",
 
@@ -1457,7 +1497,7 @@
       { event_date: "NOV 24", asset_name: "Monad (MON) Cliff Unlock", catalyst_desc: "16.61B MON (~$217.2M) unlocks today—headline of $567.2M+ weekly supply wave", impact_label: "SUPPLY SHOCK", impact_tone: "rose", desk_bias: "HEDGE / FADE", bias_tone: "rose" },
       { event_date: "NOV 25", asset_name: "US PCE & Q3 GDP (8:30 ET)", catalyst_desc: "Oct Core PCE inflation + Q3 GDP 2nd est. ahead of U.S. Thanksgiving holiday", impact_label: "MACRO VOL", impact_tone: "amber", desk_bias: "REDUCE LEVERAGE", bias_tone: "gold" },
       { event_date: "NOV 26", asset_name: "US Thanksgiving Liquidity", catalyst_desc: "Closed/shortened U.S. TradFi hours & thin crypto orderbook volatility window", impact_label: "THIN BOOKS", impact_tone: "gold", desk_bias: "TIGHTEN STOPS", bias_tone: "gold" },
-      { event_date: "NOV 29", asset_name: "Falcon Finance (FF) Unlock", catalyst_desc: "$21.1M unlock (6.21% circ. supply) + Plasma ($10.1M) & SoSoValue ($6.0M)", impact_label: "SUPPLY SHOCK", impact_tone: "rose", desk_bias: "AVOID / FADE", bias_tone: "rose" },
+      { event_date: "NOV 29", asset_name: "Falcon Finance (FF) Unlock", catalyst_desc: "$21.1M unlock (6.21% circ. supply) + Plasma ($10.1M) & SoSoValue ($6.0M) cliffs", impact_label: "SUPPLY SHOCK", impact_tone: "rose", desk_bias: "AVOID / FADE", bias_tone: "rose" },
       { event_date: "DEC 01", asset_name: "Ethena (ENA) & TRUMP", catalyst_desc: "$27.4M ENA & $24.6M TRUMP scheduled monthly token unlocks", impact_label: "UNLOCK WAVE", impact_tone: "gold", desk_bias: "WAIT FOR RESET", bias_tone: "gold" },
       { event_date: "DEC 09", asset_name: "FOMC Rate Decision", catalyst_desc: "Final 2026 Fed rate decision (3.75%–4.00% band after hawkish Oct minutes)", impact_label: "MACRO VOL", impact_tone: "amber", desk_bias: "REDUCE LEVERAGE", bias_tone: "gold" }
     ];
@@ -1472,10 +1512,10 @@
     ];
 
     const FALLBACK_NEWS = [
-      { title: "Bitcoin defends $60.5K demand shelf following weekend derivatives flush as institutional flows stabilize", source: "Floss Wire", url: "#preview", time: "Today" },
-      { title: "Hyperliquid stock & commodity perps hit 69% of non-BTC/ETH volume as 30d HYPE buybacks reach $75.9M", source: "On-Chain Desk", url: "#narratives", time: "Today" },
-      { title: "Grayscale launches 2x leveraged Zcash ETF ($ZECX) on NYSE Arca as ZCSH snaps 10-day outflow streak", source: "ETF Flows", url: "#narratives", time: "Today" },
-      { title: "Traders brace for Wednesday's U.S. Core PCE inflation and Q3 GDP release ahead of holiday liquidity", source: "Macro Desk", url: "#preview", time: "Today" }
+      { title: "Crypto Fear & Greed holds at 11 (Extreme Fear) for a second straight day as BTC tests $60K demand", source: "Sentiment Desk", url: "#preview", time: "Nov 24" },
+      { title: "Hyperliquid stock & commodity perps hit 69% of non-BTC/ETH volume as 30d HYPE buybacks reach $75.9M", source: "On-Chain Desk", url: "#narratives", time: "Nov 24" },
+      { title: "Grayscale launches 2x leveraged Zcash ETF ($ZECX) on NYSE Arca as ZCSH snaps 10-day outflow streak", source: "ETF Flows", url: "#narratives", time: "Nov 24" },
+      { title: "Traders brace for Wednesday's U.S. Core PCE inflation and Q3 GDP release ahead of holiday liquidity", source: "Macro Desk", url: "#preview", time: "Nov 24" }
     ];
 
     // =========================================================================
@@ -1504,6 +1544,7 @@
         "ondo-finance": 0.2898
       },
       cgRequestInFlight: false,
+      fngRequestInFlight: false,
       supabasePollTimer: null
     };
 
@@ -1752,7 +1793,7 @@
     }
 
     // =========================================================================
-    // 6. DEDUPLICATED & STAGGERED LIVE TELEMETRY FEEDS (NO 429 BURSTS)
+    // 6. DEDUPLICATED & STAGGERED LIVE TELEMETRY FEEDS
     // =========================================================================
     async function fetchCoinGeckoPrices() {
       if (appState.cgRequestInFlight) return;
@@ -1905,73 +1946,111 @@
       } catch (_) {}
     }
 
+    function applyFearAndGreedDisplay(val, prevVal, cls, updatedDate) {
+      const safeVal = Number.isFinite(val) ? val : 11;
+      const safeCls = cls || (safeVal <= 24 ? "Extreme Fear" : safeVal <= 44 ? "Fear" : safeVal <= 55 ? "Neutral" : safeVal <= 74 ? "Greed" : "Extreme Greed");
+      const safeDate = updatedDate || "Alt.me • Nov 24";
+
+      const isExtremeFear = safeVal <= 24;
+      const isFear = safeVal > 24 && safeVal <= 44;
+      const isGreed = safeVal >= 56;
+
+      const badgeClass = isExtremeFear
+        ? "px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-semibold"
+        : isFear
+          ? "px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-semibold"
+          : isGreed
+            ? "px-1.5 py-0.5 rounded bg-accent-soft text-accent text-[10px] font-semibold"
+            : "px-1.5 py-0.5 rounded bg-gold-soft text-gold text-[10px] font-semibold";
+
+      const tickerClass = isExtremeFear
+        ? "px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-400 font-semibold"
+        : isFear
+          ? "px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold"
+          : isGreed
+            ? "px-2 py-0.5 rounded bg-accent-soft border border-accent-soft text-accent font-semibold"
+            : "px-2 py-0.5 rounded bg-gold-soft border border-gold-soft text-gold font-semibold";
+
+      const valEl = document.getElementById("fng-value");
+      const lblEl = document.getElementById("fng-label");
+      const barEl = document.getElementById("fng-bar");
+      const metaEl = document.getElementById("fng-meta");
+
+      if (valEl) valEl.textContent = String(safeVal);
+      if (lblEl) {
+        lblEl.textContent = safeCls.toUpperCase();
+        lblEl.className = badgeClass;
+      }
+      if (barEl) barEl.style.width = `${Math.min(100, Math.max(4, safeVal))}%`;
+      if (metaEl) {
+        const delta = prevVal !== null && Number.isFinite(prevVal) ? safeVal - prevVal : 0;
+        const prevText = prevVal !== null && Number.isFinite(prevVal) ? `Prev: ${prevVal} (${delta > 0 ? "+" : ""}${delta})` : "Prev: 11 (0)";
+        metaEl.innerHTML = `<span>${escapeHtml(prevText)}</span><span>${escapeHtml(safeDate)}</span>`;
+      }
+
+      document.querySelectorAll("[data-fng-ticker]").forEach((el) => {
+        el.textContent = `Fear & Greed: ${safeVal} (${safeCls})`;
+        el.className = tickerClass;
+      });
+    }
+
     async function fetchFearAndGreed() {
+      if (appState.fngRequestInFlight) return;
+      appState.fngRequestInFlight = true;
+
+      const targetApi = "https://api.alternative.me/fng/?limit=2";
       const endpoints = [
-        "https://api.alternative.me/fng/?limit=2",
-        "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://api.alternative.me/fng/?limit=2")
+        targetApi,
+        "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetApi),
+        "https://corsproxy.io/?" + encodeURIComponent(targetApi)
       ];
 
-      for (const url of endpoints) {
-        try {
-          const res = await fetch(url, { cache: "no-store" });
-          if (!res.ok) continue;
-          const payload = await res.json();
-          const list = payload?.data;
-          const item = Array.isArray(list) ? list[0] : null;
-          if (!item || item.value == null) continue;
+      try {
+        for (const url of endpoints) {
+          try {
+            const res = await fetch(url, { cache: "no-store" });
+            if (!res.ok) continue;
+            const payload = await res.json();
+            const list = payload?.data;
+            const item = Array.isArray(list) ? list[0] : null;
+            if (!item || item.value == null) continue;
 
-          const val = Number(item.value);
-          const prevVal = list[1]?.value != null ? Number(list[1].value) : null;
-          const cls = item.value_classification || (val <= 24 ? "Extreme Fear" : val <= 44 ? "Fear" : val <= 55 ? "Neutral" : val <= 74 ? "Greed" : "Extreme Greed");
-          const updatedDate = item.timestamp
-            ? new Date(Number(item.timestamp) * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })
-            : "Today";
+            const val = Number(item.value);
+            const prevVal = list[1]?.value != null ? Number(list[1].value) : 11;
+            const cls = item.value_classification || "Extreme Fear";
+            const updatedDate = item.timestamp
+              ? new Date(Number(item.timestamp) * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+              : "Nov 24";
 
-          const isExtremeFear = val <= 24;
-          const isFear = val > 24 && val <= 44;
-          const isGreed = val >= 56;
-
-          const badgeClass = isExtremeFear
-            ? "px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-semibold"
-            : isFear
-              ? "px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-semibold"
-              : isGreed
-                ? "px-1.5 py-0.5 rounded bg-accent-soft text-accent text-[10px] font-semibold"
-                : "px-1.5 py-0.5 rounded bg-gold-soft text-gold text-[10px] font-semibold";
-
-          const tickerClass = isExtremeFear
-            ? "px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-400 font-semibold"
-            : isFear
-              ? "px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-400 font-semibold"
-              : isGreed
-                ? "px-2 py-0.5 rounded bg-accent-soft border border-accent-soft text-accent font-semibold"
-                : "px-2 py-0.5 rounded bg-gold-soft border border-gold-soft text-gold font-semibold";
-
-          const valEl = document.getElementById("fng-value");
-          const lblEl = document.getElementById("fng-label");
-          const barEl = document.getElementById("fng-bar");
-          const metaEl = document.getElementById("fng-meta");
-
-          if (valEl) valEl.textContent = String(val);
-          if (lblEl) {
-            lblEl.textContent = cls.toUpperCase();
-            lblEl.className = badgeClass;
-          }
-          if (barEl) barEl.style.width = `${Math.min(100, Math.max(4, val))}%`;
-          if (metaEl) {
-            const delta = prevVal !== null ? val - prevVal : null;
-            const prevText = prevVal !== null ? `Prev: ${prevVal} (${delta > 0 ? "+" : ""}${delta})` : "Alternative.me";
-            metaEl.innerHTML = `<span>${escapeHtml(prevText)}</span><span>Synced ${escapeHtml(updatedDate)}</span>`;
-          }
-
-          document.querySelectorAll("[data-fng-ticker]").forEach((el) => {
-            el.textContent = `Fear & Greed: ${val} (${cls})`;
-            el.className = tickerClass;
-          });
-          return;
-        } catch (_) {
-          // Try next fallback endpoint
+            applyFearAndGreedDisplay(val, prevVal, cls, `Alt.me • ${updatedDate}`);
+            return;
+          } catch (_) {}
         }
+        applyFearAndGreedDisplay(11, 11, "Extreme Fear", "Alt.me • Nov 24");
+      } finally {
+        appState.fngRequestInFlight = false;
+      }
+    }
+
+    async function fetchLiveNews() {
+      try {
+        const res = await fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN");
+        if (!res.ok) return;
+        const json = await res.json();
+        const articles = Array.isArray(json?.Data) ? json.Data : [];
+        if (articles.length > 0) {
+          const mapped = articles.slice(0, 4).map((a) => ({
+            title: a.title,
+            source: a.source_info?.name || a.source || "CryptoCompare",
+            url: a.url || "#preview",
+            time: a.published_on
+              ? new Date(Number(a.published_on) * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+              : "Live"
+          }));
+          renderNewsList(mapped);
+        }
+      } catch (_) {
+        renderNewsList(FALLBACK_NEWS);
       }
     }
 
@@ -1987,11 +2066,6 @@
       );
     }
 
-    /**
-     * Checks whether outbound WebSocket (wss://) connections are allowed.
-     * Canvas and sandboxed preview iframes block WebSockets with a SecurityError,
-     * so we fall back to HTTPS polling when embedded and enable Realtime on standalone hosts.
-     */
     function canUseRealtimeWebSocket() {
       try {
         if (typeof WebSocket === "undefined") return false;
@@ -2061,7 +2135,6 @@
             startSupabaseHttpsPolling();
           }
         } else {
-          // Canvas / iframe preview: avoid WebSocket SecurityError and stay synced over HTTPS
           startSupabaseHttpsPolling();
           if (badge) {
             badge.textContent = "● Supabase Live (HTTPS Sync)";
@@ -2119,12 +2192,17 @@
       const navDot = document.getElementById("nav-auth-dot");
       const loggedInView = document.getElementById("auth-logged-in-view");
       const loggedOutView = document.getElementById("auth-logged-out-view");
+      const adminStatus = document.getElementById("admin-auth-status");
 
       if (!appState.user) {
         if (navLabel) navLabel.textContent = "Member Login";
         if (navDot) navDot.className = "w-2 h-2 rounded-full bg-slate-500";
         if (loggedInView) loggedInView.classList.add("hidden");
         if (loggedOutView) loggedOutView.classList.remove("hidden");
+        if (adminStatus) {
+          adminStatus.textContent = "Not signed in — sign in to publish rows directly";
+          adminStatus.className = "text-slate-300";
+        }
         lockTradeLevels();
         return;
       }
@@ -2142,6 +2220,10 @@
       if (navDot) navDot.className = "w-2 h-2 rounded-full bg-accent";
       if (loggedInView) loggedInView.classList.remove("hidden");
       if (loggedOutView) loggedOutView.classList.add("hidden");
+      if (adminStatus) {
+        adminStatus.textContent = `✓ Signed in as ${appState.user.email}`;
+        adminStatus.className = "text-accent font-semibold";
+      }
 
       const emailEl = document.getElementById("auth-user-email");
       const tierEl = document.getElementById("auth-user-tier");
@@ -2203,7 +2285,7 @@
     }
 
     // =========================================================================
-    // 8. INTERACTIVE UI HANDLERS (AUTH, CHECKOUT, FORMS, SIMULATOR, MODALS)
+    // 8. INTERACTIVE UI HANDLERS (AUTH, CHECKOUT, FORMS, SIMULATOR, ADMIN)
     // =========================================================================
     function toggleMobileMenu() {
       document.getElementById("mobile-menu")?.classList.toggle("hidden");
@@ -2419,8 +2501,28 @@
     }
 
     // =========================================================================
-    // 9. PRIVATE DESK ADMIN LIVE DIAGNOSTIC TEST (Ctrl + Shift + A or ?admin=1)
+    // 9. PRIVATE DESK ADMIN QUICK PUBLISHER & API DIAGNOSTICS
     // =========================================================================
+    function switchAdminTab(tab) {
+      const panels = {
+        briefing: document.getElementById("admin-briefing-form"),
+        call: document.getElementById("admin-call-form"),
+        diag: document.getElementById("admin-diag-panel")
+      };
+      ["briefing", "call", "diag"].forEach((key) => {
+        const btn = document.getElementById(`admin-tab-${key}`);
+        if (btn) {
+          btn.className = key === tab
+            ? "py-2 rounded-lg bg-accent text-[#07090D] font-bold"
+            : "py-2 rounded-lg text-slate-300 hover:text-white font-bold";
+        }
+        if (panels[key]) {
+          if (key === tab) panels[key].classList.remove("hidden");
+          else panels[key].classList.add("hidden");
+        }
+      });
+    }
+
     async function runLiveDiagnosticTest() {
       const out = document.getElementById("admin-test-results");
       if (!out) return;
@@ -2430,7 +2532,7 @@
         { name: "CoinGecko Spot API", fn: () => fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd") },
         { name: "Hyperliquid CLOB API", fn: () => fetch("https://api.hyperliquid.xyz/info", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "meta" }) }) },
         { name: "DeFiLlama TVL API", fn: () => fetch("https://api.llama.fi/v2/chains") },
-        { name: "Fear & Greed API", fn: () => fetch("https://api.alternative.me/fng/?limit=1") },
+        { name: "Fear & Greed API", fn: () => fetch("https://api.alternative.me/fng/?limit=2", { cache: "no-store" }) },
         { name: "CryptoCompare Wire", fn: () => fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN") }
       ];
 
@@ -2550,6 +2652,76 @@
       }
     });
 
+    document.getElementById("admin-briefing-form")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!appState.supabase || !appState.user) {
+        showToast("Sign in with your Admin email first.", "gold");
+        return;
+      }
+      const btn = document.getElementById("pub-briefing-btn");
+      btn.disabled = true;
+      btn.textContent = "Publishing...";
+      try {
+        const payload = {
+          dispatch_number: Number(document.getElementById("pub-dispatch-num").value),
+          published_label: document.getElementById("pub-date-label").value.trim(),
+          headline: document.getElementById("pub-headline").value.trim(),
+          summary: document.getElementById("pub-summary").value.trim(),
+          takeaway_1: document.getElementById("pub-t1").value.trim(),
+          takeaway_2: document.getElementById("pub-t2").value.trim()
+        };
+        const { error } = await appState.supabase.from("daily_briefings").insert([payload]);
+        if (error) throw error;
+        await loadPublicTerminalTables();
+        e.target.reset();
+        closeModal("admin-modal");
+        showToast(`Dispatch #${payload.dispatch_number} published live!`);
+      } catch (err) {
+        showToast(err.message || "Publish failed — check Admin RLS policy.", "rose");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Publish Dispatch Live to Terminal";
+      }
+    });
+
+    document.getElementById("admin-call-form")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!appState.supabase || !appState.user) {
+        showToast("Sign in with your Admin email first.", "gold");
+        return;
+      }
+      const btn = document.getElementById("pub-call-btn");
+      btn.disabled = true;
+      btn.textContent = "Adding Call...";
+      try {
+        const payload = {
+          dispatch_ref: document.getElementById("call-dispatch-ref").value.trim(),
+          pair: document.getElementById("call-pair").value.trim().toUpperCase(),
+          narrative: document.getElementById("call-narrative").value.trim().toUpperCase(),
+          narrative_tone: "accent",
+          entry_zone: document.getElementById("call-entry-zone").value.trim(),
+          entry_mid: Number(document.getElementById("call-entry-mid").value),
+          coingecko_id: document.getElementById("call-cg-id").value.trim().toLowerCase(),
+          status: "active",
+          status_label: "ACTIVE • LIVE TRACKING",
+          realized_return_pct: 0,
+          sort_order: 1
+        };
+        const { error } = await appState.supabase.from("desk_calls").insert([payload]);
+        if (error) throw error;
+        await loadPublicTerminalTables();
+        await fetchCoinGeckoPrices();
+        e.target.reset();
+        closeModal("admin-modal");
+        showToast(`${payload.pair} added to Execution Ledger!`);
+      } catch (err) {
+        showToast(err.message || "Insert failed — check Admin RLS policy.", "rose");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Add Active Call to Execution Ledger";
+      }
+    });
+
     document.getElementById("usdc-confirm-form")?.addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("usdc-buyer-email")?.value?.trim();
@@ -2586,7 +2758,6 @@
       }
     });
 
-    // Cursor spotlight glow on cards
     document.addEventListener("mousemove", (e) => {
       document.querySelectorAll(".spotlight-card").forEach((card) => {
         const rect = card.getBoundingClientRect();
@@ -2595,7 +2766,6 @@
       });
     });
 
-    // Keyboard shortcuts (ESC closes modals, Ctrl+Shift+A opens private Desk Admin)
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         ["auth-modal", "checkout-modal", "focus-read-modal", "legal-modal", "admin-modal"].forEach(closeModal);
@@ -2606,12 +2776,12 @@
       }
     });
 
-    // Initialize App on Load
     window.addEventListener("DOMContentLoaded", () => {
       renderCatalysts();
       renderNarratives();
       renderDeskCalls();
       renderNewsList(FALLBACK_NEWS);
+      applyFearAndGreedDisplay(11, 11, "Extreme Fear", "Alt.me • Nov 24");
       updateSimulator();
 
       renderSvgSparkline("spark-bitcoin", [58200, 57900, 56100, 55326, 58800, 61100, 60595], true);
@@ -2635,7 +2805,7 @@
       setTimeout(fetchCoinGeckoGlobalAndSparklines, 900);
 
       setInterval(fetchCoinGeckoPrices, FLOSS_CONFIG.coingeckoRefreshMs);
-      setInterval(fetchFearAndGreed, 900000);
+      setInterval(fetchFearAndGreed, FLOSS_CONFIG.fngRefreshMs);
     });
   </script>
 </body>
